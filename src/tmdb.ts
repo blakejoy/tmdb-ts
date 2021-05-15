@@ -6,6 +6,7 @@ import {
   GenreEndpoint,
   MoviesEndpoint,
   SearchEndpoint,
+  ConfigurationEndpoint,
 } from './endpoints';
 
 export default class TMDB {
@@ -17,6 +18,10 @@ export default class TMDB {
 
   get account(): AccountEndpoint {
     return new AccountEndpoint(this.accessToken);
+  }
+
+  get configuration(): ConfigurationEndpoint {
+    return new ConfigurationEndpoint(this.accessToken);
   }
 
   get certifications(): CertificationEndpoint {

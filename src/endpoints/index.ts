@@ -7,3 +7,4 @@ export * from './credits';
 export * from './search';
 export * from './genre';
 export * from './movies';
+export * from './configuration';

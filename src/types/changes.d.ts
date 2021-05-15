@@ -9,3 +9,4 @@ export interface Changes{
   total_pages: number;
   total_results: number;
 }
+
