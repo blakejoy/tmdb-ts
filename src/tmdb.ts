@@ -3,6 +3,8 @@ import {
   CertificationEndpoint,
   ChangeEndpoint,
   CreditsEndpoint,
+  GenreEndpoint,
+  MoviesEndpoint,
   SearchEndpoint,
 } from './endpoints';
 
@@ -28,8 +30,16 @@ export default class TMDB {
   get credits(): CreditsEndpoint {
     return new CreditsEndpoint(this.accessToken);
   }
+
   get search(): SearchEndpoint{
     return new SearchEndpoint(this.accessToken);
   }
 
+  get genres(): GenreEndpoint{
+    return new GenreEndpoint(this.accessToken);
+  }
+
+  get movies(): MoviesEndpoint{
+    return new MoviesEndpoint(this.accessToken);
+  }
 }

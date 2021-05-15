@@ -1,6 +1,7 @@
-import * as certs from './certification';
-import * as credits from './credits';
-import * as changes from './changes';
+export * from './certification';
+export *  from './credits';
+export *  from './changes';
+
 
 export interface KnownFor {
   id: number;
@@ -80,6 +81,10 @@ export interface TV {
   vote_average: number;
 }
 
+export interface Genre {
+  id: number;
+  name: string;
+}
 
 export {
   certs,
