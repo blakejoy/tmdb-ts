@@ -1,17 +1,11 @@
-import { Api } from "../api";
-import {Base} from "./base";
+import { BaseEndpoint } from './base';
 
+export class AccountEndpoint extends BaseEndpoint {
+  constructor(accessToken: string) {
+    super(accessToken);
+  }
 
-
-export class Account extends Base{
-
-    constructor(accessToken: string){
-        super(accessToken);
-    }
-
-
-    async details(): Promise<any> {
-        return await this.api.get('/account');
-
-    }
+  async details(): Promise<any> {
+    return await this.api.get('/account');
+  }
 }

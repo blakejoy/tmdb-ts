@@ -1,12 +1,9 @@
-import {Api} from "../api";
+import Api from '../api';
 
+export class BaseEndpoint {
+  protected api: Api;
 
-export class Base {
-    protected api: Api;
-
-
-    constructor(protected readonly accessToken: string){
-        this.api = new Api(accessToken);
-    }
-
+  constructor(protected readonly accessToken: string) {
+    this.api = new Api(accessToken);
+  }
 }

@@ -1,28 +1,35 @@
-import { Account } from "./endpoints/account";
+import {
+  AccountEndpoint,
+  CertificationEndpoint,
+  ChangeEndpoint,
+  CreditsEndpoint,
+  SearchEndpoint,
+} from './endpoints';
 
-import {Certification} from "./endpoints/certification";
-import {Change} from "./endpoints/changes";
+export default class TMDB {
+  private readonly accessToken: string;
 
-export class TMDB {
-    private accessToken: string;
+  constructor(accessToken: string) {
+    this.accessToken = accessToken;
+  }
 
-    constructor(accessToken: string){
-        this.accessToken = accessToken;
-    }
+  get account(): AccountEndpoint {
+    return new AccountEndpoint(this.accessToken);
+  }
 
-    get account(){
-        return new Account(this.accessToken);
-    }
+  get certifications(): CertificationEndpoint {
+    return new CertificationEndpoint(this.accessToken);
+  }
 
-    get certifications(){
-        return new Certification(this.accessToken);
-    }
+  get changes(): ChangeEndpoint {
+    return new ChangeEndpoint(this.accessToken);
+  }
 
-    get changes(){
-        return new Change(this.accessToken);
-    }
+  get credits(): CreditsEndpoint {
+    return new CreditsEndpoint(this.accessToken);
+  }
+  get search(): SearchEndpoint{
+    return new SearchEndpoint(this.accessToken);
+  }
 
 }
-
-
-

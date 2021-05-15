@@ -1,20 +1,16 @@
-import {Base} from "./base";
-import {Certifications} from "../types/certification";
+import { BaseEndpoint } from './base';
+import { Certifications } from '../types/certification';
 
+export class CertificationEndpoint extends BaseEndpoint {
+  constructor(protected readonly accessToken: string) {
+    super(accessToken);
+  }
 
-export class Certification extends Base{
+  async movies(): Promise<Certifications> {
+    return await this.api.get<Certifications>('/certification/movie/list');
+  }
 
-    constructor(protected readonly accessToken: string){
-       super(accessToken);
-    }
-
-
-    async movies(): Promise<Certifications> {
-        return await this.api.get<Certifications>('/certification/movie/list');
-
-    }
-
-    async tvShows(): Promise<Certifications> {
-        return await this.api.get<Certifications>('/certification/tv/list');
-    }
+  async tvShows(): Promise<Certifications> {
+    return await this.api.get<Certifications>('/certification/tv/list');
+  }
 }
