@@ -1,0 +1,27 @@
+{
+  "name": "tmdb-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^15.3.0",
+    "@types/node-fetch": "^2.5.10",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "dotenv": "^9.0.2",
+    "node-fetch": "^2.6.1"
+  },
+  "volta": {
+    "node": "15.13.0",
+    "yarn": "1.19.2"
+  }
+}
