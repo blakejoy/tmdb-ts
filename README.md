@@ -7,11 +7,25 @@ Typescript library wrapper of [TMDB API](https://developers.themoviedb.org/) v3 
 This uses new jwt authentication token for requests so there is no need to append api key to the url. 
 Once you have registered for access to the api you can use your access token as follows:
 
-`import TMDB from 'tmdb-ts';`
+Installation:
+``
+npm install --save tmdb-ts
+``
 
-`const tmdb = new TMDB(accessToken);`
+```js
+import TMDB from 'tmdb-ts';
 
-`tmdb.search.movies({query: 'American Pie'})`
+const tmdb = new TMDB('accessToken');
+
+try {
+   const movies = await tmdb.search.movies({ query: 'American Pie' });
+    console.log(movies);
+} catch(err) {
+   // handle error
+}
+```
+
+
 
 
 
