@@ -1,3 +1,4 @@
+import { Person } from './';
 
 export interface CreditSeason {
   air_date?: string;

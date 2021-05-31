@@ -1,16 +1,15 @@
 {
   "name": "tmdb-ts",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "description": "TMDB v3 library wrapper",
-  "main": "dist/index.ts",
-  "types": "dist/types/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "compile": "rm -rf dist && tsc -d && npm run copy-types",
     "lint": "eslint --ext .ts src/",
     "lint:fix": "eslint --ext .ts src/ --fix",
     "prepublish": "tsc",
     "copy-types": "mkdir dist/types && cp src/types/*.d.ts dist/types"
-
   },
   "bugs": {
     "url": "https://github.com/blakejoy/tmdb-ts/issues",

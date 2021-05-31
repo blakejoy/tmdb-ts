@@ -93,10 +93,3 @@ export interface ExternalIds {
   twitter_id: string;
   id: number;
 }
-
-
-export {
-  certs,
-  credits,
-  changes,
-};
