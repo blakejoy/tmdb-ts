@@ -1,4 +1,4 @@
-import querystring, { ParsedUrlQueryInput } from 'querystring';
+import querystring  from 'querystring';
 import { BaseEndpoint } from './base';
 import { ChangeOptions, Changes } from '../types/changes';
 

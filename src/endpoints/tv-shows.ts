@@ -80,8 +80,7 @@ export class TvShowsEndpoint extends BaseEndpoint{
     return await this.api.get<Reviews>(`${BASE_TV}/${id}/reviews?${params}`);
   }
 
-  async screenedTheatrically(id: number, options?: {page?: number}): Promise<ScreenedTheatrically>{
-    const params = querystring.encode(options);
+  async screenedTheatrically(id: number): Promise<ScreenedTheatrically>{
     return await this.api.get<ScreenedTheatrically>(`${BASE_TV}/${id}/screened_theatrically`);
   }
 
