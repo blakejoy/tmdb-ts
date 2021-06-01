@@ -1,12 +1,7 @@
 import querystring, { ParsedUrlQueryInput } from 'querystring';
 import { BaseEndpoint } from './base';
-import { Changes } from '../types/changes';
+import { ChangeOptions, Changes } from '../types/changes';
 
-export interface ChangeOptions extends ParsedUrlQueryInput {
-  end_date?: string;
-  start_date?: string;
-  page?: number;
-}
 
 export class ChangeEndpoint extends BaseEndpoint {
   constructor(protected readonly accessToken: string) {

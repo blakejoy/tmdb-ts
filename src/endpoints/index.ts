@@ -8,3 +8,4 @@ export * from './search';
 export * from './genre';
 export * from './movies';
 export * from './configuration';
+export * from './tv-shows';

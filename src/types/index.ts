@@ -1,7 +1,17 @@
 export * from './certification';
 export *  from './credits';
 export *  from './changes';
+export * from './movies';
+export * from './search';
+export * from './tv-shows';
+export * from './watch-providers';
 
+export interface AuthorDetails {
+  name: string;
+  username: string;
+  avatar_path: string;
+  rating?: number;
+}
 
 export interface KnownFor {
   id: number;
@@ -92,4 +102,96 @@ export interface ExternalIds {
   instagram_id: string;
   twitter_id: string;
   id: number;
+}
+
+export interface ProductionCompany {
+  id: number;
+  logo_path: string;
+  name: string;
+  origin_country: string;
+}
+
+export interface ProductionCountry {
+  iso_3166_1: string;
+  name: string;
+}
+
+export interface SpokenLanguage {
+  english_name: string;
+  iso_639_1: string;
+  name: string;
+}
+
+export interface ContentRatings{
+  results: ContentRatingsResult[];
+  id: number;
+}
+
+export interface ContentRatingsResult {
+  iso_3166_1: string;
+  rating: string;
+}
+
+
+export interface Recommendation {
+  adult: boolean;
+  backdrop_path?: any;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  release_date: string;
+  poster_path?: any;
+  popularity: number;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
+
+export interface Recommendations {
+  page: number;
+  results: Recommendation[];
+  total_pages: number;
+  total_results: number;
+}
+
+export interface Review {
+  author: string;
+  author_details: AuthorDetails;
+  content: string;
+  created_at: Date;
+  id: string;
+  updated_at: Date;
+  url: string;
+}
+
+export interface Reviews {
+  id: number;
+  page: number;
+  results: Review[];
+  total_pages: number;
+  total_results: number;
+}
+
+
+export interface TranslationData {
+  title: string;
+  overview: string;
+  homepage: string;
+}
+
+export interface Translation {
+  iso_3166_1: string;
+  iso_639_1: string;
+  name: string;
+  english_name: string;
+  data: TranslationData;
+}
+
+export interface Translations {
+  id: number;
+  translations: Translation[];
 }
