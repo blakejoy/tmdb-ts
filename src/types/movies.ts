@@ -28,12 +28,20 @@ export interface MovieDetails {
   vote_count: number;
 }
 
+export enum ReleaseDateType {
+  'Premiere' = 1,
+  'Theatrical (limited)',
+  'Theatrical',
+  'Digital',
+  'Physical',
+  'TV'
+}
 
 export interface ReleaseDate {
   certification: string;
   iso_639_1: string;
   release_date: Date;
-  type: number;
+  type: ReleaseDateType;
   note: string;
 }
 
