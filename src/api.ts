@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+import fetch from 'cross-fetch';
 
 const BASE_URL_V3 = 'https://api.themoviedb.org/3';
 
