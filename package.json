@@ -41,7 +41,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "cross-fetch": "^3.1.4"
   },
   "volta": {
     "node": "15.13.0",

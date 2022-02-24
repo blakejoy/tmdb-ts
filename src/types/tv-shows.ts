@@ -1,4 +1,4 @@
-import { Genre, ProductionCompany, ProductionCountry, SpokenLanguage } from './';
+import { Genre, ProductionCompany, ProductionCountry, SpokenLanguage, Crew } from './';
 
 export interface CreatedBy {
   id: number;
@@ -70,6 +70,46 @@ export interface TvShowDetails {
   type: string;
   vote_average: number;
   vote_count: number;
+}
+
+export interface GuestStar {
+  credit_id: string
+  order: number
+  character: string
+  adult: boolean
+  gender: number | null
+  id: number
+  known_for_department: string
+  name: string
+  original_name: string
+  popularity: number
+  profile_path: string | null
+
+}
+
+export interface Episode {
+  air_date: string
+  episode_number: number
+  crew: Crew[]
+  guest_stars: GuestStar[]
+  id: number
+  name: string
+  overview: string
+  production_code: string
+  season_number: number
+  still_path: string
+  vote_average: number
+  vote_count: number
+}
+
+export interface SeasonDetails {
+  air_date: string
+  episodes: Episode[]
+  name: string
+  overview: string
+  id: number
+  poster_path: string | null
+  season_number: number
 }
 
 export interface TvShowItem {

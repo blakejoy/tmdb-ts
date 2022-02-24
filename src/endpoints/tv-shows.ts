@@ -14,6 +14,7 @@ import {
   Recommendations,
   Reviews,
   ScreenedTheatrically,
+  SeasonDetails,
   SimilarTvShows,
   TopRatedTvShows,
   Translations,
@@ -53,6 +54,9 @@ export class TvShowsEndpoint extends BaseEndpoint{
     return await this.api.get<Credits>(`${BASE_TV}/${id}/credits`);
   }
 
+  async season(tvId: number, seasonNumber: number): Promise<SeasonDetails>{
+    return await this.api.get<SeasonDetails>(`${BASE_TV}/${tvId}/season/${seasonNumber}`);
+  }
 
   async episodeGroups(id: number): Promise<EpisodeGroups>{
     return await this.api.get<EpisodeGroups>(`${BASE_TV}/${id}/episode_groups`);
