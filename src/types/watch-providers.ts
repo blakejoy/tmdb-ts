@@ -1,3 +1,10 @@
+export interface WatchProvider {
+  display_priorities: any;
+  display_priority: number;
+  logo_path: string;
+  provider_id: number;
+  provider_name: string;
+}
 
 export interface Flatrate {
   display_priority: number;
