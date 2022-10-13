@@ -8,7 +8,7 @@ import {
   SearchEndpoint,
   TvShowsEndpoint,
   ConfigurationEndpoint,
-  WatchEndpoint,
+  WatchProvidersEndpoint,
 } from './endpoints';
 
 export default class TMDB {
@@ -54,7 +54,7 @@ export default class TMDB {
     return new TvShowsEndpoint(this.accessToken);
   }
 
-  get watch(): WatchEndpoint{
-    return new WatchEndpoint(this.accessToken);
+  get watchProviders(): WatchProvidersEndpoint{
+    return new WatchProvidersEndpoint(this.accessToken);
   }
 }

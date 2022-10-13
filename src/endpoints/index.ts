@@ -9,4 +9,4 @@ export * from './genre';
 export * from './movies';
 export * from './configuration';
 export * from './tv-shows';
-export * from './watch';
+export * from './watch-providers';

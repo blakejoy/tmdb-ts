@@ -11,23 +11,23 @@ export interface WatchProviderResponse {
   results: Array<WatchProvider>
 }
 
-export class WatchEndpoint extends BaseEndpoint {
+export class WatchProvidersEndpoint extends BaseEndpoint {
   constructor(protected readonly accessToken: string) {
     super(accessToken);
   }
 
-  async getRegions(language?: string): Promise<RegionResponse> {
-    const params = querystring.encode({ language: language });
+  async getRegions(language_iso_639_1?: string): Promise<RegionResponse> {
+    const params = querystring.encode({ language: language_iso_639_1 });
     return await this.api.get<RegionResponse>(`/watch/providers/regions?${params}`);
   }
 
-  async getMovieWatchProviders(language?: string, region?: string): Promise<WatchProviderResponse> {
-    const params = querystring.encode({ language: language, watch_region: region  });
+  async getMovieProviders(language_iso_639_1?: string, region_iso_3166_1?: string): Promise<WatchProviderResponse> {
+    const params = querystring.encode({ language: language_iso_639_1, watch_region: region_iso_3166_1 });
     return await this.api.get<WatchProviderResponse>(`/watch/providers/movie?${params}`);
   }
 
-  async getTvWatchProviders(language?: string, region?: string): Promise<WatchProviderResponse> {
-    const params = querystring.encode({ language: language, watch_region: region  });
+  async getTvProviders(language_iso_639_1?: string, region_iso_3166_1?: string): Promise<WatchProviderResponse> {
+    const params = querystring.encode({ language: language_iso_639_1, watch_region: region_iso_3166_1  });
     return await this.api.get<WatchProviderResponse>(`/watch/providers/tv?${params}`);
   }
 }
