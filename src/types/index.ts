@@ -1,5 +1,6 @@
 export * from './certification';
 export *  from './credits';
+export * from './configuration';
 export *  from './changes';
 export * from './movies';
 export * from './search';
