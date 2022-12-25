@@ -103,7 +103,7 @@ export interface Poster {
   width: number;
 }
 
-export interface Images {
+export interface CreditImages {
   id: number;
   backdrops: Backdrop[];
   posters: Poster[];
