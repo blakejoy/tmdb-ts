@@ -1,4 +1,4 @@
-import { PersonDetail, PersonMovieCredit, PersonTvShowCredit } from '../types';
+import { CreditImages, ExternalIds, Image, PersonCombinedCredits, PersonDetail, PersonMovieCredit, PersonTvShowCredit, Translation } from '../types';
 import { BaseEndpoint } from './base';
 
 const BASE_PERSON = '/person';
@@ -29,4 +29,21 @@ export class PeopleEndpoint extends BaseEndpoint {
 			`${BASE_PERSON}/${id}/tv_credits`
 		);
 	}
+
+	async combinedCredits(id: number) : Promise<PersonCombinedCredits>{
+		return await this.api.get<PersonCombinedCredits>(`${BASE_PERSON}/${id}/combined_credits`)
+	}
+
+	async externalId(id: number): Promise<ExternalIds>{
+		return await this.api.get<ExternalIds>(`${BASE_PERSON}/${id}/external_ids`)
+	}
+
+	async images(id: number): Promise<{id: number, profiles: Image[]}>{
+		return await this.api.get<{id: number, profiles: Image[]}>(`${BASE_PERSON}/${id}/images`)
+	}
+
+	async translation(id: number) : Promise<Translation<{biography: string}>>{
+		return await this.api.get<Translation<{biography: string}>>(`${BASE_PERSON}/${id}/translations`)
+	}
+
 }

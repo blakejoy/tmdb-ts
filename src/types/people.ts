@@ -71,6 +71,12 @@ export interface PersonTvShowCredit {
 	id: number;
 }
 
+export interface PersonCombinedCredits{
+	cast: (PersonMovieCast & PersonTvShowCast)[];
+	crew: (PersonMovieCrew & PersonTvShowCrew)[];
+	id: number;
+}
+
 export interface PersonDetail {
 	birthday: string,
 	known_for_department: string,
