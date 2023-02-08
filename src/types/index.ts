@@ -185,15 +185,25 @@ export interface TranslationData {
   homepage: string;
 }
 
-export interface Translation {
+export interface Translation<T> {
   iso_3166_1: string;
   iso_639_1: string;
   name: string;
   english_name: string;
-  data: TranslationData;
+  data: T;
 }
 
-export interface Translations {
+export interface Translations<T> {
   id: number;
-  translations: Translation[];
+  translations: Translation<T>[];
+}
+
+export interface Image{
+aspect_ratio: number;
+file_path: string;
+height: number;
+iso_639_1: string;
+vote_average: number;
+vote_count: number;
+width: number;
 }

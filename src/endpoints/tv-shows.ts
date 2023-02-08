@@ -17,6 +17,7 @@ import {
   SeasonDetails,
   SimilarTvShows,
   TopRatedTvShows,
+  TranslationData,
   Translations,
   TvShowChanges,
   TvShowDetails,
@@ -93,8 +94,8 @@ export class TvShowsEndpoint extends BaseEndpoint{
     return await this.api.get<SimilarTvShows>(`${BASE_TV}/${id}/similar?${params}`);
   }
 
-  async translations(id: number): Promise<Translations>{
-    return await this.api.get<Translations>(`${BASE_TV}/${id}/translations`);
+  async translations(id: number): Promise<Translations<TranslationData>>{
+    return await this.api.get<Translations<TranslationData>>(`${BASE_TV}/${id}/translations`);
   }
 
   async videos(id: number): Promise<Videos>{

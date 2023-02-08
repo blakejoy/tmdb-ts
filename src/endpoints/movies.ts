@@ -16,7 +16,7 @@ import {
   ReleaseDates,
   Reviews,
   SimilarMovies,
-  TopRatedMovies, Translations,
+  TopRatedMovies, TranslationData, Translations,
   UpcomingMovies,
   Videos,
   WatchProviders,
@@ -83,8 +83,8 @@ export class MoviesEndpoint extends BaseEndpoint{
     return await this.api.get<SimilarMovies>(`${BASE_MOVIE}/${id}/similar?${params}`);
   }
 
-  async translations(id: number): Promise<Translations>{
-    return await this.api.get<Translations>(`${BASE_MOVIE}/${id}/translations`);
+  async translations(id: number): Promise<Translations<TranslationData>>{
+    return await this.api.get<Translations<TranslationData>>(`${BASE_MOVIE}/${id}/translations`);
   }
 
   async videos(id: number): Promise<Videos>{
