@@ -152,10 +152,9 @@ export interface Recommendation {
   vote_count: number;
 }
 
-
-export interface Recommendations {
+export interface PaginatedResult<T>{
   page: number;
-  results: Recommendation[];
+  results: T[];
   total_pages: number;
   total_results: number;
 }
@@ -170,12 +169,8 @@ export interface Review {
   url: string;
 }
 
-export interface Reviews {
+export interface Reviews extends PaginatedResult<Review> {
   id: number;
-  page: number;
-  results: Review[];
-  total_pages: number;
-  total_results: number;
 }
 
 

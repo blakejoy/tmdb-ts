@@ -180,12 +180,6 @@ export interface SimilarTvShow {
   vote_count: number;
 }
 
-export interface SimilarTvShows {
-  page: number;
-  results: SimilarTvShow[];
-  total_pages: number;
-  total_results: number;
-}
 
 export interface LatestTvShows {
   backdrop_path?: any;
@@ -233,13 +227,6 @@ export interface OnTheAirResult {
   original_name: string;
 }
 
-export interface OnTheAir {
-  page: number;
-  results: OnTheAirResult[];
-  total_results: number;
-  total_pages: number;
-}
-
 
 export interface AiringTodayResult {
   poster_path: string;
@@ -257,14 +244,6 @@ export interface AiringTodayResult {
   original_name: string;
 }
 
-export interface TvShowsAiringToday {
-  page: number;
-  results: AiringTodayResult[];
-  total_results: number;
-  total_pages: number;
-}
-
-
 export interface PopularTvShowResult {
   poster_path: string;
   popularity: number;
@@ -279,13 +258,6 @@ export interface PopularTvShowResult {
   vote_count: number;
   name: string;
   original_name: string;
-}
-
-export interface PopularTvShows {
-  page: number;
-  results: PopularTvShowResult[];
-  total_results: number;
-  total_pages: number;
 }
 
 
@@ -304,12 +276,4 @@ export interface TopRatedTvShowResult {
   name: string;
   original_name: string;
 }
-
-export interface TopRatedTvShows {
-  page: number;
-  results: TopRatedTvShowResult[];
-  total_results: number;
-  total_pages: number;
-}
-
 

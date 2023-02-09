@@ -1,6 +1,7 @@
 import querystring  from 'querystring';
 import { BaseEndpoint } from './base';
-import { ChangeOptions, Changes } from '../types/changes';
+import { Change, ChangeOptions } from '../types/changes';
+import { PaginatedResult } from '../types';
 
 
 export class ChangeEndpoint extends BaseEndpoint {
@@ -8,19 +9,19 @@ export class ChangeEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async movies(options?: ChangeOptions): Promise<Changes> {
+  async movies(options?: ChangeOptions): Promise<PaginatedResult<Change>> {
     const params = querystring.encode(options);
-    return await this.api.get<Changes>(`/movie/changes?${params}`);
+    return await this.api.get<PaginatedResult<Change>>(`/movie/changes?${params}`);
   }
 
-  async tvShows(options?: ChangeOptions): Promise<Changes> {
+  async tvShows(options?: ChangeOptions): Promise<PaginatedResult<Change>> {
     const params = querystring.stringify(options);
-    return await this.api.get<Changes>(`/tv/changes?${params}`);
+    return await this.api.get<PaginatedResult<Change>>(`/tv/changes?${params}`);
   }
 
-  async person(options?: ChangeOptions): Promise<Changes> {
+  async person(options?: ChangeOptions): Promise<PaginatedResult<Change>> {
     const params = querystring.stringify(options);
 
-    return await this.api.get<Changes>(`/person/changes${params}`);
+    return await this.api.get<PaginatedResult<Change>>(`/person/changes${params}`);
   }
 }

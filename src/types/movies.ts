@@ -1,4 +1,4 @@
-import { Genre, Movie, ProductionCompany, ProductionCountry, SpokenLanguage } from './';
+import { Genre, Movie, PaginatedResult, ProductionCompany, ProductionCountry, SpokenLanguage } from './';
 
 export interface MovieDetails {
   adult: boolean;
@@ -55,14 +55,6 @@ export interface ReleaseDates {
   results: ReleaseDateResult[];
 }
 
-
-export interface SimilarMovies {
-  page: number;
-  results: Movie[];
-  total_pages: number;
-  total_results: number;
-}
-
 export interface MovieList {
   description: string;
   favorite_count: number;
@@ -73,15 +65,6 @@ export interface MovieList {
   name: string;
   poster_path: string;
 }
-
-export interface MovieLists {
-  id: number;
-  page: number;
-  results: MovieList[];
-  total_pages: number;
-  total_results: number;
-}
-
 
 export interface MovieChangeItem {
   id: string;
@@ -135,31 +118,6 @@ export interface Dates {
   minimum: string;
 }
 
-export interface MoviesPlayingNow {
-  page: number;
-  results: Movie[];
+export interface MoviesPlayingNow extends PaginatedResult<Movie> {
   dates: Dates;
-  total_pages: number;
-  total_results: number;
-}
-
-export interface PopularMovies {
-  page: number;
-  results: Movie[];
-  total_results: number;
-  total_pages: number;
-}
-
-export interface TopRatedMovies {
-  page: number;
-  results: Movie[];
-  total_results: number;
-  total_pages: number;
-}
-
-export interface UpcomingMovies {
-  page: number;
-  results: Movie[];
-  total_results: number;
-  total_pages: number;
 }

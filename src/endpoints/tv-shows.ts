@@ -1,5 +1,6 @@
 import { BaseEndpoint } from './base';
 import {
+  AiringTodayResult,
   AlternativeTitles,
   ChangeOptions,
   ContentRatings,
@@ -9,19 +10,19 @@ import {
   Images,
   Keywords,
   LatestTvShows,
-  OnTheAir,
-  PopularTvShows,
-  Recommendations,
+  OnTheAirResult,
+  PaginatedResult,
+  PopularTvShowResult,
+  Recommendation,
   Reviews,
   ScreenedTheatrically,
   SeasonDetails,
-  SimilarTvShows,
-  TopRatedTvShows,
+  SimilarTvShow,
+  TopRatedTvShowResult,
   TranslationData,
   Translations,
   TvShowChanges,
   TvShowDetails,
-  TvShowsAiringToday,
   Videos,
   WatchProviders,
 } from '../types';
@@ -75,9 +76,9 @@ export class TvShowsEndpoint extends BaseEndpoint{
     return await this.api.get<Keywords>(`${BASE_TV}/${id}/keywords`);
   }
 
-  async recommendations(id: number, options?: {page?: number}): Promise<Recommendations>{
+  async recommendations(id: number, options?: {page?: number}): Promise<PaginatedResult<Recommendation>>{
     const params = querystring.encode(options);
-    return await this.api.get<Recommendations>(`${BASE_TV}/${id}/recommendations?${params}`);
+    return await this.api.get<PaginatedResult<Recommendation>>(`${BASE_TV}/${id}/recommendations?${params}`);
   }
 
   async reviews(id: number, options?: {page?: number}): Promise<Reviews>{
@@ -89,9 +90,9 @@ export class TvShowsEndpoint extends BaseEndpoint{
     return await this.api.get<ScreenedTheatrically>(`${BASE_TV}/${id}/screened_theatrically`);
   }
 
-  async similar(id: number, options?: {page?: number}): Promise<SimilarTvShows>{
+  async similar(id: number, options?: {page?: number}): Promise<PaginatedResult<SimilarTvShow>>{
     const params = querystring.encode(options);
-    return await this.api.get<SimilarTvShows>(`${BASE_TV}/${id}/similar?${params}`);
+    return await this.api.get<PaginatedResult<SimilarTvShow>>(`${BASE_TV}/${id}/similar?${params}`);
   }
 
   async translations(id: number): Promise<Translations<TranslationData>>{
@@ -114,23 +115,23 @@ export class TvShowsEndpoint extends BaseEndpoint{
     return await this.api.get<LatestTvShows>(`${BASE_TV}/latest`);
   }
 
-  async onTheAir(): Promise<OnTheAir>{
-    return await this.api.get<OnTheAir>(`${BASE_TV}/on_the_air`);
+  async onTheAir(): Promise<PaginatedResult<OnTheAirResult>>{
+    return await this.api.get<PaginatedResult<OnTheAirResult>>(`${BASE_TV}/on_the_air`);
   }
 
-  async airingToday(options?: {page?: number, region?: string, language?: string}): Promise<TvShowsAiringToday>{
+  async airingToday(options?: {page?: number, region?: string, language?: string}): Promise<PaginatedResult<AiringTodayResult>>{
     const params = querystring.encode(options);
-    return await this.api.get<TvShowsAiringToday>(`${BASE_TV}/airing_today?${params}`);
+    return await this.api.get<PaginatedResult<AiringTodayResult>>(`${BASE_TV}/airing_today?${params}`);
   }
 
-  async popular(options?: {page?: number}): Promise<PopularTvShows>{
+  async popular(options?: {page?: number}): Promise<PaginatedResult<PopularTvShowResult>>{
     const params = querystring.encode(options);
-    return await this.api.get<PopularTvShows>(`${BASE_TV}/popular?${params}`);
+    return await this.api.get<PaginatedResult<PopularTvShowResult>>(`${BASE_TV}/popular?${params}`);
   }
 
-  async topRated(options?: {page?: number, region?: string, language?: string}): Promise<TopRatedTvShows>{
+  async topRated(options?: {page?: number, region?: string, language?: string}): Promise<PaginatedResult<TopRatedTvShowResult>>{
     const params = querystring.encode(options);
-    return await this.api.get<TopRatedTvShows>(`${BASE_TV}/top_rated?${params}`);
+    return await this.api.get<PaginatedResult<TopRatedTvShowResult>>(`${BASE_TV}/top_rated?${params}`);
   }
 
 }

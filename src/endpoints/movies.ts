@@ -7,17 +7,17 @@ import {
   Images,
   Keywords,
   LatestMovie,
+  Movie,
   MovieChanges,
   MovieDetails,
-  MovieLists,
+  MovieList,
   MoviesPlayingNow,
-  PopularMovies,
-  Recommendations,
+  PaginatedResult,
+  Recommendation,
   ReleaseDates,
   Reviews,
-  SimilarMovies,
-  TopRatedMovies, TranslationData, Translations,
-  UpcomingMovies,
+  TranslationData,
+  Translations,
   Videos,
   WatchProviders,
 } from '../types';
@@ -59,14 +59,14 @@ export class MoviesEndpoint extends BaseEndpoint{
     return await this.api.get<Keywords>(`${BASE_MOVIE}/${id}/keywords`);
   }
 
-  async lists(id: number, options?: {page?: number}): Promise<MovieLists>{
+  async lists(id: number, options?: {page?: number}): Promise<PaginatedResult<MovieList>>{
     const params = querystring.encode(options);
-    return await this.api.get<MovieLists>(`${BASE_MOVIE}/${id}/lists?${params}`);
+    return await this.api.get<PaginatedResult<MovieList>>(`${BASE_MOVIE}/${id}/lists?${params}`);
   }
 
-  async recommendations(id: number, options?: {page?: number}): Promise<Recommendations>{
+  async recommendations(id: number, options?: {page?: number}): Promise<PaginatedResult<Recommendation>>{
     const params = querystring.encode(options);
-    return await this.api.get<Recommendations>(`${BASE_MOVIE}/${id}/recommendations?${params}`);
+    return await this.api.get<PaginatedResult<Recommendation>>(`${BASE_MOVIE}/${id}/recommendations?${params}`);
   }
 
   async releaseDates(id: number): Promise<ReleaseDates>{
@@ -78,9 +78,9 @@ export class MoviesEndpoint extends BaseEndpoint{
     return await this.api.get<Reviews>(`${BASE_MOVIE}/${id}/reviews?${params}`);
   }
 
-  async similar(id: number, options?: {page?: number}): Promise<SimilarMovies>{
+  async similar(id: number, options?: {page?: number}): Promise<PaginatedResult<Movie>>{
     const params = querystring.encode(options);
-    return await this.api.get<SimilarMovies>(`${BASE_MOVIE}/${id}/similar?${params}`);
+    return await this.api.get<PaginatedResult<Movie>>(`${BASE_MOVIE}/${id}/similar?${params}`);
   }
 
   async translations(id: number): Promise<Translations<TranslationData>>{
@@ -108,19 +108,19 @@ export class MoviesEndpoint extends BaseEndpoint{
     return await this.api.get<MoviesPlayingNow>(`${BASE_MOVIE}/now_playing?${params}`);
   }
 
-  async popular(options?: {page?: number}): Promise<PopularMovies>{
+  async popular(options?: {page?: number}): Promise<PaginatedResult<Movie>>{
     const params = querystring.encode(options);
-    return await this.api.get<PopularMovies>(`${BASE_MOVIE}/popular?${params}`);
+    return await this.api.get<PaginatedResult<Movie>>(`${BASE_MOVIE}/popular?${params}`);
   }
 
-  async topRated(options?: {page?: number, region?: string, language?: string}): Promise<TopRatedMovies>{
+  async topRated(options?: {page?: number, region?: string, language?: string}): Promise<PaginatedResult<Movie>>{
     const params = querystring.encode(options);
-    return await this.api.get<TopRatedMovies>(`${BASE_MOVIE}/top_rated?${params}`);
+    return await this.api.get<PaginatedResult<Movie>>(`${BASE_MOVIE}/top_rated?${params}`);
   }
 
-  async upcoming(options?: {page?: number, region?: string, language?: string}): Promise<UpcomingMovies>{
+  async upcoming(options?: {page?: number, region?: string, language?: string}): Promise<PaginatedResult<Movie>>{
     const params = querystring.encode(options);
-    return await this.api.get<UpcomingMovies>(`${BASE_MOVIE}/upcoming?${params}`);
+    return await this.api.get<PaginatedResult<Movie>>(`${BASE_MOVIE}/upcoming?${params}`);
   }
 }
 
