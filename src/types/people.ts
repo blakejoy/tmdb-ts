@@ -1,3 +1,5 @@
+import { Image, Movie, TV } from ".";
+
 interface Cast {
 	character: string;
 	credit_id: string;
@@ -71,7 +73,7 @@ export interface PersonTvShowCredit {
 	id: number;
 }
 
-export interface PersonCombinedCredits{
+export interface PersonCombinedCredits {
 	cast: (PersonMovieCast & PersonTvShowCast)[];
 	crew: (PersonMovieCrew & PersonTvShowCrew)[];
 	id: number;

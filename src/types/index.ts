@@ -159,6 +159,10 @@ export interface PaginatedResult<T>{
   total_results: number;
 }
 
+export interface IdPaginatedResult<T> extends PaginatedResult<T>{
+  id: number;
+}
+
 export interface Review {
   author: string;
   author_details: AuthorDetails;

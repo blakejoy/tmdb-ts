@@ -1,5 +1,6 @@
-import { CreditImages, ExternalIds, Image, PersonCombinedCredits, PersonDetail, PersonMovieCredit, PersonTvShowCredit, Translation } from '../types';
+import { ChangeOptions, ExternalIds, IdPaginatedResult, Image, PaginatedResult, Person, PersonChanges, PersonCombinedCredits, PersonDetail, PersonMovieCredit, PersonTvShowCredit, TaggedImage, Translations } from '../types';
 import { BaseEndpoint } from './base';
+import querystring from 'querystring';
 
 const BASE_PERSON = '/person';
 
@@ -12,6 +13,11 @@ export class PeopleEndpoint extends BaseEndpoint {
 
 	async details(id: number): Promise<PersonDetail> {
 		return await this.api.get<PersonDetail>(`${BASE_PERSON}/${id}`);
+	}
+
+	async changes(id: number, options? : ChangeOptions): Promise<PersonChanges> {
+		const params = querystring.encode(options);
+		return await this.api.get<PersonChanges>(`${BASE_PERSON}/${id}/changes?${params}`);
 	}
 
 	async movieCredits(
@@ -42,8 +48,22 @@ export class PeopleEndpoint extends BaseEndpoint {
 		return await this.api.get<{id: number, profiles: Image[]}>(`${BASE_PERSON}/${id}/images`)
 	}
 
-	async translation(id: number) : Promise<Translation<{biography: string}>>{
-		return await this.api.get<Translation<{biography: string}>>(`${BASE_PERSON}/${id}/translations`)
+	async taggedImages(id: number, options?: {page?: number}): Promise<IdPaginatedResult<TaggedImage>>{
+		const params = querystring.encode(options);
+		return await this.api.get<IdPaginatedResult<TaggedImage>>(`${BASE_PERSON}/${id}/tagged_images?${options}`);
+	}
+
+	async translation(id: number) : Promise<Translations<{biography: string}>>{
+		return await this.api.get<Translations<{biography: string}>>(`${BASE_PERSON}/${id}/translations`)
+	}
+
+	async latest(): Promise<PersonDetail>{
+		return await this.api.get<PersonDetail>(`${BASE_PERSON}/latest`);
+	}
+
+	async popular(options?: {page?: number}): Promise<PaginatedResult<Person>>{
+		const params = querystring.encode(options);
+		return await this.api.get<PaginatedResult<Person>>(`${BASE_PERSON}/popular?${params}`);
 	}
 
 }
