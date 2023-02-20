@@ -6,6 +6,7 @@ export * from './movies';
 export * from './search';
 export * from './tv-shows';
 export * from './watch-providers';
+export * from './discover';
 
 export interface AuthorDetails {
   name: string;
