@@ -10,3 +10,5 @@ export * from './movies';
 export * from './configuration';
 export * from './tv-shows';
 export * from './discover';
+export * from './people';
+

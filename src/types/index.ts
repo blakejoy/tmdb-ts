@@ -6,6 +6,7 @@ export * from './movies';
 export * from './search';
 export * from './tv-shows';
 export * from './watch-providers';
+export * from './people';
 export * from './discover';
 
 export interface AuthorDetails {
@@ -196,4 +197,14 @@ export interface Translation {
 export interface Translations {
   id: number;
   translations: Translation[];
+}
+
+export interface Image{
+  aspect_ratio: number;
+  file_path: string;
+  height: number;
+  iso_639_1: string;
+  vote_average: number;
+  vote_count: number;
+  width: number;
 }
