@@ -10,6 +10,7 @@ export * from './people';
 export * from './discover';
 export * from './review';
 export * from './trending';
+export * from './find';
 
 export interface AuthorDetails {
   name: string;
