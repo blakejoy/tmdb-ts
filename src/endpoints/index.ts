@@ -11,4 +11,7 @@ export * from './configuration';
 export * from './tv-shows';
 export * from './discover';
 export * from './people';
+export * from './review';
+export * from './trending';
+export * from './find';
 

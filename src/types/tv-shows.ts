@@ -100,6 +100,8 @@ export interface Episode {
   still_path: string
   vote_average: number
   vote_count: number
+  show_id: number;
+  runtime: number;
 }
 
 export interface SeasonDetails {

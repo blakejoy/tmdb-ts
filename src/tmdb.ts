@@ -10,6 +10,9 @@ import {
   ConfigurationEndpoint,
   DiscoverEndpoint,
   PeopleEndpoint,
+  ReviewEndpoint,
+  TrendingEndpoint,
+  FindEndpoint,
 } from './endpoints';
 
 export default class TMDB {
@@ -61,5 +64,17 @@ export default class TMDB {
   
   get people(): PeopleEndpoint{
     return new PeopleEndpoint(this.accessToken);
+  }
+
+  get review(): ReviewEndpoint{
+    return new ReviewEndpoint(this.accessToken);
+  }
+
+  get trending(): TrendingEndpoint{
+    return new TrendingEndpoint(this.accessToken);
+  }
+
+  get find() : FindEndpoint{
+    return new FindEndpoint(this.accessToken);
   }
 }
