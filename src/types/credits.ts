@@ -125,13 +125,3 @@ export interface Videos {
   id: number;
   results: Video[];
 }
-
-export interface Keywords {
-  id: number;
-  keywords: Array<{
-    id: number;
-    name: string;
-  }>
-
-}
-
