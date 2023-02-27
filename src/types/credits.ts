@@ -1,4 +1,4 @@
-import { Person } from './';
+import { Image, Person } from './';
 
 export interface CreditSeason {
   air_date?: string;
@@ -82,31 +82,10 @@ export interface Credits {
   crew: Crew[];
 }
 
-
-export interface Backdrop {
-  aspect_ratio: number;
-  file_path: string;
-  height: number;
-  iso_639_1?: any;
-  vote_average: number;
-  vote_count: number;
-  width: number;
-}
-
-export interface Poster {
-  aspect_ratio: number;
-  file_path: string;
-  height: number;
-  iso_639_1: string;
-  vote_average: number;
-  vote_count: number;
-  width: number;
-}
-
-export interface CreditImages {
+export interface ImageCollection {
   id: number;
-  backdrops: Backdrop[];
-  posters: Poster[];
+  backdrops: Image[];
+  posters: Image[];
 }
 
 
