@@ -14,6 +14,7 @@ import {
   TrendingEndpoint,
   FindEndpoint,
   KeywordsEndpoint,
+  CollectionsEndpoint,
 } from './endpoints';
 
 export default class TMDB {
@@ -81,5 +82,9 @@ export default class TMDB {
 
   get keywords() : KeywordsEndpoint{
     return new KeywordsEndpoint(this.accessToken);
+  }
+
+  get collections() : CollectionsEndpoint{
+    return new CollectionsEndpoint(this.accessToken);
   }
 }
