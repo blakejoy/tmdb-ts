@@ -13,6 +13,7 @@ import {
   ReviewEndpoint,
   TrendingEndpoint,
   FindEndpoint,
+  KeywordsEndpoint,
 } from './endpoints';
 
 export default class TMDB {
@@ -76,5 +77,9 @@ export default class TMDB {
 
   get find() : FindEndpoint{
     return new FindEndpoint(this.accessToken);
+  }
+
+  get keywords() : KeywordsEndpoint{
+    return new KeywordsEndpoint(this.accessToken);
   }
 }
