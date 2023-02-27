@@ -11,6 +11,7 @@ export * from './discover';
 export * from './review';
 export * from './trending';
 export * from './find';
+export * from './keywords';
 
 export interface AuthorDetails {
   name: string;
