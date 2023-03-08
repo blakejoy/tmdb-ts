@@ -1,5 +1,4 @@
 import { BaseEndpoint } from './base';
-import querystring from 'querystring';
 import { ExternalIdOptions, FindResult } from '../types';
 
 export class FindEndpoint extends BaseEndpoint {
@@ -8,7 +7,7 @@ export class FindEndpoint extends BaseEndpoint {
   }
 
   async byId(externalId: string, options: ExternalIdOptions): Promise<FindResult> {
-    const params = querystring.encode(options);
+    const params = new URLSearchParams(Object.entries(options)).toString();
     return await this.api.get<FindResult>(`/find/${externalId}?${params}`);
   }
 }

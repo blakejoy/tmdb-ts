@@ -1,4 +1,3 @@
-import querystring  from 'querystring';
 import { BaseEndpoint } from './base';
 import { ChangeOptions, Changes } from '../types/changes';
 
@@ -9,18 +8,23 @@ export class ChangeEndpoint extends BaseEndpoint {
   }
 
   async movies(options?: ChangeOptions): Promise<Changes> {
-    const params = querystring.encode(options);
+    const params = options 
+      ? new URLSearchParams(Object.entries(options)).toString() 
+      :  '';
     return await this.api.get<Changes>(`/movie/changes?${params}`);
   }
 
   async tvShows(options?: ChangeOptions): Promise<Changes> {
-    const params = querystring.stringify(options);
+    const params = options 
+      ? new URLSearchParams(Object.entries(options)).toString() 
+      :  '';
     return await this.api.get<Changes>(`/tv/changes?${params}`);
   }
 
   async person(options?: ChangeOptions): Promise<Changes> {
-    const params = querystring.stringify(options);
-
+    const params = options 
+      ? new URLSearchParams(Object.entries(options)).toString() 
+      :  '';
     return await this.api.get<Changes>(`/person/changes${params}`);
   }
 }

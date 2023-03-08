@@ -9,7 +9,9 @@ import {
   Images,
   Keywords,
   LatestTvShows,
+  LocaleOptions,
   OnTheAir,
+  PageOptions,
   PopularTvShows,
   Recommendations,
   Reviews,
@@ -24,7 +26,6 @@ import {
   Videos,
   WatchProviders,
 } from '../types';
-import querystring from 'querystring';
 
 const BASE_TV = '/tv';
 
@@ -42,7 +43,9 @@ export class TvShowsEndpoint extends BaseEndpoint{
   }
 
   async changes(id: number, options?: ChangeOptions): Promise<TvShowChanges>{
-    const params = querystring.encode(options);
+		const params = options == undefined 
+		  ? undefined 
+		  : new URLSearchParams(Object.entries(options)).toString();
     return await this.api.get<TvShowChanges>(`${BASE_TV}/${id}/changes?${params}`);
   }
 
@@ -74,13 +77,17 @@ export class TvShowsEndpoint extends BaseEndpoint{
     return await this.api.get<Keywords>(`${BASE_TV}/${id}/keywords`);
   }
 
-  async recommendations(id: number, options?: {page?: number}): Promise<Recommendations>{
-    const params = querystring.encode(options);
+  async recommendations(id: number, options?: PageOptions): Promise<Recommendations>{
+		const params = options == undefined 
+		  ? undefined 
+		  : new URLSearchParams(Object.entries(options)).toString();
     return await this.api.get<Recommendations>(`${BASE_TV}/${id}/recommendations?${params}`);
   }
 
-  async reviews(id: number, options?: {page?: number}): Promise<Reviews>{
-    const params = querystring.encode(options);
+  async reviews(id: number, options?: PageOptions): Promise<Reviews>{
+		const params = options == undefined 
+		  ? undefined 
+		  : new URLSearchParams(Object.entries(options)).toString();
     return await this.api.get<Reviews>(`${BASE_TV}/${id}/reviews?${params}`);
   }
 
@@ -88,8 +95,10 @@ export class TvShowsEndpoint extends BaseEndpoint{
     return await this.api.get<ScreenedTheatrically>(`${BASE_TV}/${id}/screened_theatrically`);
   }
 
-  async similar(id: number, options?: {page?: number}): Promise<SimilarTvShows>{
-    const params = querystring.encode(options);
+  async similar(id: number, options?: PageOptions): Promise<SimilarTvShows>{
+		const params = options == undefined 
+		  ? undefined 
+		  : new URLSearchParams(Object.entries(options)).toString();
     return await this.api.get<SimilarTvShows>(`${BASE_TV}/${id}/similar?${params}`);
   }
 
@@ -117,21 +126,24 @@ export class TvShowsEndpoint extends BaseEndpoint{
     return await this.api.get<OnTheAir>(`${BASE_TV}/on_the_air`);
   }
 
-  async airingToday(options?: {page?: number, region?: string, language?: string}): Promise<TvShowsAiringToday>{
-    const params = querystring.encode(options);
+  async airingToday(options?: LocaleOptions): Promise<TvShowsAiringToday>{
+		const params = options == undefined 
+		  ? undefined 
+		  : new URLSearchParams(Object.entries(options)).toString();
     return await this.api.get<TvShowsAiringToday>(`${BASE_TV}/airing_today?${params}`);
   }
 
-  async popular(options?: {page?: number}): Promise<PopularTvShows>{
-    const params = querystring.encode(options);
+  async popular(options?: PageOptions): Promise<PopularTvShows>{
+		const params = options == undefined 
+		  ? undefined 
+		  : new URLSearchParams(Object.entries(options)).toString();
     return await this.api.get<PopularTvShows>(`${BASE_TV}/popular?${params}`);
   }
 
-  async topRated(options?: {page?: number, region?: string, language?: string}): Promise<TopRatedTvShows>{
-    const params = querystring.encode(options);
+  async topRated(options?: LocaleOptions): Promise<TopRatedTvShows>{
+		const params = options == undefined 
+		  ? undefined 
+		  : new URLSearchParams(Object.entries(options)).toString();
     return await this.api.get<TopRatedTvShows>(`${BASE_TV}/top_rated?${params}`);
   }
-
 }
-
-
