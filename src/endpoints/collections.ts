@@ -1,4 +1,4 @@
-import { DetailedCollection, ImageCollection, LanguageOption, PageOption, Translations } from '../types';
+import { DetailedCollection, ImageCollection, LanguageOption, Translations } from '../types';
 import {  BaseEndpoint } from './base';
 import querystring from 'querystring';
 
