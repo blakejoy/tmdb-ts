@@ -1,3 +1,4 @@
+export * from './options';
 export * from './certification';
 export *  from './credits';
 export * from './configuration';
@@ -11,6 +12,8 @@ export * from './discover';
 export * from './review';
 export * from './trending';
 export * from './find';
+export * from './keywords';
+export * from './collections';
 
 export interface AuthorDetails {
   name: string;
@@ -48,17 +51,8 @@ export interface Person {
   popularity: number;
 }
 
-export interface Collection {
-  id:number;
-  backdrop_path: string;
-  name: string;
-  poster_path: string;
-}
-
 export interface Movie {
   id: number;
-  logo_path: string;
-  name: string;
   poster_path: string;
   adult: boolean;
   overview: string;

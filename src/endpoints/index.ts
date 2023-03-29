@@ -14,4 +14,6 @@ export * from './people';
 export * from './review';
 export * from './trending';
 export * from './find';
+export * from './keywords';
+export * from './collections';
 
