@@ -43,9 +43,9 @@ export class TvShowsEndpoint extends BaseEndpoint{
   }
 
   async changes(id: number, options?: ChangeOptions): Promise<TvShowChanges>{
-		const params = options == undefined 
-		  ? undefined 
-		  : new URLSearchParams(Object.entries(options)).toString();
+    const params = options
+      ? new URLSearchParams(Object.entries(options)).toString()
+      :  '';
     return await this.api.get<TvShowChanges>(`${BASE_TV}/${id}/changes?${params}`);
   }
 
@@ -78,16 +78,16 @@ export class TvShowsEndpoint extends BaseEndpoint{
   }
 
   async recommendations(id: number, options?: PageOptions): Promise<Recommendations>{
-		const params = options == undefined 
-		  ? undefined 
-		  : new URLSearchParams(Object.entries(options)).toString();
+    const params = options
+      ? new URLSearchParams(Object.entries(options)).toString()
+      :  '';
     return await this.api.get<Recommendations>(`${BASE_TV}/${id}/recommendations?${params}`);
   }
 
   async reviews(id: number, options?: PageOptions): Promise<Reviews>{
-		const params = options == undefined 
-		  ? undefined 
-		  : new URLSearchParams(Object.entries(options)).toString();
+    const params = options
+      ? new URLSearchParams(Object.entries(options)).toString()
+      :  '';
     return await this.api.get<Reviews>(`${BASE_TV}/${id}/reviews?${params}`);
   }
 
@@ -96,9 +96,9 @@ export class TvShowsEndpoint extends BaseEndpoint{
   }
 
   async similar(id: number, options?: PageOptions): Promise<SimilarTvShows>{
-		const params = options == undefined 
-		  ? undefined 
-		  : new URLSearchParams(Object.entries(options)).toString();
+    const params = options
+      ? new URLSearchParams(Object.entries(options)).toString()
+      :  '';
     return await this.api.get<SimilarTvShows>(`${BASE_TV}/${id}/similar?${params}`);
   }
 
@@ -127,23 +127,23 @@ export class TvShowsEndpoint extends BaseEndpoint{
   }
 
   async airingToday(options?: LocaleOptions): Promise<TvShowsAiringToday>{
-		const params = options == undefined 
-		  ? undefined 
-		  : new URLSearchParams(Object.entries(options)).toString();
+    const params = options
+      ? new URLSearchParams(Object.entries(options)).toString()
+      :  '';
     return await this.api.get<TvShowsAiringToday>(`${BASE_TV}/airing_today?${params}`);
   }
 
   async popular(options?: PageOptions): Promise<PopularTvShows>{
-		const params = options == undefined 
-		  ? undefined 
-		  : new URLSearchParams(Object.entries(options)).toString();
+    const params = options
+      ? new URLSearchParams(Object.entries(options)).toString()
+      :  '';
     return await this.api.get<PopularTvShows>(`${BASE_TV}/popular?${params}`);
   }
 
   async topRated(options?: LocaleOptions): Promise<TopRatedTvShows>{
-		const params = options == undefined 
-		  ? undefined 
-		  : new URLSearchParams(Object.entries(options)).toString();
+    const params = options
+      ? new URLSearchParams(Object.entries(options)).toString()
+      :  '';
     return await this.api.get<TopRatedTvShows>(`${BASE_TV}/top_rated?${params}`);
   }
 }

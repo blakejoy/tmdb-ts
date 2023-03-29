@@ -1,7 +1,6 @@
-import { ParsedUrlQueryInput } from 'querystring';
 import { Movie } from '.';
 
-export interface KeywordsOptions extends ParsedUrlQueryInput {
+export interface KeywordsOptions {
   include_adult?: boolean;
   language?: string;
 }

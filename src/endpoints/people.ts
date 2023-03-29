@@ -13,9 +13,9 @@ export class PeopleEndpoint extends BaseEndpoint {
 	}
 
 	async changes(id: number, options? : ChangeOptions): Promise<PersonChanges> {
-		const params = options == undefined 
-		  ? undefined 
-		  : new URLSearchParams(Object.entries(options)).toString();
+		const params = options
+      		? new URLSearchParams(Object.entries(options)).toString()
+      		:  '';
 		return await this.api.get<PersonChanges>(`${BASE_PERSON}/${id}/changes?${params}`);
 	}
 
@@ -40,9 +40,9 @@ export class PeopleEndpoint extends BaseEndpoint {
 	}
 
 	async taggedImages(id: number, options?: PageOptions): Promise<TaggedImages>{
-		const params = options == undefined 
-		  ? undefined 
-		  : new URLSearchParams(Object.entries(options)).toString();
+		const params = options
+      		? new URLSearchParams(Object.entries(options)).toString()
+      		:  '';
 		return await this.api.get<TaggedImages>(`${BASE_PERSON}/${id}/tagged_images?${params}`);
 	}
 
@@ -55,9 +55,9 @@ export class PeopleEndpoint extends BaseEndpoint {
 	}
 
 	async popular(options?: PageOptions): Promise<PopularPersons>{
-		const params = options == undefined 
-		  ? undefined 
-		  : new URLSearchParams(Object.entries(options)).toString();
+		const params = options
+      		? new URLSearchParams(Object.entries(options)).toString()
+      		:  '';
 		return await this.api.get<PopularPersons>(`${BASE_PERSON}/popular?${params}`);
 	}
 }

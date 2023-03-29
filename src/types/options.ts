@@ -1,9 +1,7 @@
-import { ParsedUrlQueryInput } from 'querystring';
-
-export interface LanguageOption extends ParsedUrlQueryInput {
-	language?: string;
+export interface LanguageOption {
+  language?: string;
 }
 
-export interface PageOption extends ParsedUrlQueryInput {
-	page?: number;
+export interface PageOption {
+  page?: number;
 }

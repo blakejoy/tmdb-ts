@@ -1,5 +1,4 @@
 import { BaseEndpoint } from './base';
-import querystring from 'querystring';
 import { BelongingMovies, Keyword, KeywordsOptions } from '../types';
 
 const BASE_Keyword = '/keyword';
@@ -14,7 +13,9 @@ export class KeywordsEndpoint extends BaseEndpoint {
   }
 
   async belongingMovies(keywordId : number, options?: KeywordsOptions): Promise<BelongingMovies> {
-    const params = querystring.encode(options);
+    const params = options
+      ? new URLSearchParams(Object.entries(options)).toString()
+      :  '';
     return await this.api.get<BelongingMovies>(`${BASE_Keyword}/${keywordId}/movies?${params}`);
   }
 }
