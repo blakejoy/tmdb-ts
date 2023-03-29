@@ -1,4 +1,17 @@
-import { ChangeOptions, ExternalIds, Image, PageOptions, PeopleTranslations, PersonChanges, PersonCombinedCredits, PersonDetail, PersonMovieCredit, PersonTvShowCredit, PopularPersons, TaggedImages } from '../types';
+import { 
+	ChangeOptions, 
+	ExternalIds, 
+	Image, 
+	PageOption, 
+	PeopleTranslations, 
+	PersonChanges, 
+	PersonCombinedCredits, 
+	PersonDetail, 
+	PersonMovieCredit, 
+	PersonTvShowCredit, 
+	PopularPersons, 
+	TaggedImages 
+} from '../types';
 import { BaseEndpoint } from './base';
 
 const BASE_PERSON = '/person';
@@ -39,7 +52,7 @@ export class PeopleEndpoint extends BaseEndpoint {
 		return await this.api.get<{id: number, profiles: Image[]}>(`${BASE_PERSON}/${id}/images`)
 	}
 
-	async taggedImages(id: number, options?: PageOptions): Promise<TaggedImages>{
+	async taggedImages(id: number, options?: PageOption): Promise<TaggedImages>{
 		const params = options
       		? new URLSearchParams(Object.entries(options)).toString()
       		:  '';
@@ -54,7 +67,7 @@ export class PeopleEndpoint extends BaseEndpoint {
 		return await this.api.get<PersonDetail>(`${BASE_PERSON}/latest`);
 	}
 
-	async popular(options?: PageOptions): Promise<PopularPersons>{
+	async popular(options?: PageOption): Promise<PopularPersons>{
 		const params = options
       		? new URLSearchParams(Object.entries(options)).toString()
       		:  '';

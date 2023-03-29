@@ -6,15 +6,16 @@ import {
   ExternalIds,
   Images,
   Keywords,
+  LanguageOption,
   LatestMovie,
-  LocaleOptions,
   MovieChanges,
   MovieDetails,
   MovieLists,
   MoviesPlayingNow,
-  PageOptions,
+  PageOption,
   PopularMovies,
   Recommendations,
+  RegionOption,
   ReleaseDates,
   Reviews,
   SimilarMovies,
@@ -62,14 +63,14 @@ export class MoviesEndpoint extends BaseEndpoint{
     return await this.api.get<Keywords>(`${BASE_MOVIE}/${id}/keywords`);
   }
 
-  async lists(id: number, options?: PageOptions): Promise<MovieLists>{
+  async lists(id: number, options?: LanguageOption | PageOption): Promise<MovieLists>{
     const params = options
       ? new URLSearchParams(Object.entries(options)).toString()
       :  '';
     return await this.api.get<MovieLists>(`${BASE_MOVIE}/${id}/lists?${params}`);
   }
 
-  async recommendations(id: number, options?: PageOptions): Promise<Recommendations>{
+  async recommendations(id: number, options?: PageOption): Promise<Recommendations>{
     const params = options
       ? new URLSearchParams(Object.entries(options)).toString()
       :  '';
@@ -80,14 +81,14 @@ export class MoviesEndpoint extends BaseEndpoint{
     return await this.api.get<ReleaseDates>(`${BASE_MOVIE}/${id}/release_dates`);
   }
 
-  async reviews(id: number, options?: PageOptions): Promise<Reviews>{
+  async reviews(id: number, options?: PageOption): Promise<Reviews>{
     const params = options
       ? new URLSearchParams(Object.entries(options)).toString()
       :  '';
     return await this.api.get<Reviews>(`${BASE_MOVIE}/${id}/reviews?${params}`);
   }
 
-  async similar(id: number, options?: PageOptions): Promise<SimilarMovies>{
+  async similar(id: number, options?: PageOption): Promise<SimilarMovies>{
     const params = options
       ? new URLSearchParams(Object.entries(options)).toString()
       :  '';
@@ -114,28 +115,28 @@ export class MoviesEndpoint extends BaseEndpoint{
     return await this.api.get<LatestMovie>(`${BASE_MOVIE}/latest`);
   }
 
-  async nowPlaying(options?: LocaleOptions): Promise<MoviesPlayingNow>{
+  async nowPlaying(options?: PageOption & LanguageOption & RegionOption): Promise<MoviesPlayingNow>{
     const params = options
       ? new URLSearchParams(Object.entries(options)).toString()
       :  '';
     return await this.api.get<MoviesPlayingNow>(`${BASE_MOVIE}/now_playing?${params}`);
   }
 
-  async popular(options?: PageOptions): Promise<PopularMovies>{
+  async popular(options?: PageOption): Promise<PopularMovies>{
     const params = options
       ? new URLSearchParams(Object.entries(options)).toString()
       :  '';
     return await this.api.get<PopularMovies>(`${BASE_MOVIE}/popular?${params}`);
   }
 
-  async topRated(options?: LocaleOptions): Promise<TopRatedMovies>{
+  async topRated(options?: PageOption & LanguageOption & RegionOption): Promise<TopRatedMovies>{
     const params = options
       ? new URLSearchParams(Object.entries(options)).toString()
       :  '';
     return await this.api.get<TopRatedMovies>(`${BASE_MOVIE}/top_rated?${params}`);
   }
 
-  async upcoming(options?: LocaleOptions): Promise<UpcomingMovies>{
+  async upcoming(options?: PageOption & LanguageOption & RegionOption): Promise<UpcomingMovies>{
     const params = options
       ? new URLSearchParams(Object.entries(options)).toString()
       :  '';

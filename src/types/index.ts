@@ -7,7 +7,6 @@ export * from './movies';
 export * from './search';
 export * from './tv-shows';
 export * from './watch-providers';
-export * from './page';
 export * from './people';
 export * from './discover';
 export * from './review';
