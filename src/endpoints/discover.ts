@@ -26,7 +26,7 @@ interface DiscoverQueryOptions {
   with_companies?: string;
 }
 
-interface MovieQueryOptions extends DiscoverQueryOptions{ 
+interface MovieQueryOptions extends DiscoverQueryOptions{
   region?: string;
   certification_country?: string;
   certification?: string;

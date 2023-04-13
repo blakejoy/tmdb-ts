@@ -1,4 +1,4 @@
-import { Movie, TV } from ".";
+import { Movie, TV } from '.';
 
 export type SortOption =
 	| 'popularity.asc'
@@ -17,15 +17,15 @@ export type SortOption =
 	| 'vote_count.desc';
 
 export interface MovieDiscoverResult{
-	page: number;
-	results: Movie[];
-	total_results: number;
-	total_pages: number;
+  page: number;
+  results: Movie[];
+  total_results: number;
+  total_pages: number;
 }
 
 export interface TvShowDiscoverResult{
-	page: number;
-	results: TV[];
-	total_results: number;
-	total_pages: number;
+  page: number;
+  results: TV[];
+  total_results: number;
+  total_pages: number;
 }

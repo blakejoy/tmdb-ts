@@ -21,7 +21,7 @@ const tmdb = new TMDB('accessToken');
 
 try {
    const movies = await tmdb.search.movies({ query: 'American Pie' });
-    console.log(movies);
+   console.log(movies);
 } catch(err) {
    // handle error
 }
