@@ -63,7 +63,7 @@ export default class TMDB {
   get discover(): DiscoverEndpoint{
     return new DiscoverEndpoint(this.accessToken);
   }
-  
+
   get people(): PeopleEndpoint{
     return new PeopleEndpoint(this.accessToken);
   }
