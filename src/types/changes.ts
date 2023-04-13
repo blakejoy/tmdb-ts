@@ -1,5 +1,3 @@
-import { ParsedUrlQueryInput } from 'querystring';
-
 export interface Change {
   id: number;
   adult: boolean | undefined;
@@ -12,7 +10,7 @@ export interface Changes{
   total_results: number;
 }
 
-export interface ChangeOptions extends ParsedUrlQueryInput {
+export interface ChangeOptions {
   end_date?: string;
   start_date?: string;
   page?: number;

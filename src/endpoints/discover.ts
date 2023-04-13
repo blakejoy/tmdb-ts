@@ -1,10 +1,10 @@
 import { MovieDiscoverResult, SortOption, TvShowDiscoverResult } from '../types';
+import { parseOptions } from '../utils';
 import { BaseEndpoint } from './base';
-import querystring, { ParsedUrlQueryInput } from 'querystring';
 
 const BASE_DISCOVER = '/discover';
 
-interface DiscoverQueryOptions extends ParsedUrlQueryInput{
+interface DiscoverQueryOptions {
   language?: string;
   sort_by?: SortOption;
   page?: number;
@@ -27,7 +27,7 @@ interface DiscoverQueryOptions extends ParsedUrlQueryInput{
 }
 
 interface MovieQueryOptions extends DiscoverQueryOptions{ 
-  region?: string;  
+  region?: string;
   certification_country?: string;
   certification?: string;
   'certification.lte'?: string;
@@ -66,12 +66,12 @@ export class DiscoverEndpoint extends BaseEndpoint {
   }
 
   async movie(options?: MovieQueryOptions): Promise<MovieDiscoverResult> {
-    const params = querystring.encode(options);
+    const params = parseOptions(options);
     return await this.api.get<MovieDiscoverResult>(`${BASE_DISCOVER}/movie?${params}`);
   }
 
   async tvShow(options?: TvShowQueryOptions): Promise<TvShowDiscoverResult> {
-    const params = querystring.encode(options);
+    const params = parseOptions(options);
     return await this.api.get<TvShowDiscoverResult>(`${BASE_DISCOVER}/tv?${params}`);
   }
 }

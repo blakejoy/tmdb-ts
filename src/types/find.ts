@@ -1,4 +1,3 @@
-import { ParsedUrlQueryInput } from 'querystring';
 import { Episode, Media, MediaType, Movie, Person, Season, TV } from '.';
 
 export type ExternalSource =
@@ -11,7 +10,7 @@ export type ExternalSource =
 	| 'twitter_id'
 	| 'instagram_id';
 
-export interface ExternalIdOptions extends ParsedUrlQueryInput {
+export interface ExternalIdOptions {
 	external_source: ExternalSource;
 	language?: string;
 }

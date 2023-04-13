@@ -1,6 +1,6 @@
-import querystring  from 'querystring';
 import { BaseEndpoint } from './base';
 import { ChangeOptions, Changes } from '../types/changes';
+import { parseOptions } from '../utils';
 
 
 export class ChangeEndpoint extends BaseEndpoint {
@@ -9,18 +9,17 @@ export class ChangeEndpoint extends BaseEndpoint {
   }
 
   async movies(options?: ChangeOptions): Promise<Changes> {
-    const params = querystring.encode(options);
+    const params = parseOptions(options);
     return await this.api.get<Changes>(`/movie/changes?${params}`);
   }
 
   async tvShows(options?: ChangeOptions): Promise<Changes> {
-    const params = querystring.stringify(options);
+    const params = parseOptions(options);
     return await this.api.get<Changes>(`/tv/changes?${params}`);
   }
 
   async person(options?: ChangeOptions): Promise<Changes> {
-    const params = querystring.stringify(options);
-
+    const params = parseOptions(options);
     return await this.api.get<Changes>(`/person/changes${params}`);
   }
 }

@@ -1,9 +1,21 @@
-import { ChangeOptions, ExternalIds, Image, PeopleTranslations, PersonChanges, PersonCombinedCredits, PersonDetail, PersonMovieCredit, PersonTvShowCredit, PopularPersons, TaggedImages } from '../types';
+import { 
+	ChangeOptions, 
+	ExternalIds, 
+	Image, 
+	PageOption, 
+	PeopleTranslations, 
+	PersonChanges, 
+	PersonCombinedCredits, 
+	PersonDetail, 
+	PersonMovieCredit, 
+	PersonTvShowCredit, 
+	PopularPersons, 
+	TaggedImages 
+} from '../types';
+import { parseOptions } from '../utils';
 import { BaseEndpoint } from './base';
-import querystring from 'querystring';
 
 const BASE_PERSON = '/person';
-
 
 export class PeopleEndpoint extends BaseEndpoint {
 	constructor(accessToken: string) {
@@ -15,7 +27,7 @@ export class PeopleEndpoint extends BaseEndpoint {
 	}
 
 	async changes(id: number, options? : ChangeOptions): Promise<PersonChanges> {
-		const params = querystring.encode(options);
+		const params = parseOptions(options);
 		return await this.api.get<PersonChanges>(`${BASE_PERSON}/${id}/changes?${params}`);
 	}
 
@@ -39,8 +51,8 @@ export class PeopleEndpoint extends BaseEndpoint {
 		return await this.api.get<{id: number, profiles: Image[]}>(`${BASE_PERSON}/${id}/images`)
 	}
 
-	async taggedImages(id: number, options?: {page?: number}): Promise<TaggedImages>{
-		const params = querystring.encode(options);
+	async taggedImages(id: number, options?: PageOption): Promise<TaggedImages>{
+		const params = parseOptions(options);
 		return await this.api.get<TaggedImages>(`${BASE_PERSON}/${id}/tagged_images?${params}`);
 	}
 
@@ -52,8 +64,8 @@ export class PeopleEndpoint extends BaseEndpoint {
 		return await this.api.get<PersonDetail>(`${BASE_PERSON}/latest`);
 	}
 
-	async popular(options?: {page?: number}): Promise<PopularPersons>{
-		const params = querystring.encode(options);
+	async popular(options?: PageOption): Promise<PopularPersons>{
+		const params = parseOptions(options);
 		return await this.api.get<PopularPersons>(`${BASE_PERSON}/popular?${params}`);
 	}
 }
