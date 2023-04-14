@@ -15,5 +15,8 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
+  rules:{
+    'linebreak-style': ['off', 'unix'],
+  },
   plugins: ["@typescript-eslint"],
 };
