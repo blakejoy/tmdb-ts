@@ -1,5 +1,4 @@
 import { MovieDiscoverResult, SortOption, TvShowDiscoverResult } from '../types';
-import { parseOptions } from '../utils';
 import { BaseEndpoint } from './base';
 
 const BASE_DISCOVER = '/discover';
@@ -66,12 +65,10 @@ export class DiscoverEndpoint extends BaseEndpoint {
   }
 
   async movie(options?: MovieQueryOptions): Promise<MovieDiscoverResult> {
-    const params = parseOptions(options);
-    return await this.api.get<MovieDiscoverResult>(`${BASE_DISCOVER}/movie?${params}`);
+    return await this.api.get<MovieDiscoverResult>(`${BASE_DISCOVER}/movie`, options);
   }
 
   async tvShow(options?: TvShowQueryOptions): Promise<TvShowDiscoverResult> {
-    const params = parseOptions(options);
-    return await this.api.get<TvShowDiscoverResult>(`${BASE_DISCOVER}/tv?${params}`);
+    return await this.api.get<TvShowDiscoverResult>(`${BASE_DISCOVER}/tv`, options);
   }
 }
