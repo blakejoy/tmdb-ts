@@ -9,12 +9,17 @@ export class KeywordsEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async details(keywordId : number): Promise<Keyword> {
+  async details(keywordId: number): Promise<Keyword> {
     return await this.api.get<Keyword>(`${BASE_Keyword}/${keywordId}`);
   }
 
-  async belongingMovies(keywordId : number, options?: KeywordsOptions): Promise<BelongingMovies> {
+  async belongingMovies(
+    keywordId: number,
+    options?: KeywordsOptions
+  ): Promise<BelongingMovies> {
     const params = parseOptions(options);
-    return await this.api.get<BelongingMovies>(`${BASE_Keyword}/${keywordId}/movies?${params}`);
+    return await this.api.get<BelongingMovies>(
+      `${BASE_Keyword}/${keywordId}/movies?${params}`
+    );
   }
 }

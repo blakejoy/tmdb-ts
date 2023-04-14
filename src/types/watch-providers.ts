@@ -1,4 +1,3 @@
-
 export interface Flatrate {
   display_priority: number;
   logo_path: string;
@@ -19,7 +18,6 @@ export interface Buy {
   provider_id: number;
   provider_name: string;
 }
-
 
 export interface WatchLocale {
   AR: {
@@ -298,5 +296,3 @@ export interface WatchProviders {
   id: number;
   results: WatchLocale;
 }
-
-

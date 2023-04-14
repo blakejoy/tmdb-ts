@@ -1,4 +1,8 @@
-import { MovieDiscoverResult, SortOption, TvShowDiscoverResult } from '../types';
+import {
+  MovieDiscoverResult,
+  SortOption,
+  TvShowDiscoverResult,
+} from '../types';
 import { parseOptions } from '../utils';
 import { BaseEndpoint } from './base';
 
@@ -26,7 +30,7 @@ interface DiscoverQueryOptions {
   with_companies?: string;
 }
 
-interface MovieQueryOptions extends DiscoverQueryOptions{
+interface MovieQueryOptions extends DiscoverQueryOptions {
   region?: string;
   certification_country?: string;
   certification?: string;
@@ -46,7 +50,7 @@ interface MovieQueryOptions extends DiscoverQueryOptions{
   with_people?: string;
 }
 
-interface TvShowQueryOptions extends DiscoverQueryOptions{
+interface TvShowQueryOptions extends DiscoverQueryOptions {
   'air_date.gte'?: string;
   'air_date.lte'?: string;
   'first_air_date.gte'?: string;
@@ -67,11 +71,15 @@ export class DiscoverEndpoint extends BaseEndpoint {
 
   async movie(options?: MovieQueryOptions): Promise<MovieDiscoverResult> {
     const params = parseOptions(options);
-    return await this.api.get<MovieDiscoverResult>(`${BASE_DISCOVER}/movie?${params}`);
+    return await this.api.get<MovieDiscoverResult>(
+      `${BASE_DISCOVER}/movie?${params}`
+    );
   }
 
   async tvShow(options?: TvShowQueryOptions): Promise<TvShowDiscoverResult> {
     const params = parseOptions(options);
-    return await this.api.get<TvShowDiscoverResult>(`${BASE_DISCOVER}/tv?${params}`);
+    return await this.api.get<TvShowDiscoverResult>(
+      `${BASE_DISCOVER}/tv?${params}`
+    );
   }
 }

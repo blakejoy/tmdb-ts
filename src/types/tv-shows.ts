@@ -1,4 +1,10 @@
-import { Genre, ProductionCompany, ProductionCountry, SpokenLanguage, Crew } from './';
+import {
+  Genre,
+  ProductionCompany,
+  ProductionCountry,
+  SpokenLanguage,
+  Crew,
+} from './';
 
 export interface CreatedBy {
   id: number;
@@ -73,45 +79,44 @@ export interface TvShowDetails {
 }
 
 export interface GuestStar {
-  credit_id: string
-  order: number
-  character: string
-  adult: boolean
-  gender: number | null
-  id: number
-  known_for_department: string
-  name: string
-  original_name: string
-  popularity: number
-  profile_path: string | null
-
+  credit_id: string;
+  order: number;
+  character: string;
+  adult: boolean;
+  gender: number | null;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string | null;
 }
 
 export interface Episode {
-  air_date: string
-  episode_number: number
-  crew: Crew[]
-  guest_stars: GuestStar[]
-  id: number
-  name: string
-  overview: string
-  production_code: string
-  season_number: number
-  still_path: string
-  vote_average: number
-  vote_count: number
+  air_date: string;
+  episode_number: number;
+  crew: Crew[];
+  guest_stars: GuestStar[];
+  id: number;
+  name: string;
+  overview: string;
+  production_code: string;
+  season_number: number;
+  still_path: string;
+  vote_average: number;
+  vote_count: number;
   show_id: number;
   runtime: number;
 }
 
 export interface SeasonDetails {
-  air_date: string
-  episodes: Episode[]
-  name: string
-  overview: string
-  id: number
-  poster_path: string | null
-  season_number: number
+  air_date: string;
+  episodes: Episode[];
+  name: string;
+  overview: string;
+  id: number;
+  poster_path: string | null;
+  season_number: number;
 }
 
 export interface TvShowItem {
@@ -165,7 +170,6 @@ export interface ScreenedTheatrically {
   results: ScreenedTheatricallyResult[];
 }
 
-
 export interface SimilarTvShow {
   backdrop_path: string;
   first_air_date: string;
@@ -218,7 +222,6 @@ export interface LatestTvShows {
   vote_count: number;
 }
 
-
 export interface OnTheAirResult {
   poster_path: string;
   popularity: number;
@@ -241,7 +244,6 @@ export interface OnTheAir {
   total_results: number;
   total_pages: number;
 }
-
 
 export interface AiringTodayResult {
   poster_path: string;
@@ -266,7 +268,6 @@ export interface TvShowsAiringToday {
   total_pages: number;
 }
 
-
 export interface PopularTvShowResult {
   poster_path: string;
   popularity: number;
@@ -290,7 +291,6 @@ export interface PopularTvShows {
   total_pages: number;
 }
 
-
 export interface TopRatedTvShowResult {
   poster_path: string;
   popularity: number;
@@ -313,5 +313,3 @@ export interface TopRatedTvShows {
   total_results: number;
   total_pages: number;
 }
-
-

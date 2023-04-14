@@ -1,4 +1,3 @@
-
 export interface Images {
   base_url: string;
   secure_base_url: string;
@@ -14,47 +13,45 @@ export interface Configuration {
   change_keys: ChangeKeys[];
 }
 
-
 export const enum BackdropSizes {
   W300 = 'w300',
   W780 = 'w780',
   W1280 = 'w1280',
-  ORIGINAL = 'original'
+  ORIGINAL = 'original',
 }
 
 export const enum LogoSizes {
-  W45= 'w45',
-  W92= 'w92',
-  W154= 'w154',
-  W185= 'w185',
+  W45 = 'w45',
+  W92 = 'w92',
+  W154 = 'w154',
+  W185 = 'w185',
   W300 = 'w300',
   W500 = 'w500',
-  ORIGINAL = 'original'
+  ORIGINAL = 'original',
 }
 
 export const enum PosterSizes {
-  W92= 'w92',
-  W154= 'w154',
-  W185='w185',
+  W92 = 'w92',
+  W154 = 'w154',
+  W185 = 'w185',
   W300 = 'w300',
   W500 = 'w500',
   W780 = 'w780',
-  ORIGINAL = 'original'
+  ORIGINAL = 'original',
 }
 
 export const enum ProfileSizes {
   W45 = 'w45',
   W185 = 'w185',
   W632 = 'w632',
-  ORIGINAL = 'original'
+  ORIGINAL = 'original',
 }
 
-
 export const enum StillSizes {
-  W92= 'w92',
+  W92 = 'w92',
   W185 = 'w185',
   W300 = 'w300',
-  ORIGINAL = 'original'
+  ORIGINAL = 'original',
 }
 
 export const enum ChangeKeys {
@@ -110,5 +107,5 @@ export const enum ChangeKeys {
   TVRAGE_ID = 'tvrage_id',
   TYPE = 'type',
   VIDEO = 'video',
-  VIDEOS = 'videos'
+  VIDEOS = 'videos',
 }

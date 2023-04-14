@@ -1,4 +1,4 @@
-import {  BaseEndpoint } from './base';
+import { BaseEndpoint } from './base';
 import { Certifications } from '../types/certification';
 
 export class CertificationEndpoint extends BaseEndpoint {

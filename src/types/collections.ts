@@ -12,5 +12,5 @@ export interface Collection {
 }
 
 export interface DetailedCollection extends Collection {
-  parts: Movie[]
+  parts: Movie[];
 }
