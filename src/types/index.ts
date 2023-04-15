@@ -1,8 +1,8 @@
 export * from './options';
 export * from './certification';
-export *  from './credits';
+export * from './credits';
 export * from './configuration';
-export *  from './changes';
+export * from './changes';
 export * from './movies';
 export * from './search';
 export * from './tv-shows';
@@ -77,7 +77,7 @@ export interface Company {
 
 export interface TV {
   id: number;
-  name:string;
+  name: string;
   first_air_date: string;
   backdrop_path: string;
   genre_ids: number[];
@@ -122,7 +122,7 @@ export interface SpokenLanguage {
   name: string;
 }
 
-export interface ContentRatings{
+export interface ContentRatings {
   results: ContentRatingsResult[];
   id: number;
 }
@@ -131,7 +131,6 @@ export interface ContentRatingsResult {
   iso_3166_1: string;
   rating: string;
 }
-
 
 export interface Recommendation {
   adult: boolean;
@@ -149,7 +148,6 @@ export interface Recommendation {
   vote_average: number;
   vote_count: number;
 }
-
 
 export interface Recommendations {
   page: number;
@@ -176,7 +174,6 @@ export interface Reviews {
   total_results: number;
 }
 
-
 export interface TranslationData {
   title: string;
   overview: string;
@@ -196,7 +193,7 @@ export interface Translations {
   translations: Translation[];
 }
 
-export interface Image{
+export interface Image {
   aspect_ratio: number;
   file_path: string;
   height: number;

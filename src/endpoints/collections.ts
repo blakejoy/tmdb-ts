@@ -1,6 +1,11 @@
-import { DetailedCollection, ImageCollection, LanguageOption, Translations } from '../types';
+import {
+  DetailedCollection,
+  ImageCollection,
+  LanguageOption,
+  Translations,
+} from '../types';
 import { parseOptions } from '../utils';
-import {  BaseEndpoint } from './base';
+import { BaseEndpoint } from './base';
 
 const BASE_COLLECTION = '/collection';
 
@@ -9,18 +14,30 @@ export class CollectionsEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async details(id: number, options? : LanguageOption): Promise<DetailedCollection> {
+  async details(
+    id: number,
+    options?: LanguageOption
+  ): Promise<DetailedCollection> {
     const params = parseOptions(options);
-    return await this.api.get<DetailedCollection>(`${BASE_COLLECTION}/${id}?${params}`);
+    return await this.api.get<DetailedCollection>(
+      `${BASE_COLLECTION}/${id}?${params}`
+    );
   }
 
-  async images(id: number, options? : LanguageOption): Promise<ImageCollection> {
+  async images(id: number, options?: LanguageOption): Promise<ImageCollection> {
     const params = parseOptions(options);
-    return await this.api.get<ImageCollection>(`${BASE_COLLECTION}/${id}/images?${params}`);
+    return await this.api.get<ImageCollection>(
+      `${BASE_COLLECTION}/${id}/images?${params}`
+    );
   }
 
-  async translations(id: number, options? : LanguageOption): Promise<Translations> {
+  async translations(
+    id: number,
+    options?: LanguageOption
+  ): Promise<Translations> {
     const params = parseOptions(options);
-    return await this.api.get<Translations>(`${BASE_COLLECTION}/${id}/translations?${params}`);
+    return await this.api.get<Translations>(
+      `${BASE_COLLECTION}/${id}/translations?${params}`
+    );
   }
 }

@@ -19,7 +19,8 @@ import {
   ReleaseDates,
   Reviews,
   SimilarMovies,
-  TopRatedMovies, Translations,
+  TopRatedMovies,
+  Translations,
   UpcomingMovies,
   Videos,
   WatchProviders,
@@ -28,69 +29,87 @@ import { parseOptions } from '../utils';
 
 const BASE_MOVIE = '/movie';
 
-export class MoviesEndpoint extends BaseEndpoint{
+export class MoviesEndpoint extends BaseEndpoint {
   constructor(protected readonly accessToken: string) {
     super(accessToken);
   }
 
-  async details(id: number): Promise<MovieDetails>{
+  async details(id: number): Promise<MovieDetails> {
     return await this.api.get<MovieDetails>(`${BASE_MOVIE}/${id}`);
   }
 
-  async alternativeTitles(id: number): Promise<AlternativeTitles>{
-    return await this.api.get<AlternativeTitles>(`${BASE_MOVIE}/${id}/alternative_titles`);
+  async alternativeTitles(id: number): Promise<AlternativeTitles> {
+    return await this.api.get<AlternativeTitles>(
+      `${BASE_MOVIE}/${id}/alternative_titles`
+    );
   }
 
-  async changes(id: number, options?: ChangeOptions): Promise<MovieChanges>{
+  async changes(id: number, options?: ChangeOptions): Promise<MovieChanges> {
     const params = parseOptions(options);
-    return await this.api.get<MovieChanges>(`${BASE_MOVIE}/${id}/changes?${params}`);
+    return await this.api.get<MovieChanges>(
+      `${BASE_MOVIE}/${id}/changes?${params}`
+    );
   }
 
-  async credits(id: number): Promise<Credits>{
+  async credits(id: number): Promise<Credits> {
     return await this.api.get<Credits>(`${BASE_MOVIE}/${id}/credits`);
   }
 
-  async externalIds(id: number): Promise<ExternalIds>{
+  async externalIds(id: number): Promise<ExternalIds> {
     return await this.api.get<ExternalIds>(`${BASE_MOVIE}/${id}/external_ids`);
   }
 
-  async images(id: number): Promise<Images>{
+  async images(id: number): Promise<Images> {
     return await this.api.get<Images>(`${BASE_MOVIE}/${id}/images`);
   }
 
-  async keywords(id: number): Promise<Keywords>{
+  async keywords(id: number): Promise<Keywords> {
     return await this.api.get<Keywords>(`${BASE_MOVIE}/${id}/keywords`);
   }
 
-  async lists(id: number, options?: LanguageOption | PageOption): Promise<MovieLists>{
+  async lists(
+    id: number,
+    options?: LanguageOption | PageOption
+  ): Promise<MovieLists> {
     const params = parseOptions(options);
-    return await this.api.get<MovieLists>(`${BASE_MOVIE}/${id}/lists?${params}`);
+    return await this.api.get<MovieLists>(
+      `${BASE_MOVIE}/${id}/lists?${params}`
+    );
   }
 
-  async recommendations(id: number, options?: PageOption): Promise<Recommendations>{
+  async recommendations(
+    id: number,
+    options?: PageOption
+  ): Promise<Recommendations> {
     const params = parseOptions(options);
-    return await this.api.get<Recommendations>(`${BASE_MOVIE}/${id}/recommendations?${params}`);
+    return await this.api.get<Recommendations>(
+      `${BASE_MOVIE}/${id}/recommendations?${params}`
+    );
   }
 
-  async releaseDates(id: number): Promise<ReleaseDates>{
-    return await this.api.get<ReleaseDates>(`${BASE_MOVIE}/${id}/release_dates`);
+  async releaseDates(id: number): Promise<ReleaseDates> {
+    return await this.api.get<ReleaseDates>(
+      `${BASE_MOVIE}/${id}/release_dates`
+    );
   }
 
-  async reviews(id: number, options?: PageOption): Promise<Reviews>{
+  async reviews(id: number, options?: PageOption): Promise<Reviews> {
     const params = parseOptions(options);
     return await this.api.get<Reviews>(`${BASE_MOVIE}/${id}/reviews?${params}`);
   }
 
-  async similar(id: number, options?: PageOption): Promise<SimilarMovies>{
+  async similar(id: number, options?: PageOption): Promise<SimilarMovies> {
     const params = parseOptions(options);
-    return await this.api.get<SimilarMovies>(`${BASE_MOVIE}/${id}/similar?${params}`);
+    return await this.api.get<SimilarMovies>(
+      `${BASE_MOVIE}/${id}/similar?${params}`
+    );
   }
 
-  async translations(id: number): Promise<Translations>{
+  async translations(id: number): Promise<Translations> {
     return await this.api.get<Translations>(`${BASE_MOVIE}/${id}/translations`);
   }
 
-  async videos(id: number): Promise<Videos>{
+  async videos(id: number): Promise<Videos> {
     return await this.api.get<Videos>(`${BASE_MOVIE}/${id}/videos`);
   }
 
@@ -98,33 +117,45 @@ export class MoviesEndpoint extends BaseEndpoint{
    * Powered by JustWatch
    * @param id
    */
-  async watchProviders(id: number): Promise<WatchProviders>{
-    return await this.api.get<WatchProviders>(`${BASE_MOVIE}/${id}/watch/providers`);
+  async watchProviders(id: number): Promise<WatchProviders> {
+    return await this.api.get<WatchProviders>(
+      `${BASE_MOVIE}/${id}/watch/providers`
+    );
   }
 
-  async latest(): Promise<LatestMovie>{
+  async latest(): Promise<LatestMovie> {
     return await this.api.get<LatestMovie>(`${BASE_MOVIE}/latest`);
   }
 
-  async nowPlaying(options?: PageOption & LanguageOption & RegionOption): Promise<MoviesPlayingNow>{
+  async nowPlaying(
+    options?: PageOption & LanguageOption & RegionOption
+  ): Promise<MoviesPlayingNow> {
     const params = parseOptions(options);
-    return await this.api.get<MoviesPlayingNow>(`${BASE_MOVIE}/now_playing?${params}`);
+    return await this.api.get<MoviesPlayingNow>(
+      `${BASE_MOVIE}/now_playing?${params}`
+    );
   }
 
-  async popular(options?: PageOption): Promise<PopularMovies>{
+  async popular(options?: PageOption): Promise<PopularMovies> {
     const params = parseOptions(options);
     return await this.api.get<PopularMovies>(`${BASE_MOVIE}/popular?${params}`);
   }
 
-  async topRated(options?: PageOption & LanguageOption & RegionOption): Promise<TopRatedMovies>{
+  async topRated(
+    options?: PageOption & LanguageOption & RegionOption
+  ): Promise<TopRatedMovies> {
     const params = parseOptions(options);
-    return await this.api.get<TopRatedMovies>(`${BASE_MOVIE}/top_rated?${params}`);
+    return await this.api.get<TopRatedMovies>(
+      `${BASE_MOVIE}/top_rated?${params}`
+    );
   }
 
-  async upcoming(options?: PageOption & LanguageOption & RegionOption): Promise<UpcomingMovies>{
+  async upcoming(
+    options?: PageOption & LanguageOption & RegionOption
+  ): Promise<UpcomingMovies> {
     const params = parseOptions(options);
-    return await this.api.get<UpcomingMovies>(`${BASE_MOVIE}/upcoming?${params}`);
+    return await this.api.get<UpcomingMovies>(
+      `${BASE_MOVIE}/upcoming?${params}`
+    );
   }
 }
-
-

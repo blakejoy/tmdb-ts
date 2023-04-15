@@ -1,7 +1,7 @@
-import {  BaseEndpoint } from './base';
+import { BaseEndpoint } from './base';
 
 export interface Genres {
-  genres: Array<{id: number, name: string}>
+  genres: Array<{ id: number; name: string }>;
 }
 
 export class GenreEndpoint extends BaseEndpoint {

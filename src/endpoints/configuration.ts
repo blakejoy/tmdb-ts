@@ -9,5 +9,4 @@ export class ConfigurationEndpoint extends BaseEndpoint {
   async getCurrent(): Promise<Configuration> {
     return await this.api.get<Configuration>(`/configuration`);
   }
-
 }
