@@ -8,6 +8,5 @@
   "bracketSpacing": true,
   "arrowParens": "always",
   "proseWrap": "never",
-  "htmlWhitespaceSensitivity": "strict",
-  "endOfLine": "lf"
+  "htmlWhitespaceSensitivity": "strict"
 }
