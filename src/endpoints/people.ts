@@ -12,7 +12,6 @@ import {
   PopularPersons,
   TaggedImages,
 } from '../types';
-import { parseOptions } from '../utils';
 import { BaseEndpoint } from './base';
 
 const BASE_PERSON = '/person';
@@ -27,9 +26,9 @@ export class PeopleEndpoint extends BaseEndpoint {
   }
 
   async changes(id: number, options?: ChangeOptions): Promise<PersonChanges> {
-    const params = parseOptions(options);
     return await this.api.get<PersonChanges>(
-      `${BASE_PERSON}/${id}/changes?${params}`
+      `${BASE_PERSON}/${id}/changes`,
+      options
     );
   }
 
@@ -62,9 +61,9 @@ export class PeopleEndpoint extends BaseEndpoint {
   }
 
   async taggedImages(id: number, options?: PageOption): Promise<TaggedImages> {
-    const params = parseOptions(options);
     return await this.api.get<TaggedImages>(
-      `${BASE_PERSON}/${id}/tagged_images?${params}`
+      `${BASE_PERSON}/${id}/tagged_images`,
+      options
     );
   }
 
@@ -79,9 +78,9 @@ export class PeopleEndpoint extends BaseEndpoint {
   }
 
   async popular(options?: PageOption): Promise<PopularPersons> {
-    const params = parseOptions(options);
     return await this.api.get<PopularPersons>(
-      `${BASE_PERSON}/popular?${params}`
+      `${BASE_PERSON}/popular`,
+      options
     );
   }
 }

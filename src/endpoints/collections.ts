@@ -4,7 +4,6 @@ import {
   LanguageOption,
   Translations,
 } from '../types';
-import { parseOptions } from '../utils';
 import { BaseEndpoint } from './base';
 
 const BASE_COLLECTION = '/collection';
@@ -18,16 +17,16 @@ export class CollectionsEndpoint extends BaseEndpoint {
     id: number,
     options?: LanguageOption
   ): Promise<DetailedCollection> {
-    const params = parseOptions(options);
     return await this.api.get<DetailedCollection>(
-      `${BASE_COLLECTION}/${id}?${params}`
+      `${BASE_COLLECTION}/${id}`,
+      options
     );
   }
 
   async images(id: number, options?: LanguageOption): Promise<ImageCollection> {
-    const params = parseOptions(options);
     return await this.api.get<ImageCollection>(
-      `${BASE_COLLECTION}/${id}/images?${params}`
+      `${BASE_COLLECTION}/${id}/images`,
+      options
     );
   }
 
@@ -35,9 +34,9 @@ export class CollectionsEndpoint extends BaseEndpoint {
     id: number,
     options?: LanguageOption
   ): Promise<Translations> {
-    const params = parseOptions(options);
     return await this.api.get<Translations>(
-      `${BASE_COLLECTION}/${id}/translations?${params}`
+      `${BASE_COLLECTION}/${id}/translations`,
+      options
     );
   }
 }

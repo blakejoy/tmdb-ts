@@ -1,7 +1,6 @@
 import { BaseEndpoint } from './base';
 import { Search } from '../types/search';
 import { Collection, Company, Movie, Person, TV } from '../types';
-import { parseOptions } from '../utils';
 
 const BASE_SEARCH = '/search';
 
@@ -31,44 +30,39 @@ export class SearchEndpoint extends BaseEndpoint {
   }
 
   async companies(options: SearchOptions): Promise<Search<Company>> {
-    const params = parseOptions(options);
     return await this.api.get<Search<Company>>(
-      `${BASE_SEARCH}/company?${params}`
+      `${BASE_SEARCH}/company`,
+      options
     );
   }
 
   async collections(options: SearchOptions): Promise<Search<Collection>> {
-    const params = parseOptions(options);
     return await this.api.get<Search<Collection>>(
-      `${BASE_SEARCH}/collection?${params}`
+      `${BASE_SEARCH}/collection`,
+      options
     );
   }
 
   async keywords(
     options: SearchOptions
   ): Promise<Search<{ id: string; name: string }>> {
-    const params = parseOptions(options);
     return await this.api.get<Search<{ id: string; name: string }>>(
-      `${BASE_SEARCH}/keyword?${params}`
+      `${BASE_SEARCH}/keyword`,
+      options
     );
   }
 
   async movies(options: MovieSearchOptions): Promise<Search<Movie>> {
-    const params = parseOptions(options);
-    return await this.api.get<Search<Movie>>(`${BASE_SEARCH}/movie?${params}`);
+    return await this.api.get<Search<Movie>>(`${BASE_SEARCH}/movie`, options);
   }
 
   async people(options: PeopleSearchOptions): Promise<Search<Person>> {
-    const params = parseOptions(options);
-    return await this.api.get<Search<Person>>(
-      `${BASE_SEARCH}/person?${params}`
-    );
+    return await this.api.get<Search<Person>>(`${BASE_SEARCH}/person`, options);
   }
 
   // TODO: Multi search
 
   async tvShows(options: TvSearchOptions): Promise<Search<TV>> {
-    const params = parseOptions(options);
-    return await this.api.get<Search<TV>>(`${BASE_SEARCH}/tv?${params}`);
+    return await this.api.get<Search<TV>>(`${BASE_SEARCH}/tv`, options);
   }
 }

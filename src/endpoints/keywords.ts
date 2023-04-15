@@ -1,6 +1,5 @@
 import { BaseEndpoint } from './base';
 import { BelongingMovies, Keyword, KeywordsOptions } from '../types';
-import { parseOptions } from '../utils';
 
 const BASE_Keyword = '/keyword';
 
@@ -17,9 +16,9 @@ export class KeywordsEndpoint extends BaseEndpoint {
     keywordId: number,
     options?: KeywordsOptions
   ): Promise<BelongingMovies> {
-    const params = parseOptions(options);
     return await this.api.get<BelongingMovies>(
-      `${BASE_Keyword}/${keywordId}/movies?${params}`
+      `${BASE_Keyword}/${keywordId}/movies`,
+      options
     );
   }
 }
