@@ -15,12 +15,12 @@ export interface MovieSearchOptions extends SearchOptions {
   primary_release_year?: number;
 }
 
-export interface TvSearchOptions extends SearchOptions{
+export interface TvSearchOptions extends SearchOptions {
   include_adult?: boolean;
   first_air_date_year?: number;
 }
 
-export interface PeopleSearchOptions extends SearchOptions{
+export interface PeopleSearchOptions extends SearchOptions {
   include_adult?: boolean;
 }
 

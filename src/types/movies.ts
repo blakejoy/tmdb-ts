@@ -1,4 +1,10 @@
-import { Genre, Movie, ProductionCompany, ProductionCountry, SpokenLanguage } from './';
+import {
+  Genre,
+  Movie,
+  ProductionCompany,
+  ProductionCountry,
+  SpokenLanguage,
+} from './';
 
 export interface MovieDetails {
   adult: boolean;
@@ -34,7 +40,7 @@ export enum ReleaseDateType {
   'Theatrical',
   'Digital',
   'Physical',
-  'TV'
+  'TV',
 }
 
 export interface ReleaseDate {
@@ -54,7 +60,6 @@ export interface ReleaseDates {
   id: number;
   results: ReleaseDateResult[];
 }
-
 
 export interface SimilarMovies {
   page: number;
@@ -81,7 +86,6 @@ export interface MovieLists {
   total_pages: number;
   total_results: number;
 }
-
 
 export interface MovieChangeItem {
   id: string;
@@ -128,7 +132,6 @@ export interface LatestMovie {
   vote_average: number;
   vote_count: number;
 }
-
 
 export interface Dates {
   maximum: string;

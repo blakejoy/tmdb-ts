@@ -1,5 +1,10 @@
-import { DetailedCollection, ImageCollection, LanguageOption, Translations } from '../types';
-import {  BaseEndpoint } from './base';
+import {
+  DetailedCollection,
+  ImageCollection,
+  LanguageOption,
+  Translations,
+} from '../types';
+import { BaseEndpoint } from './base';
 
 const BASE_COLLECTION = '/collection';
 

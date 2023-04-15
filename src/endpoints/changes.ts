@@ -1,7 +1,6 @@
 import { BaseEndpoint } from './base';
 import { ChangeOptions, Changes } from '../types/changes';
 
-
 export class ChangeEndpoint extends BaseEndpoint {
   constructor(protected readonly accessToken: string) {
     super(accessToken);

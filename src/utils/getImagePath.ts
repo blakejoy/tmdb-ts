@@ -8,7 +8,12 @@
  * @param {string} imagePath raw image path
  * @param {boolean} svg get svg version if true
  */
-export const getFullImagePath = (baseUrl: string, fileSize: string, imagePath: string, svg =  false): string  => {
+export const getFullImagePath = (
+  baseUrl: string,
+  fileSize: string,
+  imagePath: string,
+  svg = false
+): string => {
   const imagePathArr = imagePath.split('.');
   const imageFormat = svg ? 'svg' : imagePathArr[1];
 

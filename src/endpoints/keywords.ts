@@ -8,7 +8,7 @@ export class KeywordsEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async details(keywordId : number): Promise<Keyword> {
+  async details(keywordId: number): Promise<Keyword> {
     return await this.api.get<Keyword>(`${BASE_Keyword}/${keywordId}`);
   }
 

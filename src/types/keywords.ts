@@ -5,14 +5,14 @@ export interface KeywordsOptions {
   language?: string;
 }
 
-export interface BelongingMovies{
+export interface BelongingMovies {
   page: number;
   results: Movie[];
   total_results: number;
   total_pages: number;
 }
 
-export interface Keyword{
+export interface Keyword {
   id: number;
   name: string;
 }

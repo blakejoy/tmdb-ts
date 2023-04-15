@@ -44,47 +44,47 @@ export default class TMDB {
     return new CreditsEndpoint(this.accessToken);
   }
 
-  get search(): SearchEndpoint{
+  get search(): SearchEndpoint {
     return new SearchEndpoint(this.accessToken);
   }
 
-  get genres(): GenreEndpoint{
+  get genres(): GenreEndpoint {
     return new GenreEndpoint(this.accessToken);
   }
 
-  get movies(): MoviesEndpoint{
+  get movies(): MoviesEndpoint {
     return new MoviesEndpoint(this.accessToken);
   }
 
-  get tvShows(): TvShowsEndpoint{
+  get tvShows(): TvShowsEndpoint {
     return new TvShowsEndpoint(this.accessToken);
   }
 
-  get discover(): DiscoverEndpoint{
+  get discover(): DiscoverEndpoint {
     return new DiscoverEndpoint(this.accessToken);
   }
 
-  get people(): PeopleEndpoint{
+  get people(): PeopleEndpoint {
     return new PeopleEndpoint(this.accessToken);
   }
 
-  get review(): ReviewEndpoint{
+  get review(): ReviewEndpoint {
     return new ReviewEndpoint(this.accessToken);
   }
 
-  get trending(): TrendingEndpoint{
+  get trending(): TrendingEndpoint {
     return new TrendingEndpoint(this.accessToken);
   }
 
-  get find() : FindEndpoint{
+  get find(): FindEndpoint {
     return new FindEndpoint(this.accessToken);
   }
 
-  get keywords() : KeywordsEndpoint{
+  get keywords(): KeywordsEndpoint {
     return new KeywordsEndpoint(this.accessToken);
   }
 
-  get collections() : CollectionsEndpoint{
+  get collections(): CollectionsEndpoint {
     return new CollectionsEndpoint(this.accessToken);
   }
 }

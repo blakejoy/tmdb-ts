@@ -19,7 +19,8 @@ import {
   ReleaseDates,
   Reviews,
   SimilarMovies,
-  TopRatedMovies, Translations,
+  TopRatedMovies,
+  Translations,
   UpcomingMovies,
   Videos,
   WatchProviders,
@@ -27,36 +28,38 @@ import {
 
 const BASE_MOVIE = '/movie';
 
-export class MoviesEndpoint extends BaseEndpoint{
+export class MoviesEndpoint extends BaseEndpoint {
   constructor(protected readonly accessToken: string) {
     super(accessToken);
   }
 
-  async details(id: number): Promise<MovieDetails>{
+  async details(id: number): Promise<MovieDetails> {
     return await this.api.get<MovieDetails>(`${BASE_MOVIE}/${id}`);
   }
 
-  async alternativeTitles(id: number): Promise<AlternativeTitles>{
-    return await this.api.get<AlternativeTitles>(`${BASE_MOVIE}/${id}/alternative_titles`);
+  async alternativeTitles(id: number): Promise<AlternativeTitles> {
+    return await this.api.get<AlternativeTitles>(
+      `${BASE_MOVIE}/${id}/alternative_titles`
+    );
   }
 
   async changes(id: number, options?: ChangeOptions): Promise<MovieChanges>{
     return await this.api.get<MovieChanges>(`${BASE_MOVIE}/${id}/changes`, options);
   }
 
-  async credits(id: number): Promise<Credits>{
+  async credits(id: number): Promise<Credits> {
     return await this.api.get<Credits>(`${BASE_MOVIE}/${id}/credits`);
   }
 
-  async externalIds(id: number): Promise<ExternalIds>{
+  async externalIds(id: number): Promise<ExternalIds> {
     return await this.api.get<ExternalIds>(`${BASE_MOVIE}/${id}/external_ids`);
   }
 
-  async images(id: number): Promise<Images>{
+  async images(id: number): Promise<Images> {
     return await this.api.get<Images>(`${BASE_MOVIE}/${id}/images`);
   }
 
-  async keywords(id: number): Promise<Keywords>{
+  async keywords(id: number): Promise<Keywords> {
     return await this.api.get<Keywords>(`${BASE_MOVIE}/${id}/keywords`);
   }
 
@@ -68,8 +71,10 @@ export class MoviesEndpoint extends BaseEndpoint{
     return await this.api.get<Recommendations>(`${BASE_MOVIE}/${id}/recommendations`, options);
   }
 
-  async releaseDates(id: number): Promise<ReleaseDates>{
-    return await this.api.get<ReleaseDates>(`${BASE_MOVIE}/${id}/release_dates`);
+  async releaseDates(id: number): Promise<ReleaseDates> {
+    return await this.api.get<ReleaseDates>(
+      `${BASE_MOVIE}/${id}/release_dates`
+    );
   }
 
   async reviews(id: number, options?: PageOption): Promise<Reviews>{
@@ -80,11 +85,11 @@ export class MoviesEndpoint extends BaseEndpoint{
     return await this.api.get<SimilarMovies>(`${BASE_MOVIE}/${id}/similar`, options);
   }
 
-  async translations(id: number): Promise<Translations>{
+  async translations(id: number): Promise<Translations> {
     return await this.api.get<Translations>(`${BASE_MOVIE}/${id}/translations`);
   }
 
-  async videos(id: number): Promise<Videos>{
+  async videos(id: number): Promise<Videos> {
     return await this.api.get<Videos>(`${BASE_MOVIE}/${id}/videos`);
   }
 
@@ -92,11 +97,13 @@ export class MoviesEndpoint extends BaseEndpoint{
    * Powered by JustWatch
    * @param id
    */
-  async watchProviders(id: number): Promise<WatchProviders>{
-    return await this.api.get<WatchProviders>(`${BASE_MOVIE}/${id}/watch/providers`);
+  async watchProviders(id: number): Promise<WatchProviders> {
+    return await this.api.get<WatchProviders>(
+      `${BASE_MOVIE}/${id}/watch/providers`
+    );
   }
 
-  async latest(): Promise<LatestMovie>{
+  async latest(): Promise<LatestMovie> {
     return await this.api.get<LatestMovie>(`${BASE_MOVIE}/latest`);
   }
 
@@ -116,5 +123,3 @@ export class MoviesEndpoint extends BaseEndpoint{
     return await this.api.get<UpcomingMovies>(`${BASE_MOVIE}/upcoming`, options);
   }
 }
-
-

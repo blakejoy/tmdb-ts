@@ -3,7 +3,7 @@ export interface Change {
   adult: boolean | undefined;
 }
 
-export interface Changes{
+export interface Changes {
   results: Change[];
   page: number;
   total_pages: number;

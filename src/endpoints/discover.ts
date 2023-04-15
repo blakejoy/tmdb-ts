@@ -25,7 +25,7 @@ interface DiscoverQueryOptions {
   with_companies?: string;
 }
 
-interface MovieQueryOptions extends DiscoverQueryOptions{
+interface MovieQueryOptions extends DiscoverQueryOptions {
   region?: string;
   certification_country?: string;
   certification?: string;
@@ -45,7 +45,7 @@ interface MovieQueryOptions extends DiscoverQueryOptions{
   with_people?: string;
 }
 
-interface TvShowQueryOptions extends DiscoverQueryOptions{
+interface TvShowQueryOptions extends DiscoverQueryOptions {
   'air_date.gte'?: string;
   'air_date.lte'?: string;
   'first_air_date.gte'?: string;

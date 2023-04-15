@@ -17,6 +17,6 @@ export default class Api {
         'Content-Type': 'application/json;charset=utf-8',
       },
     });
-    return await response.json() as T;
+    return (await response.json()) as T;
   }
 }
