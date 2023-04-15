@@ -14,6 +14,21 @@ export interface CreatedBy {
   profile_path: string;
 }
 
+export interface NextEpisodeToAir {
+  id: number;
+  name: string;
+  overview: string;
+  vote_average: number;
+  vote_count: number;
+  air_date: string;
+  episode_number: number;
+  production_code: string;
+  runtime: number;
+  season_number: number;
+  show_id: number;
+  still_path: string;
+}
+
 export interface LastEpisodeToAir {
   air_date: string;
   episode_number: number;
@@ -57,7 +72,7 @@ export interface TvShowDetails {
   last_air_date: string;
   last_episode_to_air: LastEpisodeToAir;
   name: string;
-  next_episode_to_air?: any;
+  next_episode_to_air?: NextEpisodeToAir;
   networks: Network[];
   number_of_episodes: number;
   number_of_seasons: number;
@@ -123,9 +138,9 @@ export interface TvShowItem {
   id: string;
   action: string;
   time: string;
-  value: any;
+  value: Array<number>;
   iso_639_1: string;
-  original_value: any;
+  original_value: Array<number>;
 }
 
 export interface TvShowChange {
@@ -194,8 +209,8 @@ export interface SimilarTvShows {
 }
 
 export interface LatestTvShows {
-  backdrop_path?: any;
-  created_by: any[];
+  backdrop_path?: string;
+  created_by: CreatedBy[];
   episode_run_time: number[];
   first_air_date: string;
   genres: Genre[];
@@ -211,10 +226,10 @@ export interface LatestTvShows {
   origin_country: string[];
   original_language: string;
   original_name: string;
-  overview?: any;
+  overview?: string;
   popularity: number;
-  poster_path?: any;
-  production_companies: any[];
+  poster_path?: string;
+  production_companies: ProductionCompany[];
   seasons: Season[];
   status: string;
   type: string;
