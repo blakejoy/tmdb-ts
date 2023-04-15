@@ -6,10 +6,17 @@ import {
   SpokenLanguage,
 } from './';
 
+export interface BelongsToCollection {
+  id: number;
+  name: string;
+  poster_path: string;
+  backdrop_path: string;
+}
+
 export interface MovieDetails {
   adult: boolean;
   backdrop_path: string;
-  belongs_to_collection?: any;
+  belongs_to_collection?: BelongsToCollection;
   budget: number;
   genres: Genre[];
   homepage: string;
@@ -19,7 +26,7 @@ export interface MovieDetails {
   original_title: string;
   overview: string;
   popularity: number;
-  poster_path?: any;
+  poster_path?: string;
   production_companies: ProductionCompany[];
   production_countries: ProductionCountry[];
   release_date: string;
@@ -107,8 +114,8 @@ export interface MovieChanges {
 
 export interface LatestMovie {
   adult: boolean;
-  backdrop_path?: any;
-  belongs_to_collection?: any;
+  backdrop_path?: string;
+  belongs_to_collection?: BelongsToCollection;
   budget: number;
   genres: Genre[];
   homepage: string;
@@ -119,12 +126,12 @@ export interface LatestMovie {
   overview: string;
   popularity: number;
   poster_path: string;
-  production_companies: any[];
-  production_countries: any[];
+  production_companies: ProductionCompany[];
+  production_countries: ProductionCountry[];
   release_date: string;
   revenue: number;
   runtime: number;
-  spoken_languages: any[];
+  spoken_languages: SpokenLanguage[];
   status: string;
   tagline: string;
   title: string;
