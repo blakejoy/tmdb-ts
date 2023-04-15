@@ -9,7 +9,7 @@
     "lint": "eslint --ext .ts src/",
     "lint:fix": "eslint --ext .ts src/ --fix",
     "format": "npx prettier --write src",
-    "prepublish": "tsc",
+    "pre-commit": "npm run lint",
     "copy-types": "mkdir dist/types && cp src/types/*.d.ts dist/types"
   },
   "bugs": {
@@ -54,7 +54,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo \"[Husky] pre-commit\""
+      "pre-commit": "npm run pre-commit"
     }
   },
   "files": [
