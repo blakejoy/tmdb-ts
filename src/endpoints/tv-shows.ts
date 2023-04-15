@@ -45,8 +45,11 @@ export class TvShowsEndpoint extends BaseEndpoint {
     );
   }
 
-  async changes(id: number, options?: ChangeOptions): Promise<TvShowChanges>{
-    return await this.api.get<TvShowChanges>(`${BASE_TV}/${id}/changes`, options);
+  async changes(id: number, options?: ChangeOptions): Promise<TvShowChanges> {
+    return await this.api.get<TvShowChanges>(
+      `${BASE_TV}/${id}/changes`,
+      options
+    );
   }
 
   async contentRatings(id: number): Promise<ContentRatings> {
@@ -81,11 +84,17 @@ export class TvShowsEndpoint extends BaseEndpoint {
     return await this.api.get<Keywords>(`${BASE_TV}/${id}/keywords`);
   }
 
-  async recommendations(id: number, options?: PageOption): Promise<Recommendations>{
-    return await this.api.get<Recommendations>(`${BASE_TV}/${id}/recommendations`, options);
+  async recommendations(
+    id: number,
+    options?: PageOption
+  ): Promise<Recommendations> {
+    return await this.api.get<Recommendations>(
+      `${BASE_TV}/${id}/recommendations`,
+      options
+    );
   }
 
-  async reviews(id: number, options?: PageOption): Promise<Reviews>{
+  async reviews(id: number, options?: PageOption): Promise<Reviews> {
     return await this.api.get<Reviews>(`${BASE_TV}/${id}/reviews`, options);
   }
 
@@ -95,8 +104,11 @@ export class TvShowsEndpoint extends BaseEndpoint {
     );
   }
 
-  async similar(id: number, options?: PageOption): Promise<SimilarTvShows>{
-    return await this.api.get<SimilarTvShows>(`${BASE_TV}/${id}/similar`, options);
+  async similar(id: number, options?: PageOption): Promise<SimilarTvShows> {
+    return await this.api.get<SimilarTvShows>(
+      `${BASE_TV}/${id}/similar`,
+      options
+    );
   }
 
   async translations(id: number): Promise<Translations> {
@@ -125,15 +137,24 @@ export class TvShowsEndpoint extends BaseEndpoint {
     return await this.api.get<OnTheAir>(`${BASE_TV}/on_the_air`);
   }
 
-  async airingToday(options?: PageOption & LanguageOption & RegionOption): Promise<TvShowsAiringToday>{
-    return await this.api.get<TvShowsAiringToday>(`${BASE_TV}/airing_today`, options);
+  async airingToday(
+    options?: PageOption & LanguageOption & RegionOption
+  ): Promise<TvShowsAiringToday> {
+    return await this.api.get<TvShowsAiringToday>(
+      `${BASE_TV}/airing_today`,
+      options
+    );
   }
 
-  async popular(options?: PageOption & LanguageOption & RegionOption): Promise<PopularTvShows>{
+  async popular(
+    options?: PageOption & LanguageOption & RegionOption
+  ): Promise<PopularTvShows> {
     return await this.api.get<PopularTvShows>(`${BASE_TV}/popular`, options);
   }
 
-  async topRated(options?: PageOption & LanguageOption & RegionOption): Promise<TopRatedTvShows>{
+  async topRated(
+    options?: PageOption & LanguageOption & RegionOption
+  ): Promise<TopRatedTvShows> {
     return await this.api.get<TopRatedTvShows>(`${BASE_TV}/top_rated`, options);
   }
 }

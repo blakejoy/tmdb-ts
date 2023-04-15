@@ -8,7 +8,7 @@ export default class Api {
     this.accessToken = accessToken;
   }
 
-  async get<T>(path: string, options?: Record<string,any>): Promise<T> {
+  async get<T>(path: string, options?: Record<string, any>): Promise<T> {
     const params = parseOptions(options);
     const response = await fetch(`${BASE_URL_V3}${path}?${params}`, {
       method: 'GET',

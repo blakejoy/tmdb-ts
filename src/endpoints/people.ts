@@ -25,8 +25,11 @@ export class PeopleEndpoint extends BaseEndpoint {
     return await this.api.get<PersonDetail>(`${BASE_PERSON}/${id}`);
   }
 
-  async changes(id: number, options? : ChangeOptions): Promise<PersonChanges> {
-    return await this.api.get<PersonChanges>(`${BASE_PERSON}/${id}/changes`, options);
+  async changes(id: number, options?: ChangeOptions): Promise<PersonChanges> {
+    return await this.api.get<PersonChanges>(
+      `${BASE_PERSON}/${id}/changes`,
+      options
+    );
   }
 
   async movieCredits(id: number): Promise<PersonMovieCredit> {
@@ -57,8 +60,11 @@ export class PeopleEndpoint extends BaseEndpoint {
     );
   }
 
-  async taggedImages(id: number, options?: PageOption): Promise<TaggedImages>{
-    return await this.api.get<TaggedImages>(`${BASE_PERSON}/${id}/tagged_images`, options);
+  async taggedImages(id: number, options?: PageOption): Promise<TaggedImages> {
+    return await this.api.get<TaggedImages>(
+      `${BASE_PERSON}/${id}/tagged_images`,
+      options
+    );
   }
 
   async translation(id: number): Promise<PeopleTranslations> {
@@ -71,7 +77,10 @@ export class PeopleEndpoint extends BaseEndpoint {
     return await this.api.get<PersonDetail>(`${BASE_PERSON}/latest`);
   }
 
-  async popular(options?: PageOption): Promise<PopularPersons>{
-    return await this.api.get<PopularPersons>(`${BASE_PERSON}/popular`, options);
+  async popular(options?: PageOption): Promise<PopularPersons> {
+    return await this.api.get<PopularPersons>(
+      `${BASE_PERSON}/popular`,
+      options
+    );
   }
 }
