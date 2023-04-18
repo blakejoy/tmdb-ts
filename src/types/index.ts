@@ -202,3 +202,9 @@ export interface Image {
   vote_count: number;
   width: number;
 }
+
+export interface ErrorResponse {
+  status_code: number;
+  status_message: string;
+  success: false;
+}
