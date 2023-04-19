@@ -1,4 +1,5 @@
 import {
+  Changes,
   Credits,
   Images,
   Keywords,
@@ -26,6 +27,7 @@ export type AppendToResponseKeys =
   | 'credits'
   | 'recommendations'
   | 'reviews'
+  | 'changes'
   | 'keywords';
 
 export type AppendToResponse<
@@ -48,6 +50,9 @@ export type AppendToResponse<
           : object) &
         ('reviews' extends T[number]
           ? { reviews: Omit<Translations, 'id'> }
+          : object) &
+        ('changes' extends T[number]
+          ? { changes: Omit<Changes, 'id'> }
           : object) &
         ('keywords' extends T[number]
           ? { keywords: Omit<Keywords, 'id'> }
