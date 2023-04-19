@@ -204,8 +204,8 @@ export interface Image {
 }
 
 export interface Images {
-  id: number,
-  backdrops: Image[],
-  logos: Image[],
-  posters: Image[],
+  id: number;
+  backdrops: Image[];
+  logos: Image[];
+  posters: Image[];
 }

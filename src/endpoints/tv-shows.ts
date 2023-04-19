@@ -4,6 +4,7 @@ import {
   AppendToResponse,
   AppendToResponseKeys,
   ChangeOptions,
+  Changes,
   ContentRatings,
   Credits,
   EpisodeGroups,
@@ -23,7 +24,6 @@ import {
   SimilarTvShows,
   TopRatedTvShows,
   Translations,
-  TvShowChanges,
   TvShowDetails,
   TvShowsAiringToday,
   Videos,
@@ -58,11 +58,8 @@ export class TvShowsEndpoint extends BaseEndpoint {
     );
   }
 
-  async changes(id: number, options?: ChangeOptions): Promise<TvShowChanges> {
-    return await this.api.get<TvShowChanges>(
-      `${BASE_TV}/${id}/changes`,
-      options
-    );
+  async changes(id: number, options?: ChangeOptions): Promise<Changes> {
+    return await this.api.get<Changes>(`${BASE_TV}/${id}/changes`, options);
   }
 
   async contentRatings(id: number): Promise<ContentRatings> {

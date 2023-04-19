@@ -1,8 +1,8 @@
 export interface ImageConfiguration {
-  id: number,
-  backdrops: null,
-  logos: null,
-  posters: null
+  id: number;
+  backdrops: null;
+  logos: null;
+  posters: null;
 }
 
 export interface Configuration {

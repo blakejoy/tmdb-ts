@@ -4,13 +4,13 @@ import {
   AppendToResponse,
   AppendToResponseKeys,
   ChangeOptions,
+  Changes,
   Credits,
   ExternalIds,
   Images,
   Keywords,
   LanguageOption,
   LatestMovie,
-  MovieChanges,
   MovieDetails,
   MovieLists,
   MoviesPlayingNow,
@@ -40,7 +40,9 @@ export class MoviesEndpoint extends BaseEndpoint {
     appendToResponse?: T
   ) {
     const options = {
-      append_to_response: appendToResponse ? appendToResponse.join(',') : undefined,
+      append_to_response: appendToResponse
+        ? appendToResponse.join(',')
+        : undefined,
     };
 
     return await this.api.get<AppendToResponse<MovieDetails, T>>(
@@ -55,11 +57,8 @@ export class MoviesEndpoint extends BaseEndpoint {
     );
   }
 
-  async changes(id: number, options?: ChangeOptions): Promise<MovieChanges> {
-    return await this.api.get<MovieChanges>(
-      `${BASE_MOVIE}/${id}/changes`,
-      options
-    );
+  async changes(id: number, options?: ChangeOptions): Promise<Changes> {
+    return await this.api.get<Changes>(`${BASE_MOVIE}/${id}/changes`, options);
   }
 
   async credits(id: number): Promise<Credits> {
