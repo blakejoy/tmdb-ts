@@ -1,6 +1,8 @@
 import { BaseEndpoint } from './base';
 import {
   AlternativeTitles,
+  AppendToResponse,
+  AppendToResponseKeys,
   ChangeOptions,
   ContentRatings,
   Credits,
@@ -35,8 +37,19 @@ export class TvShowsEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async details(id: number): Promise<TvShowDetails> {
-    return await this.api.get<TvShowDetails>(`${BASE_TV}/${id}`);
+  async details<T extends AppendToResponseKeys[]>(
+    id: number,
+    appendToResponse?: T
+  ) {
+    const options = {
+      append_to_response: appendToResponse
+        ? appendToResponse.join(',')
+        : undefined,
+    };
+    return await this.api.get<AppendToResponse<TvShowDetails, T>>(
+      `${BASE_TV}/${id}`,
+      options
+    );
   }
 
   async alternativeTitles(id: number): Promise<AlternativeTitles> {

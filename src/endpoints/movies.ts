@@ -1,6 +1,8 @@
 import { BaseEndpoint } from './base';
 import {
   AlternativeTitles,
+  AppendToResponse,
+  AppendToResponseKeys,
   ChangeOptions,
   Credits,
   ExternalIds,
@@ -33,8 +35,18 @@ export class MoviesEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async details(id: number): Promise<MovieDetails> {
-    return await this.api.get<MovieDetails>(`${BASE_MOVIE}/${id}`);
+  async details<T extends AppendToResponseKeys[]>(
+    id: number,
+    appendToResponse?: T
+  ) {
+    const options = {
+      append_to_response: appendToResponse ? appendToResponse.join(',') : undefined,
+    };
+
+    return await this.api.get<AppendToResponse<MovieDetails, T>>(
+      `${BASE_MOVIE}/${id}`,
+      options
+    );
   }
 
   async alternativeTitles(id: number): Promise<AlternativeTitles> {
