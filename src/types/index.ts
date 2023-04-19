@@ -202,3 +202,10 @@ export interface Image {
   vote_count: number;
   width: number;
 }
+
+export interface Images {
+  id: number,
+  backdrops: Image[],
+  logos: Image[],
+  posters: Image[],
+}

@@ -1,15 +1,12 @@
-export interface Images {
-  base_url: string;
-  secure_base_url: string;
-  backdrop_sizes: BackdropSizes[];
-  logo_sizes: LogoSizes[];
-  poster_sizes: PosterSizes[];
-  profile_sizes: ProfileSizes[];
-  still_sizes: StillSizes[];
+export interface ImageConfiguration {
+  id: number,
+  backdrops: null,
+  logos: null,
+  posters: null
 }
 
 export interface Configuration {
-  images: Images;
+  images: ImageConfiguration;
   change_keys: ChangeKeys[];
 }
 
