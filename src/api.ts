@@ -18,10 +18,10 @@ export default class Api {
         'Content-Type': 'application/json;charset=utf-8',
       },
     });
+    const json = await response.json();
     if (!response.ok) {
-      const errorResponse = (await response.json()) as ErrorResponse;
-      throw new Error(errorResponse.status_message);
+      throw new Error((json as ErrorResponse).status_message);
     }
-    return (await response.json()) as T;
+    return json as T;
   }
 }
