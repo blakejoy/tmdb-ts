@@ -2,7 +2,7 @@ import { BaseEndpoint } from './base';
 import {
   AlternativeTitles,
   AppendToResponse,
-  AppendToResponseKeys,
+  AppendToResponseMovieKeys,
   ChangeOptions,
   Changes,
   Credits,
@@ -35,7 +35,7 @@ export class MoviesEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async details<T extends AppendToResponseKeys[]>(
+  async details<T extends AppendToResponseMovieKeys[]>(
     id: number,
     appendToResponse?: T
   ) {
@@ -45,7 +45,7 @@ export class MoviesEndpoint extends BaseEndpoint {
         : undefined,
     };
 
-    return await this.api.get<AppendToResponse<MovieDetails, T>>(
+    return await this.api.get<AppendToResponse<MovieDetails, T, 'movie'>>(
       `${BASE_MOVIE}/${id}`,
       options
     );

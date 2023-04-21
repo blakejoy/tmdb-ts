@@ -2,7 +2,7 @@ import { BaseEndpoint } from './base';
 import {
   AlternativeTitles,
   AppendToResponse,
-  AppendToResponseKeys,
+  AppendToResponseTvKeys,
   ChangeOptions,
   Changes,
   ContentRatings,
@@ -37,7 +37,7 @@ export class TvShowsEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async details<T extends AppendToResponseKeys[]>(
+  async details<T extends AppendToResponseTvKeys[]>(
     id: number,
     appendToResponse?: T
   ) {
@@ -46,7 +46,7 @@ export class TvShowsEndpoint extends BaseEndpoint {
         ? appendToResponse.join(',')
         : undefined,
     };
-    return await this.api.get<AppendToResponse<TvShowDetails, T>>(
+    return await this.api.get<AppendToResponse<TvShowDetails, T, 'tvShow'>>(
       `${BASE_TV}/${id}`,
       options
     );

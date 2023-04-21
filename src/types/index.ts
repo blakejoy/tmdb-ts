@@ -128,6 +128,7 @@ export interface ContentRatings {
 }
 
 export interface ContentRatingsResult {
+  descriptor: unknown[];
   iso_3166_1: string;
   rating: string;
 }
