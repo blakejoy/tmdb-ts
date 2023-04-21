@@ -3,7 +3,7 @@ import { parseOptions } from './utils';
 
 const BASE_URL_V3 = 'https://api.themoviedb.org/3';
 
-export default class Api {
+export class Api {
   constructor(private accessToken: string) {
     this.accessToken = accessToken;
   }
