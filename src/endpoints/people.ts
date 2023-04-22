@@ -23,7 +23,7 @@ export class PeopleEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async details<T extends AppendToResponsePersonKeys[]>(
+  async details<T extends AppendToResponsePersonKeys[] | undefined>(
     id: number,
     appendToResponse?: T
   ) {

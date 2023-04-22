@@ -37,7 +37,7 @@ export class TvShowsEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async details<T extends AppendToResponseTvKeys[]>(
+  async details<T extends AppendToResponseTvKeys[] | undefined>(
     id: number,
     appendToResponse?: T
   ) {

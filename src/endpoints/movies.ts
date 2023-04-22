@@ -35,7 +35,7 @@ export class MoviesEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async details<T extends AppendToResponseMovieKeys[]>(
+  async details<T extends AppendToResponseMovieKeys[] | undefined>(
     id: number,
     appendToResponse?: T
   ) {
