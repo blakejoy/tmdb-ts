@@ -8,12 +8,19 @@ import {
   Images,
   Keywords,
   MovieLists,
+  PeopleImages,
+  PersonTranslations,
+  PersonChanges,
+  PersonCombinedCredits,
+  PersonMovieCredit,
+  PersonTvShowCredit,
   Recommendations,
   ReleaseDates,
   Reviews,
   ScreenedTheatrically,
   SimilarMovies,
   SimilarTvShows,
+  TaggedImages,
   Translations,
   Videos,
   WatchProviders,
@@ -65,11 +72,22 @@ export type AppendToResponseTvKeys =
   | 'screened_theatrically'
   | 'keywords';
 
+export type AppendToResponsePersonKeys =
+  | 'images'
+  | 'changes'
+  | 'movie_credits'
+  | 'tv_credits'
+  | 'combined_credits'
+  | 'external_ids'
+  | 'tagged_images'
+  | 'translations';
+
 type AppendToResponseAllKeys =
   | AppendToResponseTvKeys
-  | AppendToResponseMovieKeys;
+  | AppendToResponseMovieKeys
+  | AppendToResponsePersonKeys;
 
-export type AppendToResponseMediaType = 'movie' | 'tvShow';
+export type AppendToResponseMediaType = 'movie' | 'tvShow' | 'person';
 
 export type AppendToResponse<
   K,
@@ -83,7 +101,14 @@ export type AppendToResponse<
         ? { credits: Omit<Credits, 'id'> }
         : object) &
         ('videos' extends T[number] ? { videos: Omit<Videos, 'id'> } : object) &
-        ('images' extends T[number] ? { images: Omit<Images, 'id'> } : object) &
+        ('images' extends T[number]
+          ? {
+              images: Omit<
+                Media extends 'person' ? PeopleImages : Images,
+                'id'
+              >;
+            }
+          : object) &
         ('recommendations' extends T[number]
           ? { recommendations: Recommendations }
           : object) &
@@ -94,7 +119,12 @@ export type AppendToResponse<
           ? { reviews: Omit<Translations, 'id'> }
           : object) &
         ('changes' extends T[number]
-          ? { changes: Omit<Changes, 'id'> }
+          ? {
+              changes: Omit<
+                Media extends 'person' ? PersonChanges : Changes,
+                'id'
+              >;
+            }
           : object) &
         ('keywords' extends T[number]
           ? { keywords: Omit<Keywords, 'id'> }
@@ -112,7 +142,7 @@ export type AppendToResponse<
           ? { external_ids: Omit<ExternalIds, 'id'> }
           : object) &
         ('translations' extends T[number]
-          ? { translations: Omit<Translations, 'id'> }
+          ? { translations: Omit<Media extends 'person' ? PersonTranslations : Translations, 'id'> }
           : object) &
         ('watch/providers' extends T[number]
           ? { 'watch/providers': Omit<WatchProviders, 'id'> }
@@ -127,9 +157,27 @@ export type AppendToResponse<
           ? { screened_theatrically: Omit<ScreenedTheatrically, 'id'> }
           : object) &
         ('similar' extends T[number]
-          ? { similar: Media extends 'movie' ? SimilarMovies : SimilarTvShows }
+          ? {
+              similar: Media extends 'movie'
+                ? SimilarMovies
+                : Media extends 'tvShow'
+                ? SimilarTvShows
+                : unknown;
+            }
           : object) &
         ('content_ratings' extends T[number]
           ? { content_ratings: Omit<ContentRatings, 'id'> }
+          : object) &
+        ('movie_credits' extends T[number]
+          ? { movie_credits: Omit<PersonMovieCredit, 'id'> }
+          : object) &
+        ('tv_credits' extends T[number]
+          ? { tv_credits: Omit<PersonTvShowCredit, 'id'> }
+          : object) &
+        ('combined_credits' extends T[number]
+          ? { combined_credits: Omit<PersonCombinedCredits, 'id'> }
+          : object) &
+        ('tagged_images' extends T[number]
+          ? { tagged_images: TaggedImages }
           : object)
     : never);

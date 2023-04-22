@@ -1,12 +1,14 @@
 import {
+  AppendToResponse,
+  AppendToResponsePersonKeys,
   ChangeOptions,
   ExternalIds,
-  Image,
   PageOption,
-  PeopleTranslations,
+  PeopleImages,
+  PersonTranslations,
   PersonChanges,
   PersonCombinedCredits,
-  PersonDetail,
+  PersonDetails,
   PersonMovieCredit,
   PersonTvShowCredit,
   PopularPersons,
@@ -21,8 +23,19 @@ export class PeopleEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async details(id: number): Promise<PersonDetail> {
-    return await this.api.get<PersonDetail>(`${BASE_PERSON}/${id}`);
+  async details<T extends AppendToResponsePersonKeys[]>(
+    id: number,
+    appendToResponse?: T
+  ) {
+    const options = {
+      append_to_response: appendToResponse
+        ? appendToResponse.join(',')
+        : undefined,
+    };
+    return await this.api.get<AppendToResponse<PersonDetails, T, 'person'>>(
+      `${BASE_PERSON}/${id}`,
+      options
+    );
   }
 
   async changes(id: number, options?: ChangeOptions): Promise<PersonChanges> {
@@ -54,10 +67,8 @@ export class PeopleEndpoint extends BaseEndpoint {
     return await this.api.get<ExternalIds>(`${BASE_PERSON}/${id}/external_ids`);
   }
 
-  async images(id: number): Promise<{ id: number; profiles: Image[] }> {
-    return await this.api.get<{ id: number; profiles: Image[] }>(
-      `${BASE_PERSON}/${id}/images`
-    );
+  async images(id: number): Promise<PeopleImages> {
+    return await this.api.get<PeopleImages>(`${BASE_PERSON}/${id}/images`);
   }
 
   async taggedImages(id: number, options?: PageOption): Promise<TaggedImages> {
@@ -67,14 +78,14 @@ export class PeopleEndpoint extends BaseEndpoint {
     );
   }
 
-  async translation(id: number): Promise<PeopleTranslations> {
-    return await this.api.get<PeopleTranslations>(
+  async translation(id: number): Promise<PersonTranslations> {
+    return await this.api.get<PersonTranslations>(
       `${BASE_PERSON}/${id}/translations`
     );
   }
 
-  async latest(): Promise<PersonDetail> {
-    return await this.api.get<PersonDetail>(`${BASE_PERSON}/latest`);
+  async latest(): Promise<PersonDetails> {
+    return await this.api.get<PersonDetails>(`${BASE_PERSON}/latest`);
   }
 
   async popular(options?: PageOption): Promise<PopularPersons> {
