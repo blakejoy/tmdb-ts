@@ -17,7 +17,7 @@ import {
   CollectionsEndpoint,
 } from './endpoints';
 
-export default class TMDB {
+export class TMDB {
   private readonly accessToken: string;
 
   constructor(accessToken: string) {
