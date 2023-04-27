@@ -38,7 +38,7 @@ export interface PageOption {
   page?: number;
 }
 
-export type AppendToResponseMovieKeys =
+export type AppendToResponseMovieKey =
   | 'images'
   | 'videos'
   | 'credits'
@@ -54,7 +54,7 @@ export type AppendToResponseMovieKeys =
   | 'watch/providers'
   | 'keywords';
 
-export type AppendToResponseTvKeys =
+export type AppendToResponseTvKey =
   | 'content_ratings'
   | 'images'
   | 'videos'
@@ -72,7 +72,7 @@ export type AppendToResponseTvKeys =
   | 'screened_theatrically'
   | 'keywords';
 
-export type AppendToResponsePersonKeys =
+export type AppendToResponsePersonKey =
   | 'images'
   | 'changes'
   | 'movie_credits'
@@ -83,9 +83,9 @@ export type AppendToResponsePersonKeys =
   | 'translations';
 
 type AppendToResponseAllKeys =
-  | AppendToResponseTvKeys
-  | AppendToResponseMovieKeys
-  | AppendToResponsePersonKeys;
+  | AppendToResponseTvKey
+  | AppendToResponseMovieKey
+  | AppendToResponsePersonKey;
 
 export type AppendToResponseMediaType = 'movie' | 'tvShow' | 'person';
 

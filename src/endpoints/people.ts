@@ -1,6 +1,6 @@
 import {
   AppendToResponse,
-  AppendToResponsePersonKeys,
+  AppendToResponsePersonKey,
   ChangeOptions,
   ExternalIds,
   PageOption,
@@ -23,7 +23,7 @@ export class PeopleEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async details<T extends AppendToResponsePersonKeys[] | undefined>(
+  async details<T extends AppendToResponsePersonKey[] | undefined>(
     id: number,
     appendToResponse?: T
   ) {
