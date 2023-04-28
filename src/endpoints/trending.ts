@@ -1,4 +1,4 @@
-import { MediaType, TimeWindow, TrendingResults } from '../types';
+import { TrendingMediaType, TimeWindow, TrendingResults } from '../types';
 import { BaseEndpoint } from './base';
 
 export class TrendingEndpoint extends BaseEndpoint {
@@ -6,7 +6,7 @@ export class TrendingEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async trending<T extends MediaType>(
+  async trending<T extends TrendingMediaType>(
     mediaType: T,
     timeWindow: TimeWindow
   ): Promise<TrendingResults<T>> {
