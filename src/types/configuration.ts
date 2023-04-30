@@ -1,8 +1,11 @@
 export interface ImageConfiguration {
-  id: number;
-  backdrops: null;
-  logos: null;
-  posters: null;
+  base_url: string;
+  secure_base_url: string;
+  backdrop_sizes: BackdropSizes[];
+  logo_sizes: LogoSizes[];
+  poster_sizes: PosterSizes[];
+  profile_sizes: ProfileSizes[];
+  still_sizes: StillSizes[];
 }
 
 export interface Configuration {
