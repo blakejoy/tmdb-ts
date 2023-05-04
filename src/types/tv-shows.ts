@@ -134,24 +134,6 @@ export interface SeasonDetails {
   season_number: number;
 }
 
-export interface TvShowItem {
-  id: string;
-  action: string;
-  time: string;
-  value: Array<number>;
-  iso_639_1: string;
-  original_value: Array<number>;
-}
-
-export interface TvShowChange {
-  key: string;
-  items: TvShowItem[];
-}
-
-export interface TvShowChanges {
-  changes: TvShowChange[];
-}
-
 export interface Network {
   id: number;
   logo_path: string;

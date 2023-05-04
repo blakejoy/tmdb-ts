@@ -14,8 +14,10 @@ Installation:
 npm install --save tmdb-ts
 ``
 
+Version 1.0 removed the default import so make sure you update accordingly!
+
 ```js
-import TMDB from 'tmdb-ts';
+import { TMDB } from 'tmdb-ts';
 
 const tmdb = new TMDB('accessToken');
 

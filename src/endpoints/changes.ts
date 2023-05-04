@@ -1,20 +1,20 @@
 import { BaseEndpoint } from './base';
-import { ChangeOptions, Changes } from '../types/changes';
+import { ChangeOptions, MediaChanges } from '../types/changes';
 
 export class ChangeEndpoint extends BaseEndpoint {
   constructor(protected readonly accessToken: string) {
     super(accessToken);
   }
 
-  async movies(options?: ChangeOptions): Promise<Changes> {
-    return await this.api.get<Changes>(`/movie/changes`, options);
+  async movies(options?: ChangeOptions): Promise<MediaChanges> {
+    return await this.api.get<MediaChanges>(`/movie/changes`, options);
   }
 
-  async tvShows(options?: ChangeOptions): Promise<Changes> {
-    return await this.api.get<Changes>(`/tv/changes`, options);
+  async tvShows(options?: ChangeOptions): Promise<MediaChanges> {
+    return await this.api.get<MediaChanges>(`/tv/changes`, options);
   }
 
-  async person(options?: ChangeOptions): Promise<Changes> {
-    return await this.api.get<Changes>(`/person/change`, options);
+  async person(options?: ChangeOptions): Promise<MediaChanges> {
+    return await this.api.get<MediaChanges>(`/person/change`, options);
   }
 }

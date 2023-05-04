@@ -94,24 +94,6 @@ export interface MovieLists {
   total_results: number;
 }
 
-export interface MovieChangeItem {
-  id: string;
-  action: string;
-  time: string;
-  iso_639_1: string;
-  value: string;
-  original_value: string;
-}
-
-export interface MovieChange {
-  key: string;
-  items: MovieChangeItem[];
-}
-
-export interface MovieChanges {
-  changes: MovieChange[];
-}
-
 export interface LatestMovie {
   adult: boolean;
   backdrop_path?: string;
