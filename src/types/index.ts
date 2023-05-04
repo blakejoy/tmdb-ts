@@ -128,6 +128,7 @@ export interface ContentRatings {
 }
 
 export interface ContentRatingsResult {
+  descriptor: unknown[];
   iso_3166_1: string;
   rating: string;
 }
@@ -201,4 +202,11 @@ export interface Image {
   vote_average: number;
   vote_count: number;
   width: number;
+}
+
+export interface Images {
+  id: number;
+  backdrops: Image[];
+  logos: Image[];
+  posters: Image[];
 }

@@ -1,4 +1,4 @@
-export interface Images {
+export interface ImageConfiguration {
   base_url: string;
   secure_base_url: string;
   backdrop_sizes: BackdropSizes[];
@@ -9,7 +9,7 @@ export interface Images {
 }
 
 export interface Configuration {
-  images: Images;
+  images: ImageConfiguration;
   change_keys: ChangeKeys[];
 }
 

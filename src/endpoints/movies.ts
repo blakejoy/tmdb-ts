@@ -1,14 +1,16 @@
 import { BaseEndpoint } from './base';
 import {
   AlternativeTitles,
+  AppendToResponse,
+  AppendToResponseMovieKey,
   ChangeOptions,
+  Changes,
   Credits,
   ExternalIds,
   Images,
   Keywords,
   LanguageOption,
   LatestMovie,
-  MovieChanges,
   MovieDetails,
   MovieLists,
   MoviesPlayingNow,
@@ -33,8 +35,20 @@ export class MoviesEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async details(id: number): Promise<MovieDetails> {
-    return await this.api.get<MovieDetails>(`${BASE_MOVIE}/${id}`);
+  async details<T extends AppendToResponseMovieKey[] | undefined>(
+    id: number,
+    appendToResponse?: T
+  ) {
+    const options = {
+      append_to_response: appendToResponse
+        ? appendToResponse.join(',')
+        : undefined,
+    };
+
+    return await this.api.get<AppendToResponse<MovieDetails, T, 'movie'>>(
+      `${BASE_MOVIE}/${id}`,
+      options
+    );
   }
 
   async alternativeTitles(id: number): Promise<AlternativeTitles> {
@@ -43,11 +57,8 @@ export class MoviesEndpoint extends BaseEndpoint {
     );
   }
 
-  async changes(id: number, options?: ChangeOptions): Promise<MovieChanges> {
-    return await this.api.get<MovieChanges>(
-      `${BASE_MOVIE}/${id}/changes`,
-      options
-    );
+  async changes(id: number, options?: ChangeOptions): Promise<Changes> {
+    return await this.api.get<Changes>(`${BASE_MOVIE}/${id}/changes`, options);
   }
 
   async credits(id: number): Promise<Credits> {

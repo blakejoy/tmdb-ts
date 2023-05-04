@@ -1,7 +1,10 @@
 import { BaseEndpoint } from './base';
 import {
   AlternativeTitles,
+  AppendToResponse,
+  AppendToResponseTvKey,
   ChangeOptions,
+  Changes,
   ContentRatings,
   Credits,
   EpisodeGroups,
@@ -21,7 +24,6 @@ import {
   SimilarTvShows,
   TopRatedTvShows,
   Translations,
-  TvShowChanges,
   TvShowDetails,
   TvShowsAiringToday,
   Videos,
@@ -35,8 +37,19 @@ export class TvShowsEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async details(id: number): Promise<TvShowDetails> {
-    return await this.api.get<TvShowDetails>(`${BASE_TV}/${id}`);
+  async details<T extends AppendToResponseTvKey[] | undefined>(
+    id: number,
+    appendToResponse?: T
+  ) {
+    const options = {
+      append_to_response: appendToResponse
+        ? appendToResponse.join(',')
+        : undefined,
+    };
+    return await this.api.get<AppendToResponse<TvShowDetails, T, 'tvShow'>>(
+      `${BASE_TV}/${id}`,
+      options
+    );
   }
 
   async alternativeTitles(id: number): Promise<AlternativeTitles> {
@@ -45,11 +58,8 @@ export class TvShowsEndpoint extends BaseEndpoint {
     );
   }
 
-  async changes(id: number, options?: ChangeOptions): Promise<TvShowChanges> {
-    return await this.api.get<TvShowChanges>(
-      `${BASE_TV}/${id}/changes`,
-      options
-    );
+  async changes(id: number, options?: ChangeOptions): Promise<Changes> {
+    return await this.api.get<Changes>(`${BASE_TV}/${id}/changes`, options);
   }
 
   async contentRatings(id: number): Promise<ContentRatings> {

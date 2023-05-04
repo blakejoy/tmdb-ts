@@ -1,4 +1,4 @@
-import { Movie, Person, TV } from '.';
+import { Image, Movie, Person, TV } from '.';
 
 interface Cast {
   character: string;
@@ -79,7 +79,7 @@ export interface PersonCombinedCredits {
   id: number;
 }
 
-export interface PersonDetail {
+export interface PersonDetails {
   birthday: string;
   known_for_department: string;
   deathday: string;
@@ -120,6 +120,11 @@ export interface PopularPersons {
   total_pages: number;
 }
 
+export interface PeopleImages {
+  id: number;
+  profiles: Image[];
+}
+
 export interface TaggedImage {
   aspect_ratio: number;
   file_path: string;
@@ -141,7 +146,7 @@ export interface TaggedImages {
   total_pages: number;
 }
 
-export interface PeopleTranslations {
+export interface PersonTranslations {
   id: number;
   translations: {
     iso_3166_1: string;
