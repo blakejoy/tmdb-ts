@@ -38,6 +38,11 @@ export interface PageOption {
   page?: number;
 }
 
+export interface ChangeOption extends PageOption {
+  start_date?: Date;
+  end_date?: Date;
+}
+
 export type AppendToResponseMovieKey =
   | 'images'
   | 'videos'
