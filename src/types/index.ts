@@ -15,6 +15,8 @@ export * from './find';
 export * from './keywords';
 export * from './collections';
 
+export type MediaType = 'movie' | 'tv' | 'person';
+
 export interface AuthorDetails {
   name: string;
   username: string;
@@ -22,23 +24,7 @@ export interface AuthorDetails {
   rating?: number;
 }
 
-export interface KnownFor {
-  id: number;
-  overview: string;
-  release_date: string;
-  video: boolean;
-  adult: boolean;
-  backdrop_path: string;
-  media_type: string;
-  genre_ids: number[];
-  title: string;
-  original_language: string;
-  original_title: string;
-  poster_path: string;
-  vote_count: number;
-  vote_average: number;
-  popularity: number;
-}
+export type KnownFor = MovieWithMediaType | TVWithMediaType;
 
 export interface Person {
   id: number;
@@ -49,6 +35,10 @@ export interface Person {
   known_for_department: string;
   gender: number;
   popularity: number;
+}
+
+export interface PersonWithMediaType extends Person {
+  media_type: 'person';
 }
 
 export interface Movie {
@@ -66,6 +56,10 @@ export interface Movie {
   vote_count: number;
   video: boolean;
   vote_average: number;
+}
+
+export interface MovieWithMediaType extends Movie {
+  media_type: 'movie';
 }
 
 export interface Company {
@@ -89,6 +83,10 @@ export interface TV {
   popularity: number;
   vote_count: number;
   vote_average: number;
+}
+
+export interface TVWithMediaType extends TV {
+  media_type: 'tv';
 }
 
 export interface Genre {

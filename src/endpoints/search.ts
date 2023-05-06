@@ -1,5 +1,5 @@
 import { BaseEndpoint } from './base';
-import { Search } from '../types/search';
+import { MultiSearchResult, Search } from '../types/search';
 import { Collection, Company, Movie, Person, TV } from '../types';
 
 const BASE_SEARCH = '/search';
@@ -21,6 +21,10 @@ export interface TvSearchOptions extends SearchOptions {
 }
 
 export interface PeopleSearchOptions extends SearchOptions {
+  include_adult?: boolean;
+}
+
+export interface MultiSearchOptions extends SearchOptions {
   include_adult?: boolean;
 }
 
@@ -60,9 +64,14 @@ export class SearchEndpoint extends BaseEndpoint {
     return await this.api.get<Search<Person>>(`${BASE_SEARCH}/person`, options);
   }
 
-  // TODO: Multi search
-
   async tvShows(options: TvSearchOptions): Promise<Search<TV>> {
     return await this.api.get<Search<TV>>(`${BASE_SEARCH}/tv`, options);
+  }
+
+  async multi(options: MultiSearchOptions): Promise<Search<MultiSearchResult>> {
+    return await this.api.get<Search<MultiSearchResult>>(
+      `${BASE_SEARCH}/multi`,
+      options
+    );
   }
 }

@@ -1,19 +1,28 @@
-import { Movie, Person, TV } from '.';
-export type MediaType = 'all' | 'movie' | 'tv' | 'person';
+import {
+  Movie,
+  Person,
+  TV,
+  MediaType,
+  MovieWithMediaType,
+  TVWithMediaType,
+  PersonWithMediaType,
+} from '.';
 
 export type TimeWindow = 'day' | 'week';
 
-type TrendingResult<T extends MediaType> = T extends 'tv'
+export type TrendingMediaType = MediaType | 'all';
+
+type TrendingResult<T extends TrendingMediaType> = T extends 'tv'
   ? TV
   : T extends 'movie'
   ? Movie
   : T extends 'person'
   ? Person
-  : TV | Movie | Person;
+  : TVWithMediaType | MovieWithMediaType | PersonWithMediaType;
 
-export interface TrendingResults<T extends MediaType> {
+export interface TrendingResults<T extends TrendingMediaType> {
   page: number;
-  results: (TrendingResult<T> & { media_type: MediaType })[];
+  results: TrendingResult<T>[];
   total_pages: number;
   total_results: number;
 }
