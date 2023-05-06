@@ -12,6 +12,7 @@ import {
   AppendToResponse,
   Changes,
   TvEpisodeChangeValue,
+  AppendToResponseTvEpisodeKey,
 } from '..';
 import { BaseEndpoint } from './base';
 
@@ -24,7 +25,7 @@ export class TvEpisodesEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async details<T extends AppendToResponseMovieKey[] | undefined>(
+  async details<T extends AppendToResponseTvEpisodeKey[] | undefined>(
     episodeSelection: EpisodeSelection,
     appendToResponse?: T,
     options?: LanguageOption
@@ -37,7 +38,7 @@ export class TvEpisodesEndpoint extends BaseEndpoint {
     };
 
     return await this.api.get<
-      AppendToResponse<Omit<Episode, 'show_id'>, T, 'movie'>
+      AppendToResponse<Omit<Episode, 'show_id'>, T, 'tvEpisode'>
     >(`${BASE_EPISODE(episodeSelection)}`, combinedOptions);
   }
 
