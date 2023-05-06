@@ -37,24 +37,6 @@ export interface GuestStar {
   profile_path: string | null;
 }
 
-export interface TvEpisodeChangeItem {
-  id: string;
-  action: string;
-  time: string;
-  iso_639_1: string;
-  iso_3166_1: string;
-  value: string;
-}
-
-export interface TvEpisodeChange {
-  key: string;
-  items: TvEpisodeChangeItem[];
-}
-
-export interface TvEpisodeChanges {
-  changes: TvEpisodeChange[];
-}
-
 export interface TvEpisodeCredit extends Credits {
   guest_stars: GuestStar[];
 }
@@ -72,3 +54,5 @@ export interface TvEpisodeTranslations {
     };
   };
 }
+
+export type TvEpisodeChangeValue = string | unknown;

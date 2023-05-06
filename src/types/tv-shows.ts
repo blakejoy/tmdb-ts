@@ -279,3 +279,8 @@ export interface TopRatedTvShows {
   total_results: number;
   total_pages: number;
 }
+
+export interface TvShowChangeValue {
+  season_id: number;
+  season_number: number;
+}

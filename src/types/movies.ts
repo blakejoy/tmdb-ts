@@ -155,3 +155,14 @@ export interface UpcomingMovies {
   total_results: number;
   total_pages: number;
 }
+
+export type MovieChangeValue =
+  | string
+  | {
+      person_id: number;
+      character: string;
+      order: number;
+      cast_id: number;
+      credit_id: string;
+    }
+  | unknown;

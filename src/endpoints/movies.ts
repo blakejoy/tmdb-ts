@@ -3,7 +3,7 @@ import {
   AlternativeTitles,
   AppendToResponse,
   AppendToResponseMovieKey,
-  ChangeOptions,
+  ChangeOption,
   Changes,
   Credits,
   ExternalIds,
@@ -11,6 +11,7 @@ import {
   Keywords,
   LanguageOption,
   LatestMovie,
+  MovieChangeValue,
   MovieDetails,
   MovieLists,
   MoviesPlayingNow,
@@ -57,8 +58,8 @@ export class MoviesEndpoint extends BaseEndpoint {
     );
   }
 
-  async changes(id: number, options?: ChangeOptions): Promise<Changes> {
-    return await this.api.get<Changes>(`${BASE_MOVIE}/${id}/changes`, options);
+  async changes(id: number, options?: ChangeOption): Promise<Changes<MovieChangeValue>> {
+    return await this.api.get<Changes<MovieChangeValue>>(`${BASE_MOVIE}/${id}/changes`, options);
   }
 
   async credits(id: number): Promise<Credits> {

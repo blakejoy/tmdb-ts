@@ -10,7 +10,6 @@ import {
   MovieLists,
   PeopleImages,
   PersonTranslations,
-  PersonChanges,
   PersonCombinedCredits,
   PersonMovieCredit,
   PersonTvShowCredit,
@@ -24,6 +23,10 @@ import {
   Translations,
   Videos,
   WatchProviders,
+  PersonChangeValue,
+  MovieChangeValue,
+  TvShowChangeValue,
+  TvEpisodeChangeValue,
 } from '.';
 
 export interface LanguageOption {
@@ -125,9 +128,14 @@ export type AppendToResponse<
           : object) &
         ('changes' extends T[number]
           ? {
-              changes: Omit<
-                Media extends 'person' ? PersonChanges : Changes,
-                'id'
+              changes: Changes<
+                Media extends 'person'
+                  ? PersonChangeValue
+                  : Media extends 'movie'
+                  ? MovieChangeValue
+                  : Media extends 'tvShow'
+                  ? TvShowChangeValue
+                  : TvEpisodeChangeValue
               >;
             }
           : object) &
@@ -147,7 +155,12 @@ export type AppendToResponse<
           ? { external_ids: Omit<ExternalIds, 'id'> }
           : object) &
         ('translations' extends T[number]
-          ? { translations: Omit<Media extends 'person' ? PersonTranslations : Translations, 'id'> }
+          ? {
+              translations: Omit<
+                Media extends 'person' ? PersonTranslations : Translations,
+                'id'
+              >;
+            }
           : object) &
         ('watch/providers' extends T[number]
           ? { 'watch/providers': Omit<WatchProviders, 'id'> }
