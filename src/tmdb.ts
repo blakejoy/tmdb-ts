@@ -15,6 +15,7 @@ import {
   FindEndpoint,
   KeywordsEndpoint,
   CollectionsEndpoint,
+  TvSeasonsEndpoint,
 } from './endpoints';
 
 export class TMDB {
@@ -86,5 +87,9 @@ export class TMDB {
 
   get collections(): CollectionsEndpoint {
     return new CollectionsEndpoint(this.accessToken);
+  }
+
+  get tvSeasons() : TvSeasonsEndpoint {
+    return new TvSeasonsEndpoint(this.accessToken);
   }
 }

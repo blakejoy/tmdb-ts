@@ -14,3 +14,4 @@ export * from './trending';
 export * from './find';
 export * from './keywords';
 export * from './collections';
+export * from './tv-seasons';
