@@ -96,22 +96,13 @@ export interface PersonDetails {
   homepage: string;
 }
 
-export interface PersonChange {
-  id: string;
-  action: string;
-  time: string;
-  iso_639_1: string;
-  iso_3166_1: string;
-  value: string | { profile: { file_path: string } };
-  original_value: string | { profile: { file_path: string } };
-}
-
-export interface PersonChanges {
-  changes: {
-    key: string;
-    items: PersonChange[];
-  }[];
-}
+export type PersonChangeValue =
+  | string
+  | {
+      profile: {
+        file_path: string;
+      };
+    };
 
 export interface PopularPersons {
   page: number;

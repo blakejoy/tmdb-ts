@@ -10,26 +10,20 @@ export interface MediaChanges {
   total_results: number;
 }
 
-export interface ChangeOptions {
-  end_date?: string;
-  start_date?: string;
-  page?: number;
+export interface Changes<T> {
+  changes: Change<T>[];
 }
 
-export interface Changes {
-  changes: Change[];
-}
-
-export interface Change {
+export interface Change<T> {
   key: string;
-  items: ChangeItem[];
+  items: ChangeItem<T>[];
 }
 
-export interface ChangeItem {
+export interface ChangeItem<T> {
   id: string;
   action: string;
   time: string;
-  value: Array<number>;
+  value: T;
   iso_639_1: string;
-  original_value: Array<number>;
+  original_value: T;
 }

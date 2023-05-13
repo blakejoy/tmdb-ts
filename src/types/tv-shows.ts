@@ -3,7 +3,7 @@ import {
   ProductionCompany,
   ProductionCountry,
   SpokenLanguage,
-  Crew,
+  Episode,
 } from './';
 
 export interface CreatedBy {
@@ -91,37 +91,6 @@ export interface TvShowDetails {
   type: string;
   vote_average: number;
   vote_count: number;
-}
-
-export interface GuestStar {
-  credit_id: string;
-  order: number;
-  character: string;
-  adult: boolean;
-  gender: number | null;
-  id: number;
-  known_for_department: string;
-  name: string;
-  original_name: string;
-  popularity: number;
-  profile_path: string | null;
-}
-
-export interface Episode {
-  air_date: string;
-  episode_number: number;
-  crew: Crew[];
-  guest_stars: GuestStar[];
-  id: number;
-  name: string;
-  overview: string;
-  production_code: string;
-  season_number: number;
-  still_path: string;
-  vote_average: number;
-  vote_count: number;
-  show_id: number;
-  runtime: number;
 }
 
 export interface SeasonDetails {
@@ -309,4 +278,9 @@ export interface TopRatedTvShows {
   results: TopRatedTvShowResult[];
   total_results: number;
   total_pages: number;
+}
+
+export interface TvShowChangeValue {
+  season_id: number;
+  season_number: number;
 }

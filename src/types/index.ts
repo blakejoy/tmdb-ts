@@ -14,6 +14,7 @@ export * from './trending';
 export * from './find';
 export * from './keywords';
 export * from './collections';
+export * from './tv-episode';
 
 export type MediaType = 'movie' | 'tv' | 'person';
 

@@ -3,7 +3,7 @@ import {
   AlternativeTitles,
   AppendToResponse,
   AppendToResponseTvKey,
-  ChangeOptions,
+  ChangeOption,
   Changes,
   ContentRatings,
   Credits,
@@ -24,6 +24,7 @@ import {
   SimilarTvShows,
   TopRatedTvShows,
   Translations,
+  TvShowChangeValue,
   TvShowDetails,
   TvShowsAiringToday,
   Videos,
@@ -58,8 +59,8 @@ export class TvShowsEndpoint extends BaseEndpoint {
     );
   }
 
-  async changes(id: number, options?: ChangeOptions): Promise<Changes> {
-    return await this.api.get<Changes>(`${BASE_TV}/${id}/changes`, options);
+  async changes(id: number, options?: ChangeOption): Promise<Changes<TvShowChangeValue>> {
+    return await this.api.get<Changes<TvShowChangeValue>>(`${BASE_TV}/${id}/changes`, options);
   }
 
   async contentRatings(id: number): Promise<ContentRatings> {
