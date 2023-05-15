@@ -29,6 +29,7 @@ import {
   TvEpisodeChangeValue,
   TvEpisodeCredit,
   TvEpisodeTranslations,
+  TvSeasonChangeValue,
 } from '.';
 
 export interface LanguageOption {
@@ -99,16 +100,26 @@ export type AppendToResponseTvEpisodeKey =
   | 'videos'
   | 'translations';
 
+export type AppendToResponseTvSeasonKey =
+  | 'images'
+  | 'credits'
+  | 'external_ids'
+  | 'videos'
+  | 'aggregate_credits'
+  | 'translations';
+
 type AppendToResponseAllKeys =
   | AppendToResponseTvKey
   | AppendToResponseMovieKey
   | AppendToResponseTvEpisodeKey
+  | AppendToResponseTvSeasonKey
   | AppendToResponsePersonKey;
 
 export type AppendToResponseMediaType =
   | 'movie'
   | 'tvShow'
   | 'person'
+  | 'tvSeason'
   | 'tvEpisode';
 
 export type AppendToResponse<
@@ -153,7 +164,9 @@ export type AppendToResponse<
                   ? MovieChangeValue
                   : Media extends 'tvShow'
                   ? TvShowChangeValue
-                  : TvEpisodeChangeValue
+                  : Media extends 'tvSeason' 
+                  ? TvSeasonChangeValue :
+                  TvEpisodeChangeValue
               >;
             }
           : object) &

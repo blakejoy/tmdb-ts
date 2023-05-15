@@ -15,7 +15,7 @@ export interface SeasonDetails {
   season_number: number;
 }
 
-export type SeasonChangeValue =
+export type TvSeasonChangeValue =
   | string
   | {
       episode_id: number;

@@ -5,11 +5,13 @@ import {
   ExternalIds,
   Images,
   LanguageOption,
-  SeasonChangeValue,
+  TvSeasonChangeValue,
   SeasonDetails,
   SeasonSelection,
   Translations,
   Videos,
+  AppendToResponseTvSeasonKey,
+  AppendToResponse,
 } from '..';
 import { BaseEndpoint } from './base';
 
@@ -22,10 +24,21 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async details(seasonSelection: SeasonSelection, options: LanguageOption) {
-    return await this.api.get<SeasonDetails>(
+  async details<T extends AppendToResponseTvSeasonKey[] | undefined>(
+    seasonSelection: SeasonSelection,
+    appendToResponse?: T,
+    options?: LanguageOption
+  ) {
+    const combinedOptions = {
+      append_to_response: appendToResponse
+        ? appendToResponse.join(',')
+        : undefined,
+      ...options,
+    };
+
+    return await this.api.get<AppendToResponse<SeasonDetails, T, 'tvSeason'>>(
       `${BASE_SEASON(seasonSelection)}`,
-      options
+      combinedOptions
     );
   }
 
@@ -40,7 +53,7 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
   }
 
   async changes(seasonId: number, options?: ChangeOption) {
-    return await this.api.get<Changes<SeasonChangeValue>>(
+    return await this.api.get<Changes<TvSeasonChangeValue>>(
       `/tv/season/${seasonId}/changes`,
       options
     );
