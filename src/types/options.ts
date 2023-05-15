@@ -10,7 +10,6 @@ import {
   MovieLists,
   PeopleImages,
   PersonTranslations,
-  PersonChanges,
   PersonCombinedCredits,
   PersonMovieCredit,
   PersonTvShowCredit,
@@ -24,6 +23,12 @@ import {
   Translations,
   Videos,
   WatchProviders,
+  PersonChangeValue,
+  MovieChangeValue,
+  TvShowChangeValue,
+  TvEpisodeChangeValue,
+  TvEpisodeCredit,
+  TvEpisodeTranslations,
 } from '.';
 
 export interface LanguageOption {
@@ -36,6 +41,11 @@ export interface RegionOption {
 
 export interface PageOption {
   page?: number;
+}
+
+export interface ChangeOption extends PageOption {
+  start_date?: Date;
+  end_date?: Date;
 }
 
 export type AppendToResponseMovieKey =
@@ -82,12 +92,24 @@ export type AppendToResponsePersonKey =
   | 'tagged_images'
   | 'translations';
 
+export type AppendToResponseTvEpisodeKey =
+  | 'images'
+  | 'credits'
+  | 'external_ids'
+  | 'videos'
+  | 'translations';
+
 type AppendToResponseAllKeys =
   | AppendToResponseTvKey
   | AppendToResponseMovieKey
+  | AppendToResponseTvEpisodeKey
   | AppendToResponsePersonKey;
 
-export type AppendToResponseMediaType = 'movie' | 'tvShow' | 'person';
+export type AppendToResponseMediaType =
+  | 'movie'
+  | 'tvShow'
+  | 'person'
+  | 'tvEpisode';
 
 export type AppendToResponse<
   K,
@@ -98,7 +120,11 @@ export type AppendToResponse<
     ? object
     : T extends Array<unknown>
     ? ('credits' extends T[number]
-        ? { credits: Omit<Credits, 'id'> }
+        ? {
+            credits: Media extends 'tvEpisode'
+              ? TvEpisodeCredit
+              : Omit<Credits, 'id'>;
+          }
         : object) &
         ('videos' extends T[number] ? { videos: Omit<Videos, 'id'> } : object) &
         ('images' extends T[number]
@@ -120,9 +146,14 @@ export type AppendToResponse<
           : object) &
         ('changes' extends T[number]
           ? {
-              changes: Omit<
-                Media extends 'person' ? PersonChanges : Changes,
-                'id'
+              changes: Changes<
+                Media extends 'person'
+                  ? PersonChangeValue
+                  : Media extends 'movie'
+                  ? MovieChangeValue
+                  : Media extends 'tvShow'
+                  ? TvShowChangeValue
+                  : TvEpisodeChangeValue
               >;
             }
           : object) &
@@ -142,7 +173,16 @@ export type AppendToResponse<
           ? { external_ids: Omit<ExternalIds, 'id'> }
           : object) &
         ('translations' extends T[number]
-          ? { translations: Omit<Media extends 'person' ? PersonTranslations : Translations, 'id'> }
+          ? {
+              translations: Omit<
+                Media extends 'person'
+                  ? PersonTranslations
+                  : Media extends 'tvEpisode'
+                  ? TvEpisodeTranslations
+                  : Translations,
+                'id'
+              >;
+            }
           : object) &
         ('watch/providers' extends T[number]
           ? { 'watch/providers': Omit<WatchProviders, 'id'> }

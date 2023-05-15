@@ -1,4 +1,4 @@
-import { Episode } from ".";
+import { Episode } from '.';
 
 export interface SeasonSelection {
   tvShowID: number;
@@ -14,3 +14,10 @@ export interface SeasonDetails {
   poster_path: string | null;
   season_number: number;
 }
+
+export type SeasonChangeValue =
+  | string
+  | {
+      episode_id: number;
+      episode_number: number;
+    };

@@ -1,10 +1,11 @@
 import {
-  ChangeOptions,
+  ChangeOption,
   Changes,
   Credits,
   ExternalIds,
   Images,
   LanguageOption,
+  SeasonChangeValue,
   SeasonDetails,
   SeasonSelection,
   Translations,
@@ -30,7 +31,7 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
 
   async aggregateCredits(
     seasonSelection: SeasonSelection,
-    options: LanguageOption
+    options?: LanguageOption
   ) {
     return await this.api.get<Credits>(
       `${BASE_SEASON(seasonSelection)}/aggregate_credits`,
@@ -38,17 +39,14 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
     );
   }
 
-  async changes(seasonId: number, options: ChangeOptions) {
-    return await this.api.get<Changes>(
-      `tv/season/${seasonId}/changes`,
+  async changes(seasonId: number, options?: ChangeOption) {
+    return await this.api.get<Changes<SeasonChangeValue>>(
+      `/tv/season/${seasonId}/changes`,
       options
     );
   }
 
-  async credits(
-    seasonSelection: SeasonSelection,
-    options: LanguageOption
-  ) {
+  async credits(seasonSelection: SeasonSelection, options?: LanguageOption) {
     return await this.api.get<Credits>(
       `${BASE_SEASON(seasonSelection)}/credits`,
       options
@@ -57,7 +55,7 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
 
   async externalIds(
     seasonSelection: SeasonSelection,
-    options: LanguageOption
+    options?: LanguageOption
   ) {
     return await this.api.get<ExternalIds>(
       `${BASE_SEASON(seasonSelection)}/external_ids`,
@@ -65,20 +63,14 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
     );
   }
 
-  async images(
-    seasonSelection: SeasonSelection,
-    options: LanguageOption
-  ) {
+  async images(seasonSelection: SeasonSelection, options?: LanguageOption) {
     return await this.api.get<Images>(
       `${BASE_SEASON(seasonSelection)}/images`,
       options
     );
   }
 
-  async videos(
-    seasonSelection: SeasonSelection,
-    options: LanguageOption
-  ) {
+  async videos(seasonSelection: SeasonSelection, options?: LanguageOption) {
     return await this.api.get<Videos>(
       `${BASE_SEASON(seasonSelection)}/videos`,
       options
@@ -87,7 +79,7 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
 
   async translations(
     seasonSelection: SeasonSelection,
-    options: LanguageOption
+    options?: LanguageOption
   ) {
     return await this.api.get<Translations>(
       `${BASE_SEASON(seasonSelection)}/translations`,

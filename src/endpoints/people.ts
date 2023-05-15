@@ -1,18 +1,19 @@
 import {
   AppendToResponse,
   AppendToResponsePersonKey,
-  ChangeOptions,
+  ChangeOption,
   ExternalIds,
   PageOption,
   PeopleImages,
   PersonTranslations,
-  PersonChanges,
   PersonCombinedCredits,
   PersonDetails,
   PersonMovieCredit,
   PersonTvShowCredit,
   PopularPersons,
   TaggedImages,
+  Changes,
+  PersonChangeValue,
 } from '../types';
 import { BaseEndpoint } from './base';
 
@@ -38,8 +39,11 @@ export class PeopleEndpoint extends BaseEndpoint {
     );
   }
 
-  async changes(id: number, options?: ChangeOptions): Promise<PersonChanges> {
-    return await this.api.get<PersonChanges>(
+  async changes(
+    id: number,
+    options?: ChangeOption
+  ): Promise<Changes<PersonChangeValue>> {
+    return await this.api.get<Changes<PersonChangeValue>>(
       `${BASE_PERSON}/${id}/changes`,
       options
     );

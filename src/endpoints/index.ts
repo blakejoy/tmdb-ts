@@ -15,3 +15,5 @@ export * from './find';
 export * from './keywords';
 export * from './collections';
 export * from './tv-seasons';
+export * from './tv-episode';
+
