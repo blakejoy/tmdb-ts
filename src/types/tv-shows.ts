@@ -93,16 +93,6 @@ export interface TvShowDetails {
   vote_count: number;
 }
 
-export interface SeasonDetails {
-  air_date: string;
-  episodes: Episode[];
-  name: string;
-  overview: string;
-  id: number;
-  poster_path: string | null;
-  season_number: number;
-}
-
 export interface Network {
   id: number;
   logo_path: string;
