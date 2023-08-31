@@ -1,6 +1,7 @@
 export * from './options';
 export * from './certification';
 export * from './credits';
+export * from './companies';
 export * from './configuration';
 export * from './changes';
 export * from './movies';
