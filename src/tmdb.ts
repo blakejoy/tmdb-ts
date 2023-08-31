@@ -18,6 +18,7 @@ import {
   TvSeasonsEndpoint,
   TvEpisodesEndpoint,
 } from './endpoints';
+import { CompaniesEndpoint } from './endpoints/companies';
 
 export class TMDB {
   private readonly accessToken: string;
@@ -44,6 +45,10 @@ export class TMDB {
 
   get credits(): CreditsEndpoint {
     return new CreditsEndpoint(this.accessToken);
+  }
+
+  get companies(): CompaniesEndpoint {
+    return new CompaniesEndpoint(this.accessToken);
   }
 
   get search(): SearchEndpoint {
