@@ -1,5 +1,4 @@
-import { Images } from './../types';
-import { CompanyDetails, AlternativeNames } from './../types/companies';
+import { CompanyDetails, AlternativeNames, CompanyImages } from './../types/companies';
 import { BaseEndpoint } from './base';
 
 export class CompaniesEndpoint extends BaseEndpoint {
@@ -15,7 +14,7 @@ export class CompaniesEndpoint extends BaseEndpoint {
     return await this.api.get<AlternativeNames>(`/company/${id}/alternative_names`);
   }
 
-  async images(id: number): Promise<Images> {
-    return await this.api.get<Images>(`/company/${id}/images`);
+  async images(id: number): Promise<CompanyImages> {
+    return await this.api.get<CompanyImages>(`/company/${id}/images`);
   }
 }
