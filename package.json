@@ -5,12 +5,11 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "compile": "rm -rf dist && tsc -d && npm run copy-types",
+    "compile": "rm -rf dist && tsc -d",
     "lint": "eslint --ext .ts src/",
     "lint:fix": "eslint --ext .ts src/ --fix",
     "format": "npx prettier --write src",
-    "pre-commit": "npm run lint",
-    "copy-types": "mkdir dist/types && cp src/types/*.d.ts dist/types"
+    "pre-commit": "npm run lint"
   },
   "bugs": {
     "url": "https://github.com/blakejoy/tmdb-ts/issues",

@@ -28,6 +28,6 @@ export interface Name {
 }
 
 export interface CompanyImages {
-    id: number;
-    logos: Image[];
+  id: number;
+  logos: Image[];
 }

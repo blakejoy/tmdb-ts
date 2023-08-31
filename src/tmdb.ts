@@ -94,7 +94,7 @@ export class TMDB {
     return new CollectionsEndpoint(this.accessToken);
   }
 
-  get tvSeasons() : TvSeasonsEndpoint {
+  get tvSeasons(): TvSeasonsEndpoint {
     return new TvSeasonsEndpoint(this.accessToken);
   }
 }

@@ -164,9 +164,9 @@ export type AppendToResponse<
                   ? MovieChangeValue
                   : Media extends 'tvShow'
                   ? TvShowChangeValue
-                  : Media extends 'tvSeason' 
-                  ? TvSeasonChangeValue :
-                  TvEpisodeChangeValue
+                  : Media extends 'tvSeason'
+                  ? TvSeasonChangeValue
+                  : TvEpisodeChangeValue
               >;
             }
           : object) &

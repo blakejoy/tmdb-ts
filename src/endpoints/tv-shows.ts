@@ -59,8 +59,14 @@ export class TvShowsEndpoint extends BaseEndpoint {
     );
   }
 
-  async changes(id: number, options?: ChangeOption): Promise<Changes<TvShowChangeValue>> {
-    return await this.api.get<Changes<TvShowChangeValue>>(`${BASE_TV}/${id}/changes`, options);
+  async changes(
+    id: number,
+    options?: ChangeOption
+  ): Promise<Changes<TvShowChangeValue>> {
+    return await this.api.get<Changes<TvShowChangeValue>>(
+      `${BASE_TV}/${id}/changes`,
+      options
+    );
   }
 
   async contentRatings(id: number): Promise<ContentRatings> {
