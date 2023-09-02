@@ -1,5 +1,6 @@
 import { BaseEndpoint } from './base';
 import {
+  AggregateCredits,
   AlternativeTitles,
   AppendToResponse,
   AppendToResponseTvKey,
@@ -73,6 +74,10 @@ export class TvShowsEndpoint extends BaseEndpoint {
     return await this.api.get<ContentRatings>(
       `${BASE_TV}/${id}/content_ratings`
     );
+  }
+
+  async aggregateCredits(id: number): Promise<AggregateCredits> {
+    return await this.api.get<AggregateCredits>(`${BASE_TV}/${id}/aggregate_credits`);
   }
 
   async credits(id: number): Promise<Credits> {
