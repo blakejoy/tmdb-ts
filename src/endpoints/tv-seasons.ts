@@ -12,6 +12,7 @@ import {
   Videos,
   AppendToResponseTvSeasonKey,
   AppendToResponse,
+  AggregateCredits,
 } from '..';
 import { BaseEndpoint } from './base';
 
@@ -45,8 +46,8 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
   async aggregateCredits(
     seasonSelection: SeasonSelection,
     options?: LanguageOption
-  ) {
-    return await this.api.get<Credits>(
+  ): Promise<AggregateCredits> {
+    return await this.api.get<AggregateCredits>(
       `${BASE_SEASON(seasonSelection)}/aggregate_credits`,
       options
     );
