@@ -77,7 +77,9 @@ export class TvShowsEndpoint extends BaseEndpoint {
   }
 
   async aggregateCredits(id: number): Promise<AggregateCredits> {
-    return await this.api.get<AggregateCredits>(`${BASE_TV}/${id}/aggregate_credits`);
+    return await this.api.get<AggregateCredits>(
+      `${BASE_TV}/${id}/aggregate_credits`
+    );
   }
 
   async credits(id: number): Promise<Credits> {
