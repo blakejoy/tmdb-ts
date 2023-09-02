@@ -46,7 +46,7 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
   async aggregateCredits(
     seasonSelection: SeasonSelection,
     options?: LanguageOption
-  ): Promise<AggregateCredits> {
+  ) {
     return await this.api.get<AggregateCredits>(
       `${BASE_SEASON(seasonSelection)}/aggregate_credits`,
       options
