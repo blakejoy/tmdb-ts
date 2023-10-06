@@ -1,6 +1,6 @@
 import { BaseEndpoint } from './base';
 import { MultiSearchResult, Search } from '../types/search';
-import { Collection, Company, Movie, Person, TV } from '../types';
+import { Collection, Company, LanguageOption, Movie, PageOption, Person, RegionOption, TV } from '../types';
 
 const BASE_SEARCH = '/search';
 
@@ -9,22 +9,27 @@ export interface SearchOptions {
   page?: number;
 }
 
-export interface MovieSearchOptions extends SearchOptions {
+export interface MovieSearchOptions extends SearchOptions, LanguageOption, PageOption, RegionOption {
   include_adult?: boolean;
   year?: number;
   primary_release_year?: number;
 }
 
-export interface TvSearchOptions extends SearchOptions {
+export interface CollectionSearchOptions extends SearchOptions, LanguageOption, PageOption, RegionOption {
   include_adult?: boolean;
+}
+
+export interface TvSearchOptions extends SearchOptions, LanguageOption, PageOption {
+  include_adult?: boolean;
+  year?: number;
   first_air_date_year?: number;
 }
 
-export interface PeopleSearchOptions extends SearchOptions {
+export interface PeopleSearchOptions extends SearchOptions, LanguageOption, PageOption {
   include_adult?: boolean;
 }
 
-export interface MultiSearchOptions extends SearchOptions {
+export interface MultiSearchOptions extends SearchOptions, LanguageOption, PageOption {
   include_adult?: boolean;
 }
 

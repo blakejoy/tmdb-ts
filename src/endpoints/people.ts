@@ -14,6 +14,7 @@ import {
   TaggedImages,
   Changes,
   PersonChangeValue,
+  LanguageOption,
 } from '../types';
 import { BaseEndpoint } from './base';
 
@@ -26,12 +27,14 @@ export class PeopleEndpoint extends BaseEndpoint {
 
   async details<T extends AppendToResponsePersonKey[] | undefined>(
     id: number,
-    appendToResponse?: T
+    appendToResponse?: T,
+    language?: string
   ) {
     const options = {
       append_to_response: appendToResponse
         ? appendToResponse.join(',')
         : undefined,
+      language: language
     };
     return await this.api.get<AppendToResponse<PersonDetails, T, 'person'>>(
       `${BASE_PERSON}/${id}`,
@@ -49,21 +52,24 @@ export class PeopleEndpoint extends BaseEndpoint {
     );
   }
 
-  async movieCredits(id: number): Promise<PersonMovieCredit> {
+  async movieCredits(id: number, options?: LanguageOption): Promise<PersonMovieCredit> {
     return await this.api.get<PersonMovieCredit>(
-      `${BASE_PERSON}/${id}/movie_credits`
+      `${BASE_PERSON}/${id}/movie_credits`,
+      options
     );
   }
 
-  async tvShowCredits(id: number): Promise<PersonTvShowCredit> {
+  async tvShowCredits(id: number, options?: LanguageOption): Promise<PersonTvShowCredit> {
     return await this.api.get<PersonTvShowCredit>(
-      `${BASE_PERSON}/${id}/tv_credits`
+      `${BASE_PERSON}/${id}/tv_credits`,
+      options
     );
   }
 
-  async combinedCredits(id: number): Promise<PersonCombinedCredits> {
+  async combinedCredits(id: number, options?: LanguageOption): Promise<PersonCombinedCredits> {
     return await this.api.get<PersonCombinedCredits>(
-      `${BASE_PERSON}/${id}/combined_credits`
+      `${BASE_PERSON}/${id}/combined_credits`,
+      options
     );
   }
 
@@ -92,7 +98,7 @@ export class PeopleEndpoint extends BaseEndpoint {
     return await this.api.get<PersonDetails>(`${BASE_PERSON}/latest`);
   }
 
-  async popular(options?: PageOption): Promise<PopularPersons> {
+  async popular(options?: LanguageOption & PageOption): Promise<PopularPersons> {
     return await this.api.get<PopularPersons>(
       `${BASE_PERSON}/popular`,
       options

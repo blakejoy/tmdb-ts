@@ -20,6 +20,20 @@ const BASE_SEASON = (seasonSelection: SeasonSelection): string => {
   return `/tv/${seasonSelection.tvShowID}/season/${seasonSelection.seasonNumber}`;
 };
 
+export interface TvSeasonImageSearchOptions extends LanguageOption {
+  /**
+   * a list of ISO-639-1 values to query
+   */
+  include_image_language?: string[],
+}
+
+export interface TvSeasonVideoSearchOptions extends LanguageOption {
+  /**
+   * a list of ISO-639-1 values to query
+   */
+  include_video_language?: string[],
+}
+
 export class TvSeasonsEndpoint extends BaseEndpoint {
   constructor(accessToken: string) {
     super(accessToken);
@@ -77,17 +91,25 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
     );
   }
 
-  async images(seasonSelection: SeasonSelection, options?: LanguageOption) {
+  async images(seasonSelection: SeasonSelection, options?: TvSeasonImageSearchOptions) {
+    const computedOptions = {
+      include_image_language: options?.include_image_language?.join(','),
+      language: options?.language,
+    };
     return await this.api.get<Images>(
       `${BASE_SEASON(seasonSelection)}/images`,
-      options
+      computedOptions
     );
   }
 
-  async videos(seasonSelection: SeasonSelection, options?: LanguageOption) {
+  async videos(seasonSelection: SeasonSelection, options?: TvSeasonVideoSearchOptions) {
+    const computedOptions = {
+      include_video_language: options?.include_video_language?.join(','),
+      language: options?.language,
+    };
     return await this.api.get<Videos>(
       `${BASE_SEASON(seasonSelection)}/videos`,
-      options
+      computedOptions
     );
   }
 

@@ -8,6 +8,13 @@ import { BaseEndpoint } from './base';
 
 const BASE_COLLECTION = '/collection';
 
+export interface CollectionImageSearchOptions extends LanguageOption {
+  /**
+   * a list of ISO-639-1 values to query
+   */
+  include_image_language?: string[],
+}
+
 export class CollectionsEndpoint extends BaseEndpoint {
   constructor(protected readonly accessToken: string) {
     super(accessToken);
@@ -23,10 +30,14 @@ export class CollectionsEndpoint extends BaseEndpoint {
     );
   }
 
-  async images(id: number, options?: LanguageOption): Promise<ImageCollection> {
+  async images(id: number, options?: CollectionImageSearchOptions): Promise<ImageCollection> {
+    const computedOptions = {
+      include_image_language: options?.include_image_language?.join(','),
+      language: options?.language,
+    };
     return await this.api.get<ImageCollection>(
       `${BASE_COLLECTION}/${id}/images`,
-      options
+      computedOptions
     );
   }
 

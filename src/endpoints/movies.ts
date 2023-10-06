@@ -31,6 +31,13 @@ import {
 
 const BASE_MOVIE = '/movie';
 
+export interface MoviesImageSearchOptions extends LanguageOption {
+  /**
+   * a list of ISO-639-1 values to query
+   */
+  include_image_language?: string[],
+}
+
 export class MoviesEndpoint extends BaseEndpoint {
   constructor(protected readonly accessToken: string) {
     super(accessToken);
@@ -38,12 +45,14 @@ export class MoviesEndpoint extends BaseEndpoint {
 
   async details<T extends AppendToResponseMovieKey[] | undefined>(
     id: number,
-    appendToResponse?: T
+    appendToResponse?: T,
+    language?: string
   ) {
     const options = {
       append_to_response: appendToResponse
         ? appendToResponse.join(',')
         : undefined,
+      language: language,
     };
 
     return await this.api.get<AppendToResponse<MovieDetails, T, 'movie'>>(
@@ -68,16 +77,20 @@ export class MoviesEndpoint extends BaseEndpoint {
     );
   }
 
-  async credits(id: number): Promise<Credits> {
-    return await this.api.get<Credits>(`${BASE_MOVIE}/${id}/credits`);
+  async credits(id: number, options?: LanguageOption): Promise<Credits> {
+    return await this.api.get<Credits>(`${BASE_MOVIE}/${id}/credits`, options);
   }
 
   async externalIds(id: number): Promise<ExternalIds> {
     return await this.api.get<ExternalIds>(`${BASE_MOVIE}/${id}/external_ids`);
   }
 
-  async images(id: number): Promise<Images> {
-    return await this.api.get<Images>(`${BASE_MOVIE}/${id}/images`);
+  async images(id: number, options?: MoviesImageSearchOptions): Promise<Images> {
+    const computedOptions = {
+      include_image_language: options?.include_image_language?.join(','),
+      language: options?.language,
+    };
+    return await this.api.get<Images>(`${BASE_MOVIE}/${id}/images`, computedOptions);
   }
 
   async keywords(id: number): Promise<Keywords> {
@@ -86,14 +99,14 @@ export class MoviesEndpoint extends BaseEndpoint {
 
   async lists(
     id: number,
-    options?: LanguageOption | PageOption
+    options?: LanguageOption & PageOption
   ): Promise<MovieLists> {
     return await this.api.get<MovieLists>(`${BASE_MOVIE}/${id}/lists`, options);
   }
 
   async recommendations(
     id: number,
-    options?: PageOption
+    options?: LanguageOption & PageOption
   ): Promise<Recommendations> {
     return await this.api.get<Recommendations>(
       `${BASE_MOVIE}/${id}/recommendations`,
@@ -107,11 +120,11 @@ export class MoviesEndpoint extends BaseEndpoint {
     );
   }
 
-  async reviews(id: number, options?: PageOption): Promise<Reviews> {
+  async reviews(id: number, options?: LanguageOption & PageOption): Promise<Reviews> {
     return await this.api.get<Reviews>(`${BASE_MOVIE}/${id}/reviews`, options);
   }
 
-  async similar(id: number, options?: PageOption): Promise<SimilarMovies> {
+  async similar(id: number, options?: LanguageOption & PageOption): Promise<SimilarMovies> {
     return await this.api.get<SimilarMovies>(
       `${BASE_MOVIE}/${id}/similar`,
       options
@@ -122,8 +135,8 @@ export class MoviesEndpoint extends BaseEndpoint {
     return await this.api.get<Translations>(`${BASE_MOVIE}/${id}/translations`);
   }
 
-  async videos(id: number): Promise<Videos> {
-    return await this.api.get<Videos>(`${BASE_MOVIE}/${id}/videos`);
+  async videos(id: number, options?: LanguageOption): Promise<Videos> {
+    return await this.api.get<Videos>(`${BASE_MOVIE}/${id}/videos`, options);
   }
 
   /**
@@ -149,7 +162,7 @@ export class MoviesEndpoint extends BaseEndpoint {
     );
   }
 
-  async popular(options?: PageOption): Promise<PopularMovies> {
+  async popular(options?: LanguageOption & PageOption): Promise<PopularMovies> {
     return await this.api.get<PopularMovies>(`${BASE_MOVIE}/popular`, options);
   }
 

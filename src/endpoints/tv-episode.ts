@@ -20,6 +20,20 @@ const BASE_EPISODE = (episodeSelection: EpisodeSelection): string => {
   return `/tv/${episodeSelection.tvShowID}/season/${episodeSelection.seasonNumber}/episode/${episodeSelection.episodeNumber}`;
 };
 
+export interface TvEpisodeImageSearchOptions extends LanguageOption {
+  /**
+   * a list of ISO-639-1 values to query
+   */
+  include_image_language?: string[],
+}
+
+export interface TvEpisodeVideoSearchOptions extends LanguageOption {
+  /**
+   * a list of ISO-639-1 values to query
+   */
+  include_video_language?: string[],
+}
+
 export class TvEpisodesEndpoint extends BaseEndpoint {
   constructor(accessToken: string) {
     super(accessToken);
@@ -62,9 +76,14 @@ export class TvEpisodesEndpoint extends BaseEndpoint {
     );
   }
 
-  async images(episodeSelection: EpisodeSelection) {
+  async images(episodeSelection: EpisodeSelection, options?: TvEpisodeImageSearchOptions) {
+    const computedOptions = {
+      include_image_language: options?.include_image_language?.join(','),
+      language: options?.language,
+    };
     return await this.api.get<Images>(
-      `${BASE_EPISODE(episodeSelection)}/images`
+      `${BASE_EPISODE(episodeSelection)}/images`,
+      computedOptions
     );
   }
 
@@ -74,10 +93,14 @@ export class TvEpisodesEndpoint extends BaseEndpoint {
     );
   }
 
-  async videos(episodeSelection: EpisodeSelection, options?: LanguageOption) {
+  async videos(episodeSelection: EpisodeSelection, options?: TvEpisodeVideoSearchOptions) {
+    const computedOptions = {
+      include_video_language: options?.include_video_language?.join(','),
+      language: options?.language,
+    };
     return await this.api.get<Videos>(
       `${BASE_EPISODE(episodeSelection)}/videos`,
-      options
+      computedOptions
     );
   }
 }
