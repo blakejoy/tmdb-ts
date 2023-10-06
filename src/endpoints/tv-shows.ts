@@ -140,7 +140,7 @@ export class TvShowsEndpoint extends BaseEndpoint {
     );
   }
 
-  async reviews(id: number, options?: LanguageOption | PageOption): Promise<Reviews> {
+  async reviews(id: number, options?: LanguageOption & PageOption): Promise<Reviews> {
     return await this.api.get<Reviews>(`${BASE_TV}/${id}/reviews`, options);
   }
 
@@ -150,7 +150,7 @@ export class TvShowsEndpoint extends BaseEndpoint {
     );
   }
 
-  async similar(id: number, options?: LanguageOption | PageOption): Promise<SimilarTvShows> {
+  async similar(id: number, options?: LanguageOption & PageOption): Promise<SimilarTvShows> {
     return await this.api.get<SimilarTvShows>(
       `${BASE_TV}/${id}/similar`,
       options
