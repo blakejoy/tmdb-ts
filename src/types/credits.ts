@@ -101,3 +101,49 @@ export interface Videos {
   id: number;
   results: Video[];
 }
+
+export interface AggregateCredits {
+  id: number;
+  cast: AggregateCast[];
+  crew: AggregateCrew[];
+}
+
+export interface CastRole {
+  credit_id: string;
+  character: string;
+  episode_count: number;
+}
+
+export interface AggregateCast {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  roles: CastRole[];
+  total_episode_count: number;
+  order: number;
+}
+
+export interface CrewJob {
+  credit_id: string;
+  job: string;
+  episode_count: number;
+}
+
+export interface AggregateCrew {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  jobs: CrewJob[];
+  department: string;
+  total_episode_count: number;
+}

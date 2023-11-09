@@ -1,5 +1,6 @@
 import { BaseEndpoint } from './base';
 import {
+  AggregateCredits,
   AlternativeTitles,
   AppendToResponse,
   AppendToResponseTvKey,
@@ -59,13 +60,25 @@ export class TvShowsEndpoint extends BaseEndpoint {
     );
   }
 
-  async changes(id: number, options?: ChangeOption): Promise<Changes<TvShowChangeValue>> {
-    return await this.api.get<Changes<TvShowChangeValue>>(`${BASE_TV}/${id}/changes`, options);
+  async changes(
+    id: number,
+    options?: ChangeOption
+  ): Promise<Changes<TvShowChangeValue>> {
+    return await this.api.get<Changes<TvShowChangeValue>>(
+      `${BASE_TV}/${id}/changes`,
+      options
+    );
   }
 
   async contentRatings(id: number): Promise<ContentRatings> {
     return await this.api.get<ContentRatings>(
       `${BASE_TV}/${id}/content_ratings`
+    );
+  }
+
+  async aggregateCredits(id: number): Promise<AggregateCredits> {
+    return await this.api.get<AggregateCredits>(
+      `${BASE_TV}/${id}/aggregate_credits`
     );
   }
 
