@@ -1,4 +1,4 @@
-import { Movie } from '.';
+import { LanguageOption, Movie } from '.';
 
 export interface Collection {
   id: number;
@@ -13,4 +13,11 @@ export interface Collection {
 
 export interface DetailedCollection extends Collection {
   parts: Movie[];
+}
+
+export interface CollectionImageOptions extends LanguageOption {
+  /**
+   * a list of ISO-639-1 values to query
+   */
+  include_image_language?: string[],
 }

@@ -18,7 +18,6 @@ import {
   PageOption,
   PopularTvShows,
   Recommendations,
-  RegionOption,
   Reviews,
   ScreenedTheatrically,
   SeasonDetails,
@@ -26,6 +25,8 @@ import {
   TimezoneOption,
   TopRatedTvShows,
   Translations,
+  TvShowImageOptions,
+  TvShowVideoOptions,
   TvShowChangeValue,
   TvShowDetails,
   TvShowsAiringToday,
@@ -34,20 +35,6 @@ import {
 } from '../types';
 
 const BASE_TV = '/tv';
-
-export interface TvImageSearchOptions extends LanguageOption {
-  /**
-   * a list of ISO-639-1 values to query
-   */
-  include_image_language?: string[],
-}
-
-export interface TvVideoSearchOptions extends LanguageOption {
-  /**
-   * a list of ISO-639-1 values to query
-   */
-  include_video_language?: string[],
-}
 
 export class TvShowsEndpoint extends BaseEndpoint {
   constructor(protected readonly accessToken: string) {
@@ -118,7 +105,7 @@ export class TvShowsEndpoint extends BaseEndpoint {
     return await this.api.get<ExternalIds>(`${BASE_TV}/${id}/external_ids`);
   }
 
-  async images(id: number, options?: TvImageSearchOptions): Promise<Images> {
+  async images(id: number, options?: TvShowImageOptions): Promise<Images> {
     const computedOptions = {
       include_image_language: options?.include_image_language?.join(','),
       language: options?.language,
@@ -161,7 +148,7 @@ export class TvShowsEndpoint extends BaseEndpoint {
     return await this.api.get<Translations>(`${BASE_TV}/${id}/translations`);
   }
 
-  async videos(id: number, options?: TvVideoSearchOptions): Promise<Videos> {
+  async videos(id: number, options?: TvShowVideoOptions): Promise<Videos> {
     const computedOptions = {
       include_video_language: options?.include_video_language?.join(','),
       language: options?.language,
