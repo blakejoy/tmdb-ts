@@ -3,7 +3,7 @@ import {
   ProductionCompany,
   ProductionCountry,
   SpokenLanguage,
-  Episode,
+  LanguageOption,
 } from './';
 
 export interface CreatedBy {
@@ -273,4 +273,18 @@ export interface TopRatedTvShows {
 export interface TvShowChangeValue {
   season_id: number;
   season_number: number;
+}
+
+export interface TvShowImageOptions extends LanguageOption {
+  /**
+   * a list of ISO-639-1 values to query
+   */
+  include_image_language?: string[],
+}
+
+export interface TvShowVideoOptions extends LanguageOption {
+  /**
+   * a list of ISO-639-1 values to query
+   */
+  include_video_language?: string[],
 }

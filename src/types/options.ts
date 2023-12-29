@@ -40,6 +40,10 @@ export interface RegionOption {
   region?: string;
 }
 
+export interface TimezoneOption {
+  timezone?: string;
+}
+
 export interface PageOption {
   page?: number;
 }

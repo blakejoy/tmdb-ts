@@ -1,3 +1,4 @@
+import { LanguageOption } from '../types';
 import { BaseEndpoint } from './base';
 
 export interface Genres {
@@ -9,11 +10,11 @@ export class GenreEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async movies(): Promise<Genres> {
-    return await this.api.get<Genres>('/genre/movie/list');
+  async movies(options?: LanguageOption): Promise<Genres> {
+    return await this.api.get<Genres>('/genre/movie/list', options);
   }
 
-  async tvShows(): Promise<Genres> {
-    return await this.api.get<Genres>('/genre/tv/list');
+  async tvShows(options?: LanguageOption): Promise<Genres> {
+    return await this.api.get<Genres>('/genre/tv/list', options);
   }
 }

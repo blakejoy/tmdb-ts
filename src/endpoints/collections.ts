@@ -1,4 +1,5 @@
 import {
+  CollectionImageOptions,
   DetailedCollection,
   ImageCollection,
   LanguageOption,
@@ -23,10 +24,14 @@ export class CollectionsEndpoint extends BaseEndpoint {
     );
   }
 
-  async images(id: number, options?: LanguageOption): Promise<ImageCollection> {
+  async images(id: number, options?: CollectionImageOptions): Promise<ImageCollection> {
+    const computedOptions = {
+      include_image_language: options?.include_image_language?.join(','),
+      language: options?.language,
+    };
     return await this.api.get<ImageCollection>(
       `${BASE_COLLECTION}/${id}/images`,
-      options
+      computedOptions
     );
   }
 

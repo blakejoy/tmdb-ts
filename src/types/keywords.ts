@@ -1,6 +1,7 @@
 import { Movie } from '.';
+import { PageOption } from './options';
 
-export interface KeywordsOptions {
+export interface KeywordsOptions extends PageOption {
   include_adult?: boolean;
   language?: string;
 }
