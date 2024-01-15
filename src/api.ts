@@ -1,5 +1,6 @@
 import fetch from 'cross-fetch';
 import { parseOptions } from './utils';
+import { ErrorResponse } from './types';
 
 const BASE_URL_V3 = 'https://api.themoviedb.org/3';
 
@@ -17,6 +18,11 @@ export class Api {
         'Content-Type': 'application/json;charset=utf-8',
       },
     });
+
+    if (!response.ok) {
+      return Promise.reject((await response.json()) as ErrorResponse);
+    }
+
     return (await response.json()) as T;
   }
 }
