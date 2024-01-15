@@ -19,5 +19,5 @@ export interface CollectionImageOptions extends LanguageOption {
   /**
    * a list of ISO-639-1 values to query
    */
-  include_image_language?: string[],
+  include_image_language?: string[];
 }

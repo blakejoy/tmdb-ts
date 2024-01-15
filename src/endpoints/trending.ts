@@ -1,4 +1,9 @@
-import { TrendingMediaType, TimeWindow, TrendingResults, LanguageOption } from '../types';
+import {
+  TrendingMediaType,
+  TimeWindow,
+  TrendingResults,
+  LanguageOption,
+} from '../types';
 import { BaseEndpoint } from './base';
 
 export class TrendingEndpoint extends BaseEndpoint {

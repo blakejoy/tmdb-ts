@@ -19,6 +19,12 @@ export * from './collections';
 export * from './tv-episode';
 export * from './tv-seasons';
 
+export interface ErrorResponse {
+  status_code: number;
+  status_message: string;
+  success: boolean;
+}
+
 export type MediaType = 'movie' | 'tv' | 'person';
 
 export interface AuthorDetails {

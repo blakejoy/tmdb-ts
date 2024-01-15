@@ -80,7 +80,10 @@ export class TvShowsEndpoint extends BaseEndpoint {
     );
   }
 
-  async aggregateCredits(id: number, options?: LanguageOption): Promise<AggregateCredits> {
+  async aggregateCredits(
+    id: number,
+    options?: LanguageOption
+  ): Promise<AggregateCredits> {
     return await this.api.get<AggregateCredits>(
       `${BASE_TV}/${id}/aggregate_credits`,
       options
@@ -110,7 +113,10 @@ export class TvShowsEndpoint extends BaseEndpoint {
       include_image_language: options?.include_image_language?.join(','),
       language: options?.language,
     };
-    return await this.api.get<Images>(`${BASE_TV}/${id}/images`, computedOptions);
+    return await this.api.get<Images>(
+      `${BASE_TV}/${id}/images`,
+      computedOptions
+    );
   }
 
   async keywords(id: number): Promise<Keywords> {
@@ -127,7 +133,10 @@ export class TvShowsEndpoint extends BaseEndpoint {
     );
   }
 
-  async reviews(id: number, options?: LanguageOption & PageOption): Promise<Reviews> {
+  async reviews(
+    id: number,
+    options?: LanguageOption & PageOption
+  ): Promise<Reviews> {
     return await this.api.get<Reviews>(`${BASE_TV}/${id}/reviews`, options);
   }
 
@@ -137,7 +146,10 @@ export class TvShowsEndpoint extends BaseEndpoint {
     );
   }
 
-  async similar(id: number, options?: LanguageOption & PageOption): Promise<SimilarTvShows> {
+  async similar(
+    id: number,
+    options?: LanguageOption & PageOption
+  ): Promise<SimilarTvShows> {
     return await this.api.get<SimilarTvShows>(
       `${BASE_TV}/${id}/similar`,
       options
@@ -153,7 +165,10 @@ export class TvShowsEndpoint extends BaseEndpoint {
       include_video_language: options?.include_video_language?.join(','),
       language: options?.language,
     };
-    return await this.api.get<Videos>(`${BASE_TV}/${id}/videos`, computedOptions);
+    return await this.api.get<Videos>(
+      `${BASE_TV}/${id}/videos`,
+      computedOptions
+    );
   }
 
   /**

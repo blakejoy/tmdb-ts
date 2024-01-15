@@ -279,12 +279,12 @@ export interface TvShowImageOptions extends LanguageOption {
   /**
    * a list of ISO-639-1 values to query
    */
-  include_image_language?: string[],
+  include_image_language?: string[];
 }
 
 export interface TvShowVideoOptions extends LanguageOption {
   /**
    * a list of ISO-639-1 values to query
    */
-  include_video_language?: string[],
+  include_video_language?: string[];
 }

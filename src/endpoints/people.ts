@@ -34,7 +34,7 @@ export class PeopleEndpoint extends BaseEndpoint {
       append_to_response: appendToResponse
         ? appendToResponse.join(',')
         : undefined,
-      language: language
+      language: language,
     };
     return await this.api.get<AppendToResponse<PersonDetails, T, 'person'>>(
       `${BASE_PERSON}/${id}`,
@@ -52,21 +52,30 @@ export class PeopleEndpoint extends BaseEndpoint {
     );
   }
 
-  async movieCredits(id: number, options?: LanguageOption): Promise<PersonMovieCredit> {
+  async movieCredits(
+    id: number,
+    options?: LanguageOption
+  ): Promise<PersonMovieCredit> {
     return await this.api.get<PersonMovieCredit>(
       `${BASE_PERSON}/${id}/movie_credits`,
       options
     );
   }
 
-  async tvShowCredits(id: number, options?: LanguageOption): Promise<PersonTvShowCredit> {
+  async tvShowCredits(
+    id: number,
+    options?: LanguageOption
+  ): Promise<PersonTvShowCredit> {
     return await this.api.get<PersonTvShowCredit>(
       `${BASE_PERSON}/${id}/tv_credits`,
       options
     );
   }
 
-  async combinedCredits(id: number, options?: LanguageOption): Promise<PersonCombinedCredits> {
+  async combinedCredits(
+    id: number,
+    options?: LanguageOption
+  ): Promise<PersonCombinedCredits> {
     return await this.api.get<PersonCombinedCredits>(
       `${BASE_PERSON}/${id}/combined_credits`,
       options
@@ -98,7 +107,9 @@ export class PeopleEndpoint extends BaseEndpoint {
     return await this.api.get<PersonDetails>(`${BASE_PERSON}/latest`);
   }
 
-  async popular(options?: LanguageOption & PageOption): Promise<PopularPersons> {
+  async popular(
+    options?: LanguageOption & PageOption
+  ): Promise<PopularPersons> {
     return await this.api.get<PopularPersons>(
       `${BASE_PERSON}/popular`,
       options
