@@ -13,7 +13,7 @@ export interface Configuration {
   change_keys: ChangeKeys[];
 }
 
-export const enum BackdropSizes {
+export enum BackdropSizes {
   W300 = 'w300',
   W500 = 'w500',
   W780 = 'w780',
@@ -21,7 +21,7 @@ export const enum BackdropSizes {
   ORIGINAL = 'original',
 }
 
-export const enum LogoSizes {
+export enum LogoSizes {
   W45 = 'w45',
   W92 = 'w92',
   W154 = 'w154',
@@ -31,7 +31,7 @@ export const enum LogoSizes {
   ORIGINAL = 'original',
 }
 
-export const enum PosterSizes {
+export enum PosterSizes {
   W92 = 'w92',
   W154 = 'w154',
   W185 = 'w185',
@@ -41,21 +41,21 @@ export const enum PosterSizes {
   ORIGINAL = 'original',
 }
 
-export const enum ProfileSizes {
+export enum ProfileSizes {
   W45 = 'w45',
   W185 = 'w185',
   W632 = 'w632',
   ORIGINAL = 'original',
 }
 
-export const enum StillSizes {
+export enum StillSizes {
   W92 = 'w92',
   W185 = 'w185',
   W300 = 'w300',
   ORIGINAL = 'original',
 }
 
-export const enum ChangeKeys {
+export enum ChangeKeys {
   ADULT = 'adult',
   AIR_DATE = 'air_date',
   ALSO_KNOWN_AS = 'also_known_as',
