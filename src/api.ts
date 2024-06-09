@@ -8,6 +8,7 @@ export class Api {
     this.accessToken = accessToken;
   }
 
+  /* eslint-disable  @typescript-eslint/no-explicit-any */
   async get<T>(path: string, options?: Record<string, any>): Promise<T> {
     const params = parseOptions(options);
     const response = await fetch(`${BASE_URL_V3}${path}?${params}`, {
