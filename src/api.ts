@@ -1,8 +1,7 @@
 import fetch from 'cross-fetch';
 import { parseOptions } from './utils';
 import { ErrorResponse } from './types';
-
-const BASE_URL_V3 = 'https://api.themoviedb.org/3';
+import { BASE_URL_V3 } from './common/constants';
 
 export class Api {
   constructor(private accessToken: string) {
