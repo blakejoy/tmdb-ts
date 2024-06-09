@@ -8,7 +8,7 @@
     "compile": "rm -rf dist && tsc -d",
     "lint": "eslint src/",
     "lint:fix": "eslint --fix",
-    "format": "npx prettier --write src",
+    "format": "prettier --write src",
     "pre-commit": "npm run lint"
   },
   "bugs": {
