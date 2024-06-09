@@ -1,3 +1,22 @@
+import { Region } from './regions';
+import { CountryCode } from '../types';
+
+export interface WatchProvider {
+  display_priorities: { [K in CountryCode]: number };
+  display_priority: number;
+  logo_path: string;
+  provider_id: number;
+  provider_name: string;
+}
+
+export interface RegionResult {
+  results: Array<Region>;
+}
+
+export interface WatchProviderResult {
+  results: Array<WatchProvider>;
+}
+
 export interface Flatrate {
   display_priority: number;
   logo_path: string;

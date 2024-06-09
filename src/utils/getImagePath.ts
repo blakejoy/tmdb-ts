@@ -12,7 +12,7 @@ export const getFullImagePath = (
   baseUrl: string,
   fileSize: string,
   imagePath: string,
-  svg = false
+  svg: boolean = false
 ): string => {
   const imagePathArr = imagePath.split('.');
   const imageFormat = svg ? 'svg' : imagePathArr[1];

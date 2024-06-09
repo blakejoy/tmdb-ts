@@ -8,7 +8,7 @@ export interface CompanyDetails {
   logo_path: string;
   name: string;
   origin_country: string;
-  parent_company: ParentCompany;
+  parent_company?: ParentCompany;
 }
 
 export interface ParentCompany {

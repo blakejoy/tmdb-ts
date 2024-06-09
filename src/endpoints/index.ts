@@ -16,3 +16,4 @@ export * from './keywords';
 export * from './collections';
 export * from './tv-seasons';
 export * from './tv-episode';
+export * from './watch-providers';

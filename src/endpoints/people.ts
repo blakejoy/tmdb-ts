@@ -90,6 +90,9 @@ export class PeopleEndpoint extends BaseEndpoint {
     return await this.api.get<PeopleImages>(`${BASE_PERSON}/${id}/images`);
   }
 
+  /**
+   * @deprecated
+   */
   async taggedImages(id: number, options?: PageOption): Promise<TaggedImages> {
     return await this.api.get<TaggedImages>(
       `${BASE_PERSON}/${id}/tagged_images`,
