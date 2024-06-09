@@ -104,7 +104,7 @@ export type PersonChangeValue =
       };
     };
 
-export interface PopularPersons {
+export interface PopularPeople {
   page: number;
   results: Person[];
   total_results: number;

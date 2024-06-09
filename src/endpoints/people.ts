@@ -10,11 +10,11 @@ import {
   PersonDetails,
   PersonMovieCredit,
   PersonTvShowCredit,
-  PopularPersons,
   TaggedImages,
   Changes,
   PersonChangeValue,
   LanguageOption,
+  PopularPeople,
 } from '../types';
 import { BaseEndpoint } from './base';
 
@@ -110,12 +110,7 @@ export class PeopleEndpoint extends BaseEndpoint {
     return await this.api.get<PersonDetails>(`${BASE_PERSON}/latest`);
   }
 
-  async popular(
-    options?: LanguageOption & PageOption
-  ): Promise<PopularPersons> {
-    return await this.api.get<PopularPersons>(
-      `${BASE_PERSON}/popular`,
-      options
-    );
+  async popular(options?: LanguageOption & PageOption): Promise<PopularPeople> {
+    return await this.api.get<PopularPeople>(`${BASE_PERSON}/popular`, options);
   }
 }
