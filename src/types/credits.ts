@@ -1,4 +1,4 @@
-import { Image, Person } from './';
+import { CountryCode, Image, Person } from './';
 
 export interface CreditSeason {
   air_date?: string;
@@ -7,7 +7,7 @@ export interface CreditSeason {
 }
 
 export interface Media {
-  i?: number;
+  id?: number;
   name?: string;
   first_air_date?: string;
   vote_count?: number;
@@ -15,6 +15,8 @@ export interface Media {
   vote_average?: number;
   backdrop_path?: string;
   genre_ids?: number[];
+  media_type: string;
+  adult: boolean;
   original_name?: string;
   origin_country?: string[];
   poster_path?: string;
@@ -36,7 +38,7 @@ export interface CreditResponse {
 }
 
 export interface Title {
-  iso_3166_1: string;
+  iso_3166_1: CountryCode;
   title: string;
   type: string;
 }
@@ -89,7 +91,7 @@ export interface ImageCollection {
 export interface Video {
   id: string;
   iso_639_1: string;
-  iso_3166_1: string;
+  iso_3166_1: CountryCode;
   key: string;
   name: string;
   site: string;

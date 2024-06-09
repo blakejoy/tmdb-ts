@@ -1,6 +1,6 @@
 export interface MediaChange {
   id: number;
-  adult: boolean | undefined;
+  adult?: boolean;
 }
 
 export interface MediaChanges {

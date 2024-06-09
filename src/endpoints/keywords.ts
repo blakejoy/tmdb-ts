@@ -12,6 +12,10 @@ export class KeywordsEndpoint extends BaseEndpoint {
     return await this.api.get<Keyword>(`${BASE_Keyword}/${keywordId}`);
   }
 
+  /**
+   *
+   * @deprecated
+   */
   async belongingMovies(
     keywordId: number,
     options?: KeywordsOptions

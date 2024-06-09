@@ -17,6 +17,7 @@ import {
   CollectionsEndpoint,
   TvSeasonsEndpoint,
   TvEpisodesEndpoint,
+  WatchProvidersEndpoint,
 } from './endpoints';
 import { CompaniesEndpoint } from './endpoints/companies';
 import { NetworksEndpoint } from './endpoints/networks';
@@ -106,5 +107,9 @@ export class TMDB {
 
   get tvSeasons(): TvSeasonsEndpoint {
     return new TvSeasonsEndpoint(this.accessToken);
+  }
+
+  get watchProviders(): WatchProvidersEndpoint {
+    return new WatchProvidersEndpoint(this.accessToken);
   }
 }

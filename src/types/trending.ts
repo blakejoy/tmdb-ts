@@ -15,10 +15,10 @@ export type TrendingMediaType = MediaType | 'all';
 type TrendingResult<T extends TrendingMediaType> = T extends 'tv'
   ? TV
   : T extends 'movie'
-  ? Movie
-  : T extends 'person'
-  ? Person
-  : TVWithMediaType | MovieWithMediaType | PersonWithMediaType;
+    ? Movie
+    : T extends 'person'
+      ? Person
+      : TVWithMediaType | MovieWithMediaType | PersonWithMediaType;
 
 export interface TrendingResults<T extends TrendingMediaType> {
   page: number;

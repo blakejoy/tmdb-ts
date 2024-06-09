@@ -15,6 +15,6 @@ export class ChangeEndpoint extends BaseEndpoint {
   }
 
   async person(options?: ChangeOption): Promise<MediaChanges> {
-    return await this.api.get<MediaChanges>(`/person/change`, options);
+    return await this.api.get<MediaChanges>(`/person/changes`, options);
   }
 }

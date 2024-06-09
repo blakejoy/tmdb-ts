@@ -6,10 +6,10 @@ export class FindEndpoint extends BaseEndpoint {
     super(accessToken);
   }
 
-  async byId(
-    externalId: string,
+  async byExternalId(
+    id: string,
     options: ExternalIdOptions
   ): Promise<FindResult> {
-    return await this.api.get<FindResult>(`/find/${externalId}`, options);
+    return await this.api.get<FindResult>(`/find/${id}`, options);
   }
 }

@@ -1,14 +1,14 @@
 import fetch from 'cross-fetch';
 import { parseOptions } from './utils';
 import { ErrorResponse } from './types';
-
-const BASE_URL_V3 = 'https://api.themoviedb.org/3';
+import { BASE_URL_V3 } from './common/constants';
 
 export class Api {
   constructor(private accessToken: string) {
     this.accessToken = accessToken;
   }
 
+  /* eslint-disable  @typescript-eslint/no-explicit-any */
   async get<T>(path: string, options?: Record<string, any>): Promise<T> {
     const params = parseOptions(options);
     const response = await fetch(`${BASE_URL_V3}${path}?${params}`, {

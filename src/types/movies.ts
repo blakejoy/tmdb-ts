@@ -1,4 +1,5 @@
 import {
+  CountryCode,
   Genre,
   Movie,
   ProductionCompany,
@@ -52,14 +53,15 @@ export enum ReleaseDateType {
 
 export interface ReleaseDate {
   certification: string;
+  descriptors: string[];
   iso_639_1: string;
-  release_date: Date;
+  release_date: string;
   type: ReleaseDateType;
   note: string;
 }
 
 export interface ReleaseDateResult {
-  iso_3166_1: string;
+  iso_3166_1: CountryCode;
   release_dates: ReleaseDate[];
 }
 

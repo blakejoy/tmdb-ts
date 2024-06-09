@@ -1,4 +1,4 @@
-import { Image, Movie, Person, TV } from '.';
+import { CountryCode, Image, Movie, Person, TV } from '.';
 
 interface Cast {
   character: string;
@@ -104,7 +104,7 @@ export type PersonChangeValue =
       };
     };
 
-export interface PopularPersons {
+export interface PopularPeople {
   page: number;
   results: Person[];
   total_results: number;
@@ -140,7 +140,7 @@ export interface TaggedImages {
 export interface PersonTranslations {
   id: number;
   translations: {
-    iso_3166_1: string;
+    iso_3166_1: CountryCode;
     iso_639_1: string;
     name: string;
     english_name: string;

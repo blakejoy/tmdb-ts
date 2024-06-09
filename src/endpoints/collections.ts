@@ -1,6 +1,6 @@
 import {
+  CollectionDetails,
   CollectionImageOptions,
-  DetailedCollection,
   ImageCollection,
   LanguageOption,
   Translations,
@@ -17,8 +17,8 @@ export class CollectionsEndpoint extends BaseEndpoint {
   async details(
     id: number,
     options?: LanguageOption
-  ): Promise<DetailedCollection> {
-    return await this.api.get<DetailedCollection>(
+  ): Promise<CollectionDetails> {
+    return await this.api.get<CollectionDetails>(
       `${BASE_COLLECTION}/${id}`,
       options
     );

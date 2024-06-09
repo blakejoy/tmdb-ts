@@ -1,4 +1,4 @@
-import { Credits, Crew } from '.';
+import { CountryCode, Credits, Crew } from '.';
 
 export interface EpisodeSelection {
   tvShowID: number;
@@ -44,7 +44,7 @@ export interface TvEpisodeCredit extends Credits {
 export interface TvEpisodeTranslations {
   id: number;
   translations: {
-    iso_3166_1: string;
+    iso_3166_1: CountryCode;
     iso_639_1: string;
     name: string;
     english_name: string;

@@ -39,6 +39,7 @@ export type KnownFor = MovieWithMediaType | TVWithMediaType;
 export interface Person {
   id: number;
   name: string;
+  original_name: string;
   known_for: KnownFor[];
   profile_path: string;
   adult: boolean;
@@ -81,6 +82,7 @@ export interface Company {
 
 export interface TV {
   id: number;
+  adult: boolean;
   name: string;
   first_air_date: string;
   backdrop_path: string;
@@ -109,6 +111,13 @@ export interface ExternalIds {
   facebook_id: string;
   instagram_id: string;
   twitter_id: string;
+  tvdb_id?: number;
+  freebase_mid?: string;
+  freebase_id?: string;
+  tvrage_id?: number;
+  wikidata_id: string;
+  tiktok_id?: string;
+  youtube_id?: string;
   id: number;
 }
 
@@ -120,7 +129,7 @@ export interface ProductionCompany {
 }
 
 export interface ProductionCountry {
-  iso_3166_1: string;
+  iso_3166_1: CountryCode;
   name: string;
 }
 
@@ -137,7 +146,7 @@ export interface ContentRatings {
 
 export interface ContentRatingsResult {
   descriptor: unknown[];
-  iso_3166_1: string;
+  iso_3166_1: CountryCode;
   rating: string;
 }
 
@@ -169,9 +178,9 @@ export interface Review {
   author: string;
   author_details: AuthorDetails;
   content: string;
-  created_at: Date;
+  created_at: string;
   id: string;
-  updated_at: Date;
+  updated_at: string;
   url: string;
 }
 
@@ -190,7 +199,7 @@ export interface TranslationData {
 }
 
 export interface Translation {
-  iso_3166_1: string;
+  iso_3166_1: CountryCode;
   iso_639_1: string;
   name: string;
   english_name: string;
@@ -218,3 +227,71 @@ export interface Images {
   logos: Image[];
   posters: Image[];
 }
+
+export const CountryCodes = [
+  'AE',
+  'AR',
+  'AT',
+  'AU',
+  'BE',
+  'BG',
+  'BO',
+  'BR',
+  'CA',
+  'CH',
+  'CL',
+  'CO',
+  'CR',
+  'CV',
+  'CZ',
+  'DE',
+  'DK',
+  'EC',
+  'EE',
+  'EG',
+  'ES',
+  'FI',
+  'FR',
+  'GB',
+  'GH',
+  'GR',
+  'GT',
+  'HK',
+  'HN',
+  'HU',
+  'ID',
+  'IE',
+  'IL',
+  'IN',
+  'IT',
+  'JP',
+  'LT',
+  'LV',
+  'MU',
+  'MX',
+  'MY',
+  'MZ',
+  'NL',
+  'NO',
+  'NZ',
+  'PE',
+  'PH',
+  'PL',
+  'PT',
+  'PY',
+  'RU',
+  'SA',
+  'SE',
+  'SG',
+  'SI',
+  'SK',
+  'TH',
+  'TR',
+  'TW',
+  'UG',
+  'US',
+  'VE',
+  'ZA',
+] as const;
+
+export type CountryCode = (typeof CountryCodes)[number];
