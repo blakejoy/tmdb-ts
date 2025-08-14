@@ -4,3 +4,4 @@
 dist
 /.npmignore
 .idea
+.DS_Store

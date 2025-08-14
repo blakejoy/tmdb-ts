@@ -1,6 +1,6 @@
 {
   "name": "tmdb-ts",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "TMDB v3 library wrapper",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -31,7 +31,7 @@
   "devDependencies": {
     "@eslint/js": "^9.4.0",
     "@types/eslint__js": "^8.42.3",
-    "@types/node": "^20.14.2",
+    "@types/node": "^20.16.10",
     "@types/node-fetch": "^3.0.3",
     "dotenv": "^16.4.5",
     "eslint-config-prettier": "^9.1.0",
