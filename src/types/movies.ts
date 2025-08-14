@@ -22,7 +22,7 @@ export interface MovieDetails {
   genres: Genre[];
   homepage: string;
   id: number;
-  imdb_id: string;
+  imdb_id: string | null;
   original_language: string;
   original_title: string;
   overview: string;
@@ -104,7 +104,7 @@ export interface LatestMovie {
   genres: Genre[];
   homepage: string;
   id: number;
-  imdb_id: string;
+  imdb_id: string | null;
   original_language: string;
   original_title: string;
   overview: string;
