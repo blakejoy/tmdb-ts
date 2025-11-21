@@ -1,4 +1,5 @@
 import {
+  AggregateCredits,
   AlternativeTitles,
   Changes,
   ContentRatings,
@@ -354,7 +355,7 @@ export type AppendToResponse<
             ? { 'watch/providers': Omit<WatchProviders, 'id'> }
             : object) &
           ('aggregate_credits' extends T[number]
-            ? { aggregate_credits: Omit<Credits, 'id'> }
+            ? { aggregate_credits: Omit<AggregateCredits, 'id'> }
             : object) &
           ('episode_groups' extends T[number]
             ? { episode_groups: Omit<EpisodeGroups, 'id'> }
