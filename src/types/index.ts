@@ -196,6 +196,7 @@ export interface TranslationData {
   title: string;
   overview: string;
   homepage: string;
+  tagline: string;
 }
 
 export interface Translation {
