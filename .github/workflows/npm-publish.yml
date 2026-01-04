@@ -8,7 +8,30 @@ on:
     types: [published]
 
 jobs:
+  check-version:
+    name: Check Version Updated
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check if version was updated
+        run: |
+          # Get the version from package.json
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          echo "Current version in package.json: $CURRENT_VERSION"
+
+          # Check if this version exists on npm
+          if npm view tmdb-ts@$CURRENT_VERSION version 2>/dev/null; then
+            echo "::error::Version $CURRENT_VERSION already exists on npm. Please update the version in package.json before publishing."
+            exit 1
+          else
+            echo "✓ Version $CURRENT_VERSION is new and ready to publish"
+          fi
+
   build:
+    needs: check-version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,6 +39,7 @@ jobs:
         with:
           node-version: '20.x'
       - run: npm ci
+      - run: npm run compile
 
   publish-npm:
     needs: build

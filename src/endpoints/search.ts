@@ -19,43 +19,31 @@ export interface SearchOptions {
 }
 
 export interface MovieSearchOptions
-  extends SearchOptions,
-    LanguageOption,
-    PageOption,
-    RegionOption {
+  extends SearchOptions, LanguageOption, PageOption, RegionOption {
   include_adult?: boolean;
   year?: number;
   primary_release_year?: number;
 }
 
 export interface CollectionSearchOptions
-  extends SearchOptions,
-    LanguageOption,
-    PageOption,
-    RegionOption {
+  extends SearchOptions, LanguageOption, PageOption, RegionOption {
   include_adult?: boolean;
 }
 
 export interface TvSearchOptions
-  extends SearchOptions,
-    LanguageOption,
-    PageOption {
+  extends SearchOptions, LanguageOption, PageOption {
   include_adult?: boolean;
   year?: number;
   first_air_date_year?: number;
 }
 
 export interface PeopleSearchOptions
-  extends SearchOptions,
-    LanguageOption,
-    PageOption {
+  extends SearchOptions, LanguageOption, PageOption {
   include_adult?: boolean;
 }
 
 export interface MultiSearchOptions
-  extends SearchOptions,
-    LanguageOption,
-    PageOption {
+  extends SearchOptions, LanguageOption, PageOption {
   include_adult?: boolean;
 }
 
