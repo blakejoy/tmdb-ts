@@ -13,6 +13,8 @@ TypeScript library wrapper for [TMDB API](https://developers.themoviedb.org/) v3
 - **Complete API coverage** for TMDB v3 endpoints
 - **Promise-based** async/await interface
 - **Zero configuration** - just provide your access token
+- **Isomorphic** - works in Node.js (18+) and modern browsers
+- **Zero dependencies** - uses native fetch API
 
 ## Installation
 

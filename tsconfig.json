@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "esnext" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */,
+    "target": "ES2020" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */,
+    "lib": ["ES2020", "DOM"] /* Include DOM types for fetch API and browser compatibility */,
     "module": "CommonJS" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */,
     "moduleResolution": "node",
     "sourceMap": true /* Generates corresponding '.map' file. */,
@@ -11,7 +12,6 @@
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
     "typeRoots": ["./src/types"]
   },
-      "types": ["node"],
   "include": ["src"],
   "exclude": ["node_modules", "dist", "./src/types/*.ts"]
 }
