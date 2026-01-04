@@ -1,4 +1,4 @@
-import fetch from 'cross-fetch';
+// Using native fetch API (available in Node 18+ and all modern browsers)
 import { parseOptions } from './utils';
 import { ErrorResponse } from './types';
 import { BASE_URL_V3 } from './common/constants';
