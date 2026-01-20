@@ -22,6 +22,7 @@ import {
   SimilarTvShows,
   TaggedImages,
   Translations,
+  TvRecommendations,
   Videos,
   WatchProviders,
   PersonChangeValue,
@@ -301,7 +302,11 @@ export type AppendToResponse<
               }
             : object) &
           ('recommendations' extends T[number]
-            ? { recommendations: Recommendations }
+            ? {
+                recommendations: Media extends 'tvShow'
+                  ? TvRecommendations
+                  : Recommendations;
+              }
             : object) &
           ('reviews' extends T[number]
             ? { reviews: Omit<Reviews, 'id'> }

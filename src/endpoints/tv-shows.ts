@@ -17,7 +17,6 @@ import {
   OnTheAir,
   PageOption,
   PopularTvShows,
-  Recommendations,
   Reviews,
   ScreenedTheatrically,
   SeasonDetails,
@@ -25,6 +24,7 @@ import {
   TimezoneOption,
   TopRatedTvShows,
   Translations,
+  TvRecommendations,
   TvShowImageOptions,
   TvShowVideoOptions,
   TvShowChangeValue,
@@ -126,8 +126,8 @@ export class TvShowsEndpoint extends BaseEndpoint {
   async recommendations(
     id: number,
     options?: LanguageOption & PageOption
-  ): Promise<Recommendations> {
-    return await this.api.get<Recommendations>(
+  ): Promise<TvRecommendations> {
+    return await this.api.get<TvRecommendations>(
       `${BASE_TV}/${id}/recommendations`,
       options
     );
