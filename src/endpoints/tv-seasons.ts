@@ -39,6 +39,14 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
     super(accessToken, customFetch);
   }
 
+  /**
+   * Get the details of a TV season.
+   *
+   * @param seasonSelection - The TV show ID and season number.
+   * @param appendToResponse - Additional requests to append to the response (e.g. credits, images).
+   * @param options - Language options.
+   * @see https://developer.themoviedb.org/reference/tv-season-details
+   */
   async details<T extends AppendToResponseTvSeasonKey[] | undefined>(
     seasonSelection: SeasonSelection,
     appendToResponse?: T,
@@ -57,6 +65,13 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
     );
   }
 
+  /**
+   * Get the aggregate credits (combined cast and crew) for a TV season.
+   *
+   * @param seasonSelection - The TV show ID and season number.
+   * @param options - Language options.
+   * @see https://developer.themoviedb.org/reference/tv-season-aggregate-credits
+   */
   async aggregateCredits(
     seasonSelection: SeasonSelection,
     options?: LanguageOption
@@ -67,6 +82,13 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
     );
   }
 
+  /**
+   * Get the changes for a TV season. By default, only the last 24 hours are returned.
+   *
+   * @param seasonId - The TV season ID.
+   * @param options - Filter by start/end date and page.
+   * @see https://developer.themoviedb.org/reference/tv-season-changes-by-id
+   */
   async changes(seasonId: number, options?: ChangeOption) {
     return await this.api.get<Changes<TvSeasonChangeValue>>(
       `/tv/season/${seasonId}/changes`,
@@ -74,6 +96,13 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
     );
   }
 
+  /**
+   * Get the credits (cast and crew) for a TV season.
+   *
+   * @param seasonSelection - The TV show ID and season number.
+   * @param options - Language options.
+   * @see https://developer.themoviedb.org/reference/tv-season-credits
+   */
   async credits(seasonSelection: SeasonSelection, options?: LanguageOption) {
     return await this.api.get<Credits>(
       `${BASE_SEASON(seasonSelection)}/credits`,
@@ -81,6 +110,13 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
     );
   }
 
+  /**
+   * Get the external IDs for a TV season.
+   *
+   * @param seasonSelection - The TV show ID and season number.
+   * @param options - Language options.
+   * @see https://developer.themoviedb.org/reference/tv-season-external-ids
+   */
   async externalIds(
     seasonSelection: SeasonSelection,
     options?: LanguageOption
@@ -91,6 +127,13 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
     );
   }
 
+  /**
+   * Get the images that belong to a TV season (posters).
+   *
+   * @param seasonSelection - The TV show ID and season number.
+   * @param options - Language and image language filter options.
+   * @see https://developer.themoviedb.org/reference/tv-season-images
+   */
   async images(
     seasonSelection: SeasonSelection,
     options?: TvSeasonImageSearchOptions
@@ -105,6 +148,13 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
     );
   }
 
+  /**
+   * Get the videos that have been added to a TV season (trailers, teasers, etc.).
+   *
+   * @param seasonSelection - The TV show ID and season number.
+   * @param options - Language and video language filter options.
+   * @see https://developer.themoviedb.org/reference/tv-season-videos
+   */
   async videos(
     seasonSelection: SeasonSelection,
     options?: TvSeasonVideoSearchOptions
@@ -119,6 +169,13 @@ export class TvSeasonsEndpoint extends BaseEndpoint {
     );
   }
 
+  /**
+   * Get the translations for a TV season.
+   *
+   * @param seasonSelection - The TV show ID and season number.
+   * @param options - Language options.
+   * @see https://developer.themoviedb.org/reference/tv-season-translations
+   */
   async translations(
     seasonSelection: SeasonSelection,
     options?: LanguageOption
