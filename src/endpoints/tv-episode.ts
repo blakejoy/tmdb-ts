@@ -34,8 +34,8 @@ export interface TvEpisodeVideoSearchOptions extends LanguageOption {
 }
 
 export class TvEpisodesEndpoint extends BaseEndpoint {
-  constructor(accessToken: string) {
-    super(accessToken);
+  constructor(accessToken: string, customFetch?: typeof fetch) {
+    super(accessToken, customFetch);
   }
 
   async details<T extends AppendToResponseTvEpisodeKey[] | undefined>(

@@ -8,8 +8,8 @@ import {
 import { BaseEndpoint } from './base';
 
 export class TrendingEndpoint extends BaseEndpoint {
-  constructor(accessToken: string) {
-    super(accessToken);
+  constructor(accessToken: string, customFetch?: typeof fetch) {
+    super(accessToken, customFetch);
   }
 
   async trending<T extends TrendingMediaType>(

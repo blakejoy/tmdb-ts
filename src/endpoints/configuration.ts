@@ -8,8 +8,11 @@ import {
 } from '../types/configuration';
 
 export class ConfigurationEndpoint extends BaseEndpoint {
-  constructor(protected readonly accessToken: string) {
-    super(accessToken);
+  constructor(
+    protected readonly accessToken: string,
+    customFetch?: typeof fetch
+  ) {
+    super(accessToken, customFetch);
   }
 
   async getApiConfiguration(): Promise<Configuration> {

@@ -2,8 +2,8 @@ import { ReviewDetails } from '../types';
 import { BaseEndpoint } from './base';
 
 export class ReviewEndpoint extends BaseEndpoint {
-  constructor(accessToken: string) {
-    super(accessToken);
+  constructor(accessToken: string, customFetch?: typeof fetch) {
+    super(accessToken, customFetch);
   }
 
   async details(id: string): Promise<ReviewDetails> {

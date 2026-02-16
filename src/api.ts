@@ -4,14 +4,20 @@ import { ErrorResponse } from './types';
 import { BASE_URL_V3 } from './common/constants';
 
 export class Api {
-  constructor(private accessToken: string) {
+  private readonly fetchFn: typeof fetch;
+
+  constructor(
+    private accessToken: string,
+    customFetch?: typeof fetch
+  ) {
     this.accessToken = accessToken;
+    this.fetchFn = customFetch ?? fetch;
   }
 
   /* eslint-disable  @typescript-eslint/no-explicit-any */
   async get<T>(path: string, options?: Record<string, any>): Promise<T> {
     const params = parseOptions(options);
-    const response = await fetch(`${BASE_URL_V3}${path}?${params}`, {
+    const response = await this.fetchFn(`${BASE_URL_V3}${path}?${params}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${this.accessToken}`,

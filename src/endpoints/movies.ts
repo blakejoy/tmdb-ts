@@ -39,8 +39,11 @@ export interface MoviesImageSearchOptions extends LanguageOption {
 }
 
 export class MoviesEndpoint extends BaseEndpoint {
-  constructor(protected readonly accessToken: string) {
-    super(accessToken);
+  constructor(
+    protected readonly accessToken: string,
+    customFetch?: typeof fetch
+  ) {
+    super(accessToken, customFetch);
   }
 
   async details<T extends AppendToResponseMovieKey[] | undefined>(

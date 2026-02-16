@@ -48,8 +48,11 @@ export interface MultiSearchOptions
 }
 
 export class SearchEndpoint extends BaseEndpoint {
-  constructor(protected readonly accessToken: string) {
-    super(accessToken);
+  constructor(
+    protected readonly accessToken: string,
+    customFetch?: typeof fetch
+  ) {
+    super(accessToken, customFetch);
   }
 
   async companies(options: SearchOptions): Promise<Search<Company>> {
