@@ -37,8 +37,11 @@ import {
 const BASE_TV = '/tv';
 
 export class TvShowsEndpoint extends BaseEndpoint {
-  constructor(protected readonly accessToken: string) {
-    super(accessToken);
+  constructor(
+    protected readonly accessToken: string,
+    customFetch?: typeof fetch
+  ) {
+    super(accessToken, customFetch);
   }
 
   async details<T extends AppendToResponseTvKey[] | undefined>(

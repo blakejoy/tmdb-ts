@@ -6,8 +6,11 @@ import {
 import { BaseEndpoint } from './base';
 
 export class CompaniesEndpoint extends BaseEndpoint {
-  constructor(protected readonly accessToken: string) {
-    super(accessToken);
+  constructor(
+    protected readonly accessToken: string,
+    customFetch?: typeof fetch
+  ) {
+    super(accessToken, customFetch);
   }
 
   async details(id: number): Promise<CompanyDetails> {

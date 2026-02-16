@@ -21,8 +21,8 @@ import { BaseEndpoint } from './base';
 const BASE_PERSON = '/person';
 
 export class PeopleEndpoint extends BaseEndpoint {
-  constructor(accessToken: string) {
-    super(accessToken);
+  constructor(accessToken: string, customFetch?: typeof fetch) {
+    super(accessToken, customFetch);
   }
 
   async details<T extends AppendToResponsePersonKey[] | undefined>(

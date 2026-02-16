@@ -10,8 +10,11 @@ import { BaseEndpoint } from './base';
 const BASE_COLLECTION = '/collection';
 
 export class CollectionsEndpoint extends BaseEndpoint {
-  constructor(protected readonly accessToken: string) {
-    super(accessToken);
+  constructor(
+    protected readonly accessToken: string,
+    customFetch?: typeof fetch
+  ) {
+    super(accessToken, customFetch);
   }
 
   async details(

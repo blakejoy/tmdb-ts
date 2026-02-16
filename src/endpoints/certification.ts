@@ -2,8 +2,11 @@ import { BaseEndpoint } from './base';
 import { Certifications } from '../types/certification';
 
 export class CertificationEndpoint extends BaseEndpoint {
-  constructor(protected readonly accessToken: string) {
-    super(accessToken);
+  constructor(
+    protected readonly accessToken: string,
+    customFetch?: typeof fetch
+  ) {
+    super(accessToken, customFetch);
   }
 
   async movies(): Promise<Certifications> {

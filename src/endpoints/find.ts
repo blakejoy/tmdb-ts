@@ -2,8 +2,8 @@ import { BaseEndpoint } from './base';
 import { ExternalIdOptions, FindResult } from '../types';
 
 export class FindEndpoint extends BaseEndpoint {
-  constructor(accessToken: string) {
-    super(accessToken);
+  constructor(accessToken: string, customFetch?: typeof fetch) {
+    super(accessToken, customFetch);
   }
 
   async byExternalId(
