@@ -17,6 +17,13 @@ export class CollectionsEndpoint extends BaseEndpoint {
     super(accessToken, customFetch);
   }
 
+  /**
+   * Get collection details by ID.
+   *
+   * @param id - The collection ID.
+   * @param options - Language options.
+   * @see https://developer.themoviedb.org/reference/collection-details
+   */
   async details(
     id: number,
     options?: LanguageOption
@@ -27,6 +34,13 @@ export class CollectionsEndpoint extends BaseEndpoint {
     );
   }
 
+  /**
+   * Get the images that belong to a collection.
+   *
+   * @param id - The collection ID.
+   * @param options - Language and image language filter options.
+   * @see https://developer.themoviedb.org/reference/collection-images
+   */
   async images(
     id: number,
     options?: CollectionImageOptions
@@ -41,6 +55,13 @@ export class CollectionsEndpoint extends BaseEndpoint {
     );
   }
 
+  /**
+   * Get the list of translations for a collection.
+   *
+   * @param id - The collection ID.
+   * @param options - Language options.
+   * @see https://developer.themoviedb.org/reference/collection-translations
+   */
   async translations(
     id: number,
     options?: LanguageOption

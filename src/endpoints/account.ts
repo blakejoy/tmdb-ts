@@ -6,6 +6,11 @@ export class AccountEndpoint extends BaseEndpoint {
     super(accessToken, customFetch);
   }
 
+  /**
+   * Get the details of an account on TMDB.
+   *
+   * @see https://developer.themoviedb.org/reference/account-details
+   */
   async details(): Promise<AccountDetails> {
     return await this.api.get('/account');
   }

@@ -9,7 +9,8 @@
     "lint": "eslint src/",
     "lint:fix": "eslint --fix",
     "format": "prettier --write src",
-    "pre-commit": "npm run lint"
+    "pre-commit": "npm run lint",
+    "docs": "typedoc"
   },
   "bugs": {
     "url": "https://github.com/blakejoy/tmdb-ts/issues",
@@ -44,6 +45,7 @@
     "husky": "^9.1.7",
     "prettier": "^3.7.4",
     "ts-node": "^10.9.2",
+    "typedoc": "^0.28.17",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.51.0"
   },

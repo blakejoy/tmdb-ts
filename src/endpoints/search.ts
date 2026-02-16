@@ -55,6 +55,12 @@ export class SearchEndpoint extends BaseEndpoint {
     super(accessToken, customFetch);
   }
 
+  /**
+   * Search for companies by name.
+   *
+   * @param options - Search query and pagination options.
+   * @see https://developer.themoviedb.org/reference/search-company
+   */
   async companies(options: SearchOptions): Promise<Search<Company>> {
     return await this.api.get<Search<Company>>(
       `${BASE_SEARCH}/company`,
@@ -62,6 +68,12 @@ export class SearchEndpoint extends BaseEndpoint {
     );
   }
 
+  /**
+   * Search for collections by name.
+   *
+   * @param options - Search query and pagination options.
+   * @see https://developer.themoviedb.org/reference/search-collection
+   */
   async collections(options: SearchOptions): Promise<Search<Collection>> {
     return await this.api.get<Search<Collection>>(
       `${BASE_SEARCH}/collection`,
@@ -69,6 +81,12 @@ export class SearchEndpoint extends BaseEndpoint {
     );
   }
 
+  /**
+   * Search for keywords by name.
+   *
+   * @param options - Search query and pagination options.
+   * @see https://developer.themoviedb.org/reference/search-keyword
+   */
   async keywords(
     options: SearchOptions
   ): Promise<Search<{ id: string; name: string }>> {
@@ -78,18 +96,42 @@ export class SearchEndpoint extends BaseEndpoint {
     );
   }
 
+  /**
+   * Search for movies by title.
+   *
+   * @param options - Search query with optional year, language, region, and adult content filters.
+   * @see https://developer.themoviedb.org/reference/search-movie
+   */
   async movies(options: MovieSearchOptions): Promise<Search<Movie>> {
     return await this.api.get<Search<Movie>>(`${BASE_SEARCH}/movie`, options);
   }
 
+  /**
+   * Search for people by name.
+   *
+   * @param options - Search query with optional language and adult content filters.
+   * @see https://developer.themoviedb.org/reference/search-person
+   */
   async people(options: PeopleSearchOptions): Promise<Search<Person>> {
     return await this.api.get<Search<Person>>(`${BASE_SEARCH}/person`, options);
   }
 
+  /**
+   * Search for TV shows by title.
+   *
+   * @param options - Search query with optional year, language, and adult content filters.
+   * @see https://developer.themoviedb.org/reference/search-tv
+   */
   async tvShows(options: TvSearchOptions): Promise<Search<TV>> {
     return await this.api.get<Search<TV>>(`${BASE_SEARCH}/tv`, options);
   }
 
+  /**
+   * Search for movies, TV shows, and people in a single request.
+   *
+   * @param options - Search query with optional language and adult content filters.
+   * @see https://developer.themoviedb.org/reference/search-multi
+   */
   async multi(options: MultiSearchOptions): Promise<Search<MultiSearchResult>> {
     return await this.api.get<Search<MultiSearchResult>>(
       `${BASE_SEARCH}/multi`,

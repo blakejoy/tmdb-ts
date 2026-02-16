@@ -12,6 +12,14 @@ export class TrendingEndpoint extends BaseEndpoint {
     super(accessToken, customFetch);
   }
 
+  /**
+   * Get the trending movies, TV shows, or people.
+   *
+   * @param mediaType - The type of media to get trending results for (all, movie, tv, person).
+   * @param timeWindow - The time window for trending results (day or week).
+   * @param options - Language and pagination options.
+   * @see https://developer.themoviedb.org/reference/trending-all
+   */
   async trending<T extends TrendingMediaType>(
     mediaType: T,
     timeWindow: TimeWindow,

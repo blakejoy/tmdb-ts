@@ -38,6 +38,14 @@ export class TvEpisodesEndpoint extends BaseEndpoint {
     super(accessToken, customFetch);
   }
 
+  /**
+   * Get the details of a TV episode.
+   *
+   * @param episodeSelection - The TV show ID, season number, and episode number.
+   * @param appendToResponse - Additional requests to append to the response (e.g. credits, images).
+   * @param options - Language options.
+   * @see https://developer.themoviedb.org/reference/tv-episode-details
+   */
   async details<T extends AppendToResponseTvEpisodeKey[] | undefined>(
     episodeSelection: EpisodeSelection,
     appendToResponse?: T,
@@ -55,6 +63,13 @@ export class TvEpisodesEndpoint extends BaseEndpoint {
     >(`${BASE_EPISODE(episodeSelection)}`, combinedOptions);
   }
 
+  /**
+   * Get the changes for a TV episode. By default, only the last 24 hours are returned.
+   *
+   * @param episodeID - The TV episode ID.
+   * @param options - Filter by start/end date and page.
+   * @see https://developer.themoviedb.org/reference/tv-episode-changes-by-id
+   */
   async changes(episodeID: number, options?: ChangeOption) {
     return await this.api.get<Changes<TvEpisodeChangeValue>>(
       `/tv/episode/${episodeID}/changes`,
@@ -62,6 +77,13 @@ export class TvEpisodesEndpoint extends BaseEndpoint {
     );
   }
 
+  /**
+   * Get the credits (cast and crew) for a TV episode.
+   *
+   * @param episodeSelection - The TV show ID, season number, and episode number.
+   * @param options - Language options.
+   * @see https://developer.themoviedb.org/reference/tv-episode-credits
+   */
   async credits(episodeSelection: EpisodeSelection, options?: LanguageOption) {
     return await this.api.get<TvEpisodeCredit>(
       `${BASE_EPISODE(episodeSelection)}/credits`,
@@ -69,12 +91,25 @@ export class TvEpisodesEndpoint extends BaseEndpoint {
     );
   }
 
+  /**
+   * Get the external IDs for a TV episode.
+   *
+   * @param episodeSelection - The TV show ID, season number, and episode number.
+   * @see https://developer.themoviedb.org/reference/tv-episode-external-ids
+   */
   async externalIds(episodeSelection: EpisodeSelection) {
     return await this.api.get<ExternalIds>(
       `${BASE_EPISODE(episodeSelection)}/external_ids`
     );
   }
 
+  /**
+   * Get the images that belong to a TV episode (stills).
+   *
+   * @param episodeSelection - The TV show ID, season number, and episode number.
+   * @param options - Language and image language filter options.
+   * @see https://developer.themoviedb.org/reference/tv-episode-images
+   */
   async images(
     episodeSelection: EpisodeSelection,
     options?: TvEpisodeImageSearchOptions
@@ -89,12 +124,25 @@ export class TvEpisodesEndpoint extends BaseEndpoint {
     );
   }
 
+  /**
+   * Get the translations for a TV episode.
+   *
+   * @param episodeSelection - The TV show ID, season number, and episode number.
+   * @see https://developer.themoviedb.org/reference/tv-episode-translations
+   */
   async translations(episodeSelection: EpisodeSelection) {
     return await this.api.get<TvEpisodeTranslations>(
       `${BASE_EPISODE(episodeSelection)}/translations`
     );
   }
 
+  /**
+   * Get the videos that have been added to a TV episode (trailers, teasers, clips, etc.).
+   *
+   * @param episodeSelection - The TV show ID, season number, and episode number.
+   * @param options - Language and video language filter options.
+   * @see https://developer.themoviedb.org/reference/tv-episode-videos
+   */
   async videos(
     episodeSelection: EpisodeSelection,
     options?: TvEpisodeVideoSearchOptions

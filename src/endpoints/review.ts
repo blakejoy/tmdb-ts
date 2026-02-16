@@ -6,6 +6,12 @@ export class ReviewEndpoint extends BaseEndpoint {
     super(accessToken, customFetch);
   }
 
+  /**
+   * Retrieve the details of a movie or TV show review.
+   *
+   * @param id - The review ID.
+   * @see https://developer.themoviedb.org/reference/review-details
+   */
   async details(id: string): Promise<ReviewDetails> {
     return await this.api.get<ReviewDetails>(`/review/${id}`);
   }
