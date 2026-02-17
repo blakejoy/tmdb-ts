@@ -1,11 +1,13 @@
 import { CountryCode, Image, Person } from './';
 
+/** A season entry within a credit's media details. */
 export interface CreditSeason {
   air_date?: string;
   poster_path?: string;
   season_number?: number;
 }
 
+/** The media (movie or TV show) associated with a credit. */
 export interface Media {
   id?: number;
   name?: string;
@@ -27,6 +29,11 @@ export interface Media {
   seasons?: CreditSeason[];
 }
 
+/**
+ * Detailed credit information linking a person to a media entry.
+ *
+ * @see https://developer.themoviedb.org/reference/credit-details
+ */
 export interface CreditResponse {
   credit_type?: string;
   department?: string;
@@ -37,17 +44,25 @@ export interface CreditResponse {
   person?: Person;
 }
 
+/** An alternative title for a movie or TV show in a specific country. */
 export interface Title {
+  /** ISO 3166-1 country code. */
   iso_3166_1: CountryCode;
   title: string;
   type: string;
 }
 
+/**
+ * A list of alternative titles for a movie or TV show.
+ *
+ * @see https://developer.themoviedb.org/reference/movie-alternative-titles
+ */
 export interface AlternativeTitles {
   id: number;
   titles: Title[];
 }
 
+/** A cast member in a movie or TV show. */
 export interface Cast {
   adult: boolean;
   gender: number;
@@ -63,6 +78,7 @@ export interface Cast {
   order: number;
 }
 
+/** A crew member in a movie or TV show. */
 export interface Crew {
   adult: boolean;
   gender: number;
@@ -77,45 +93,67 @@ export interface Crew {
   job: string;
 }
 
+/**
+ * The cast and crew credits for a movie or TV show.
+ *
+ * @see https://developer.themoviedb.org/reference/movie-credits
+ */
 export interface Credits {
   id: number;
   cast: Cast[];
   crew: Crew[];
 }
 
+/** A collection of backdrop and poster images. */
 export interface ImageCollection {
   id: number;
   backdrops: Image[];
   posters: Image[];
 }
+
+/** A video (trailer, teaser, clip, etc.) associated with a movie or TV show. */
 export interface Video {
   id: string;
+  /** ISO 639-1 language code. */
   iso_639_1: string;
+  /** ISO 3166-1 country code. */
   iso_3166_1: CountryCode;
+  /** The video key (e.g. YouTube video ID). */
   key: string;
   name: string;
+  /** The video hosting site (e.g. "YouTube", "Vimeo"). */
   site: string;
+  /** The video resolution (e.g. 360, 480, 720, 1080). */
   size: number;
+  /** The video type (e.g. "Trailer", "Teaser", "Clip", "Featurette"). */
   type: string;
 }
 
+/** A list of videos for a movie or TV show. */
 export interface Videos {
   id: number;
   results: Video[];
 }
 
+/**
+ * Aggregate credits combining all episodes for a TV show or season.
+ *
+ * @see https://developer.themoviedb.org/reference/tv-series-aggregate-credits
+ */
 export interface AggregateCredits {
   id: number;
   cast: AggregateCast[];
   crew: AggregateCrew[];
 }
 
+/** A role played by a cast member across multiple episodes. */
 export interface CastRole {
   credit_id: string;
   character: string;
   episode_count: number;
 }
 
+/** An aggregate cast member with all roles across episodes. */
 export interface AggregateCast {
   adult: boolean;
   gender: number;
@@ -130,12 +168,14 @@ export interface AggregateCast {
   order: number;
 }
 
+/** A job performed by a crew member across multiple episodes. */
 export interface CrewJob {
   credit_id: string;
   job: string;
   episode_count: number;
 }
 
+/** An aggregate crew member with all jobs across episodes. */
 export interface AggregateCrew {
   adult: boolean;
   gender: number;

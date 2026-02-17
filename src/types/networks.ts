@@ -1,5 +1,10 @@
 import { Image } from '.';
 
+/**
+ * Detailed information about a TV network.
+ *
+ * @see https://developer.themoviedb.org/reference/network-details
+ */
 export interface NetworkDetails {
   headquarters: string;
   homepage: string;
@@ -9,6 +14,7 @@ export interface NetworkDetails {
   origin_country: string;
 }
 
+/** The logos for a TV network. */
 export interface NetworkImages {
   id: number;
   logos: Image[];

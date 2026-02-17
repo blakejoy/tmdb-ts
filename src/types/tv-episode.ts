@@ -1,12 +1,19 @@
 import { CountryCode, Credits, Crew } from '.';
 
+/** Parameters to identify a specific TV episode. */
 export interface EpisodeSelection {
   tvShowID: number;
   seasonNumber: number;
   episodeNumber: number;
 }
 
+/**
+ * Full details for a TV episode.
+ *
+ * @see https://developer.themoviedb.org/reference/tv-episode-details
+ */
 export interface Episode {
+  /** Air date in YYYY-MM-DD format. */
   air_date: string;
   episode_number: number;
   crew: Crew[];
@@ -19,10 +26,12 @@ export interface Episode {
   still_path: string;
   vote_average: number;
   vote_count: number;
+  /** Runtime in minutes. */
   runtime: number;
   show_id: number;
 }
 
+/** A guest star appearing in a TV episode. */
 export interface GuestStar {
   credit_id: string;
   order: number;
@@ -37,10 +46,12 @@ export interface GuestStar {
   profile_path: string | null;
 }
 
+/** Credits for a TV episode, including guest stars. */
 export interface TvEpisodeCredit extends Credits {
   guest_stars: GuestStar[];
 }
 
+/** Translations for a TV episode. */
 export interface TvEpisodeTranslations {
   id: number;
   translations: {
@@ -55,4 +66,5 @@ export interface TvEpisodeTranslations {
   };
 }
 
+/** The value type for TV episode change entries. */
 export type TvEpisodeChangeValue = string | unknown;

@@ -177,31 +177,40 @@ export const AvailableLanguages = [
 
 export type AvailableLanguage = (typeof AvailableLanguages)[number];
 
+/** Option to filter results by language using an ISO 639-1 code. */
 export interface LanguageOption {
   language?: AvailableLanguage;
 }
 
+/** Option to filter watch provider results by region. */
 export interface WatchRegionOption {
   watch_region?: CountryCode;
 }
 
+/** Option to filter results by region using an ISO 3166-1 code. */
 export interface RegionOption {
   region?: string;
 }
 
+/** Option to filter results by timezone. */
 export interface TimezoneOption {
   timezone?: string;
 }
 
+/** Option for paginating results. */
 export interface PageOption {
   page?: number;
 }
 
+/** Options for filtering change lists by date range. */
 export interface ChangeOption extends PageOption {
+  /** Start date in YYYY-MM-DD format. */
   start_date?: string;
+  /** End date in YYYY-MM-DD format. */
   end_date?: string;
 }
 
+/** Valid keys for the `append_to_response` parameter on movie endpoints. */
 export type AppendToResponseMovieKey =
   | 'images'
   | 'videos'
@@ -218,6 +227,7 @@ export type AppendToResponseMovieKey =
   | 'watch/providers'
   | 'keywords';
 
+/** Valid keys for the `append_to_response` parameter on TV show endpoints. */
 export type AppendToResponseTvKey =
   | 'content_ratings'
   | 'images'
@@ -236,6 +246,7 @@ export type AppendToResponseTvKey =
   | 'screened_theatrically'
   | 'keywords';
 
+/** Valid keys for the `append_to_response` parameter on person endpoints. */
 export type AppendToResponsePersonKey =
   | 'images'
   | 'changes'
@@ -246,6 +257,7 @@ export type AppendToResponsePersonKey =
   | 'tagged_images'
   | 'translations';
 
+/** Valid keys for the `append_to_response` parameter on TV episode endpoints. */
 export type AppendToResponseTvEpisodeKey =
   | 'images'
   | 'credits'
@@ -253,6 +265,7 @@ export type AppendToResponseTvEpisodeKey =
   | 'videos'
   | 'translations';
 
+/** Valid keys for the `append_to_response` parameter on TV season endpoints. */
 export type AppendToResponseTvSeasonKey =
   | 'images'
   | 'credits'
@@ -268,6 +281,7 @@ type AppendToResponseAllKeys =
   | AppendToResponseTvSeasonKey
   | AppendToResponsePersonKey;
 
+/** The media type categories for append_to_response. */
 export type AppendToResponseMediaType =
   | 'movie'
   | 'tvShow'
@@ -275,6 +289,14 @@ export type AppendToResponseMediaType =
   | 'tvSeason'
   | 'tvEpisode';
 
+/**
+ * A utility type that merges additional response data based on `append_to_response` keys.
+ * This enables type-safe access to appended data (e.g. credits, videos, images) on detail responses.
+ *
+ * @typeParam K - The base response type (e.g. MovieDetails, TvShowDetails).
+ * @typeParam T - The array of append_to_response keys, or undefined.
+ * @typeParam Media - The media type category for type resolution.
+ */
 export type AppendToResponse<
   K,
   T extends AppendToResponseAllKeys[] | undefined,

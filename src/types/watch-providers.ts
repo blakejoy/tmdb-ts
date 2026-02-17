@@ -1,7 +1,13 @@
 import { Region } from './regions';
 import { CountryCode } from '../types';
 
+/**
+ * A watch provider (streaming service) with priority and logo information.
+ *
+ * @see https://developer.themoviedb.org/reference/watch-providers-movie-list
+ */
 export interface WatchProvider {
+  /** Display priority by country code. */
   display_priorities: { [K in CountryCode]: number };
   display_priority: number;
   logo_path: string;
@@ -9,14 +15,17 @@ export interface WatchProvider {
   provider_name: string;
 }
 
+/** A list of available watch provider regions. */
 export interface RegionResult {
   results: Array<Region>;
 }
 
+/** A list of watch providers. */
 export interface WatchProviderResult {
   results: Array<WatchProvider>;
 }
 
+/** A streaming/subscription watch provider option. */
 export interface Flatrate {
   display_priority: number;
   logo_path: string;
@@ -24,6 +33,7 @@ export interface Flatrate {
   provider_name: string;
 }
 
+/** A rental watch provider option. */
 export interface Rent {
   display_priority: number;
   logo_path: string;
@@ -31,6 +41,7 @@ export interface Rent {
   provider_name: string;
 }
 
+/** A purchase watch provider option. */
 export interface Buy {
   display_priority: number;
   logo_path: string;
@@ -38,6 +49,12 @@ export interface Buy {
   provider_name: string;
 }
 
+/**
+ * Watch provider availability by country.
+ * Each country entry contains a deep link and available provider types (flatrate, rent, buy).
+ *
+ * Powered by JustWatch.
+ */
 export interface WatchLocale {
   AR: {
     link: string;
@@ -311,6 +328,12 @@ export interface WatchLocale {
   };
 }
 
+/**
+ * Watch provider results for a movie or TV show, grouped by country.
+ *
+ * Powered by JustWatch.
+ * @see https://developer.themoviedb.org/reference/movie-watch-providers
+ */
 export interface WatchProviders {
   id: number;
   results: WatchLocale;

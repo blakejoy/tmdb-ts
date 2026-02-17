@@ -29,6 +29,7 @@ interface Crew {
   vote_average: number;
 }
 
+/** A movie cast credit for a person. */
 export interface PersonMovieCast extends Cast {
   release_date: string;
   video: boolean;
@@ -37,6 +38,7 @@ export interface PersonMovieCast extends Cast {
   original_title: string;
 }
 
+/** A movie crew credit for a person. */
 export interface PersonMovieCrew extends Crew {
   original_title: string;
   video: boolean;
@@ -45,6 +47,7 @@ export interface PersonMovieCrew extends Crew {
   release_date: string;
 }
 
+/** A TV show crew credit for a person. */
 export interface PersonTvShowCrew extends Crew {
   episode_count: number;
   origin_country: string[];
@@ -53,6 +56,7 @@ export interface PersonTvShowCrew extends Crew {
   first_air_date: string;
 }
 
+/** A TV show cast credit for a person. */
 export interface PersonTvShowCast extends Cast {
   original_name: string;
   name: string;
@@ -61,31 +65,54 @@ export interface PersonTvShowCast extends Cast {
   origin_country: string[];
 }
 
+/**
+ * A person's movie credits (cast and crew).
+ *
+ * @see https://developer.themoviedb.org/reference/person-movie-credits
+ */
 export interface PersonMovieCredit {
   cast: PersonMovieCast[];
   crew: PersonMovieCrew[];
   id: number;
 }
 
+/**
+ * A person's TV show credits (cast and crew).
+ *
+ * @see https://developer.themoviedb.org/reference/person-tv-credits
+ */
 export interface PersonTvShowCredit {
   cast: PersonTvShowCast[];
   crew: PersonTvShowCrew[];
   id: number;
 }
 
+/**
+ * A person's combined movie and TV show credits.
+ *
+ * @see https://developer.themoviedb.org/reference/person-combined-credits
+ */
 export interface PersonCombinedCredits {
   cast: (PersonMovieCast & PersonTvShowCast)[];
   crew: (PersonMovieCrew & PersonTvShowCrew)[];
   id: number;
 }
 
+/**
+ * Full details for a person.
+ *
+ * @see https://developer.themoviedb.org/reference/person-details
+ */
 export interface PersonDetails {
+  /** Date of birth in YYYY-MM-DD format. */
   birthday: string;
   known_for_department: string;
+  /** Date of death in YYYY-MM-DD format, or null if alive. */
   deathday: string;
   id: number;
   name: string;
   also_known_as: string[];
+  /** 0 = not set, 1 = female, 2 = male, 3 = non-binary. */
   gender: number;
   biography: string;
   popularity: number;
@@ -96,6 +123,7 @@ export interface PersonDetails {
   homepage: string;
 }
 
+/** The value type for person change entries. */
 export type PersonChangeValue =
   | string
   | {
@@ -104,6 +132,11 @@ export type PersonChangeValue =
       };
     };
 
+/**
+ * Paginated list of popular people.
+ *
+ * @see https://developer.themoviedb.org/reference/person-popular-list
+ */
 export interface PopularPeople {
   page: number;
   results: Person[];
@@ -111,11 +144,17 @@ export interface PopularPeople {
   total_pages: number;
 }
 
+/**
+ * Profile images for a person.
+ *
+ * @see https://developer.themoviedb.org/reference/person-images
+ */
 export interface PeopleImages {
   id: number;
   profiles: Image[];
 }
 
+/** An image tagged with its associated media. */
 export interface TaggedImage {
   aspect_ratio: number;
   file_path: string;
@@ -127,9 +166,16 @@ export interface TaggedImage {
   width: number;
   image_type: string;
   media_type: string;
+  /** The movie or TV show the image is from. */
   media: Movie | TV;
 }
 
+/**
+ * Paginated list of tagged images for a person.
+ *
+ * @deprecated
+ * @see https://developer.themoviedb.org/reference/person-tagged-images
+ */
 export interface TaggedImages {
   page: number;
   results: TaggedImage[];
@@ -137,6 +183,7 @@ export interface TaggedImages {
   total_pages: number;
 }
 
+/** Translation data for a person. */
 export interface PersonTranslations {
   id: number;
   translations: {

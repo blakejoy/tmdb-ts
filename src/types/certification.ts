@@ -1,9 +1,19 @@
+/** A content rating certification for a specific country. */
 export interface Certification {
+  /** The certification code (e.g. "PG-13", "R"). */
   certification: string;
+  /** A description of what the certification means. */
   meaning: string;
+  /** The display order of this certification. */
   order: number;
 }
 
+/**
+ * A map of country codes to their available content certifications.
+ *
+ * @see https://developer.themoviedb.org/reference/certification-movie-list
+ * @see https://developer.themoviedb.org/reference/certifications-tv-list
+ */
 export interface Certifications {
   certifications: {
     AR: Certification[];

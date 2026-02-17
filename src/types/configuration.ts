@@ -1,7 +1,14 @@
 import { CountryCode } from '../types';
 
+/**
+ * Image configuration details including base URLs and supported sizes.
+ *
+ * @see https://developer.themoviedb.org/reference/configuration-details
+ */
 export interface ImageConfiguration {
+  /** The HTTP base URL for images. */
   base_url: string;
+  /** The HTTPS base URL for images. */
   secure_base_url: string;
   backdrop_sizes: BackdropSizes[];
   logo_sizes: LogoSizes[];
@@ -10,33 +17,60 @@ export interface ImageConfiguration {
   still_sizes: StillSizes[];
 }
 
+/**
+ * The system-wide configuration details for the TMDB API.
+ *
+ * @see https://developer.themoviedb.org/reference/configuration-details
+ */
 export interface Configuration {
   images: ImageConfiguration;
+  /** The list of valid change keys used for tracking media changes. */
   change_keys: ChangeKeys[];
 }
 
+/**
+ * A country configuration entry.
+ *
+ * @see https://developer.themoviedb.org/reference/configuration-countries
+ */
 export interface CountryConfiguration {
   iso_3166_1: CountryCode;
   english_name: string;
   native_name: string;
 }
 
+/**
+ * A language configuration entry.
+ *
+ * @see https://developer.themoviedb.org/reference/configuration-languages
+ */
 export interface LanguageConfiguration {
   iso_639_1: string;
   english_name: string;
   name: string;
 }
 
+/**
+ * A department and its associated jobs.
+ *
+ * @see https://developer.themoviedb.org/reference/configuration-jobs
+ */
 export interface JobConfiguration {
   department: string;
   jobs: string[];
 }
 
+/**
+ * A country and its associated timezones.
+ *
+ * @see https://developer.themoviedb.org/reference/configuration-timezones
+ */
 export interface TimezoneConfiguration {
   iso_3166_1: CountryCode;
   zones: string[];
 }
 
+/** All supported media image sizes. */
 export const MediaSize = {
   W45: 'w45',
   W92: 'w92',
@@ -51,6 +85,7 @@ export const MediaSize = {
   ORIGINAL: 'original',
 } as const;
 
+/** Supported backdrop image sizes. */
 export const BackdropSize = {
   W45: 'w45',
   W92: 'w92',
@@ -65,6 +100,7 @@ export const BackdropSize = {
 
 type BackdropSizes = (typeof BackdropSize)[keyof typeof BackdropSize];
 
+/** Supported logo image sizes. */
 export const LogoSize = {
   W45: 'w45',
   W92: 'w92',
@@ -77,6 +113,7 @@ export const LogoSize = {
 
 type LogoSizes = (typeof LogoSize)[keyof typeof LogoSize];
 
+/** Supported poster image sizes. */
 export const PosterSize = {
   W92: 'w92',
   W154: 'w154',
@@ -90,6 +127,7 @@ export const PosterSize = {
 
 type PosterSizes = (typeof PosterSize)[keyof typeof PosterSize];
 
+/** Supported profile image sizes. */
 export const ProfileSize = {
   W45: 'w45',
   W185: 'w185',
@@ -99,6 +137,7 @@ export const ProfileSize = {
 
 type ProfileSizes = (typeof ProfileSize)[keyof typeof ProfileSize];
 
+/** Supported still image sizes. */
 export const StillSize = {
   W92: 'w92',
   W185: 'w185',
@@ -108,6 +147,7 @@ export const StillSize = {
 
 type StillSizes = (typeof StillSize)[keyof typeof StillSize];
 
+/** All valid change keys used for tracking modifications to media entries. */
 export const ChangeKey = {
   ADULT: 'adult',
   AIR_DATE: 'air_date',
